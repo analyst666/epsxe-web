@@ -34,7 +34,7 @@ Recursos  · Instalação  · Como usar  · Solução de problemas
 </table>
 <p align="center"><sub>Capturas feitas com jogos fictícios, só para ilustrar a interface.</sub></p>
 
-[!IMPORTANT]
+
 Este repositório não inclui jogos nem BIOS. Use apenas imagens de disco e BIOS que você possui legalmente.
 
 ## 🧭 Sobre o projeto
