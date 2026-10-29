@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ePSXe Web — PlayStation 1 no Navegador
 
 Versão Web moderna e completa baseada na engenharia reversa do **ePSXe for Android 2.0.14**.
@@ -15,3 +16,7 @@ Versão Web moderna e completa baseada na engenharia reversa do **ePSXe for Andr
 1. Dê dois cliques em `iniciar_epsxe_web.bat` na pasta raiz.
 2. Abra seu navegador em `http://127.0.0.1:8765/`.
 3. Arraste qualquer jogo baixado para a tela e clique para jogar!
+=======
+# epsxe-web
+Emulador de PS1 (EPSXE) para navegador.
+>>>>>>> f50586248982fdab73adda38830e87c5c46b9647
