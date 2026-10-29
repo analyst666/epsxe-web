@@ -62,71 +62,46 @@ Recurso	O que faz
 📋 Requisitos e Instalação
 
 Requisitos:
-
     Python: 3.8 ou superior. Não há dependências para instalar com pip.
-
     Navegador: Chrome ou Edge recentes (necessitam de WebAssembly, SharedArrayBuffer e WebGL2).
 
 🪟 Windows
-
     Confirme que tem o Python instalado (python --version).
-
     Baixe o projeto para uma pasta local (evite C:\Program Files).
-
     Dê um duplo clique no arquivo iniciar.bat (ou execute .\iniciar.ps1 no PowerShell).
-
     O navegador abrirá no endereço http://127.0.0.1:8765/.
-
+    
 🐧 Linux / 🍎 macOS
-
     Confirme a instalação do Python (python3 --version).
-
     Clone o repositório ou extraia o .zip em uma pasta.
-
     No terminal, execute: python3 server.py.
-
     Acesse http://127.0.0.1:8765/ no seu navegador.
-
 Dica para mudar a porta: Execute python3 server.py 9000. Lembre-se que o navegador trata portas diferentes como sites distintos (você precisará reconfigurar a BIOS e os controles).
+
 🎮 Usar o Emulador
 1. Adicionar jogos e procurar na internet
-
 Na aba Biblioteca, arraste os arquivos para a janela, ou use os botões da interface.
-
     .cue + .bin: Selecione todos os arquivos correspondentes de uma vez.
-
     .chd ou .iso: Basta um único arquivo.
 
 🔎 Onde encontrar jogos:
 Caso não possua os arquivos físicos e precise procurar cópias digitais (ROMs), a forma mais prática de achar versões compatíveis é pesquisar no Google por:
-
     romsfun playstation
-
     romsfun psx(Prefira as versões "USA" para ter o jogo em inglês e lembre-se de extrair arquivos .zip ou .7z se contiverem várias faixas .bin).
 
 2. BIOS (Opcional, mas recomendado)
-
 Por padrão, o emulador usa uma BIOS simulada (HLE). Para máxima compatibilidade:
-
     Vá na aba BIOS e envie um arquivo .bin oficial (ex: scph1001.bin para NTSC-U).
-
     Em Preferências → BIOS, altere de "HLE" para "Oficial".
-
+    
 3. Controles e Atalhos
-
 Ligue o controle e aperte um botão para que o navegador o detecte. A aba Controles permite remapear botões, ajustar a zona morta e ativar a vibração.
-
     Menu de pausa: Esc ou o botão Guide/Home do controle.
-
     Salvar estado (slot ativo): No menu de pausa aperte Select + R1.
-
     Carregar estado (slot ativo): No menu de pausa aperte Select + L1.
-
     Turbo (avanço rápido): Espaço ou segure Select + R2.
 
 🗂️ Estrutura do projeto e API
-Plaintext
-
 epsxe-web/
 ├── server.py              Servidor local (Python)
 ├── iniciar.bat            Atalho Windows (CMD)
@@ -142,21 +117,13 @@ epsxe-web/
 └── covers/                Capas em cache (criada automaticamente)
 
 🔌 API do Servidor (127.0.0.1:8765)
-
     GET /api/status: Estado do servidor e quantidade de jogos.
-
     GET /api/games: Lista os jogos em games/ (serial, título, região).
-
     GET /api/games/file?name=X: Entrega o arquivo com suporte a Range para streaming.
-
     POST /api/games/upload: Salva os arquivos carregados na interface.
-
     DELETE /api/games/delete: Remove um arquivo da pasta local.
 
 🩺 Solução de Problemas
-
     Tela preta ou erro de SharedArrayBuffer: Acesse sempre pelo IP local http://127.0.0.1:8765/ e nunca diretamente abrindo o arquivo .html no disco.
-
     O controle não responde: Os navegadores só ativam os controles após uma primeira interação com a página (clique na tela ou aperte um botão).
-
     Jogos lentos ou com falhas de som: Nas Preferências, utilize o renderizador PCSX ReARMed, ative a opção Multi-thread e ajuste o Frame skip para automático.
