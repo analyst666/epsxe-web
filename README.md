@@ -138,6 +138,8 @@ Experimente pesquisar por:
 * Ao baixar, prefira as versões da região **"USA"** se desejar o jogo com textos e áudio em inglês.
 * Muitos jogos vêm compactados. Certifique-se de extrair os arquivos de dentro dos pacotes `.zip` ou `.7z` antes de adicion
 
+**🖼️ Capas Automáticas:**
+Não se preocupe em procurar as imagens dos seus jogos! Ao importar um título, o sistema identifica o arquivo e baixa automaticamente a capa oficial direto da internet. Ela fica salva na pasta `covers/` para manter a sua biblioteca sempre bonita e organizada.
 
 ## 🎮 Como Jogar
 
