@@ -40,11 +40,13 @@ Este repositório não inclui jogos nem BIOS. Use apenas imagens de disco e BIOS
 ## 🧭 Sobre o projeto
 O emulador em si é o EmulatorJS com dois cores libretro compilados para WebAssembly: PCSX ReARMed e Beetle PSX HW. Por cima dele há uma interface e um pequeno servidor local em Python (`server.py`) que guarda os seus jogos em disco, identifica o serial de cada um, busca as capas e entrega as imagens de disco por streaming. 
 
+```mermaid
 flowchart LR
     A["🌐 Navegador<br/>interface + EmulatorJS (WASM)"] -- "HTTP · 127.0.0.1:8765" --> B["🐍 server.py<br/>Python, só biblioteca padrão"]
     B --> C["📁 games/<br/>suas imagens de disco"]
     B --> D["🖼️ covers/<br/>capas em cache"]
     B --> E["⚙️ static/<br/>interface e engine"]
+```
 
 O servidor escuta apenas em 127.0.0.1. BIOS, preferências, mapeamento de controles, cartões de memória e save states ficam no armazenamento do navegador (IndexedDB e localStorage), não em arquivos locais do projeto.
 
