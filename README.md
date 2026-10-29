@@ -48,18 +48,36 @@ flowchart LR
     B --> E["⚙️ static/<br/>interface e engine"]
 
 O servidor escuta apenas em 127.0.0.1. BIOS, preferências, mapeamento de controles, cartões de memória e save states ficam no armazenamento do navegador (IndexedDB e localStorage), não em arquivos locais do projeto.
+
 ✨ Recursos
-Recurso	O que faz
-📚 Biblioteca	Capas, busca, filtro por região e ordenação.
-💿 Arrastar e soltar	Suporte a .cue + .bin, .iso, .img, .chd, .pbp, .ecm, .zip e .7z.
-🧩 .cue com várias faixas	O .cue e todos os .bin (incluindo áudio) são agrupados como um único jogo.
-🔎 Banco de Dados	~11 mil jogos. O serial é lido automaticamente da imagem (SYSTEM.CNF).
-🖼️ Capas automáticas	Baixadas na primeira vez e guardadas em covers/.
-🎛️ Dois renderizadores	PCSX ReARMed (rápido) ou Beetle PSX HW (OpenGL, upscaling, PGXP).
-📺 Vídeo	Formatos 4:3, 16:9, scanlines e shaders (CRT Easymode, Aperture, SABR, etc).
-🎮 Controles	Gamepads USB e Bluetooth (PS4, PS5, Xbox) e teclado remapeável.
-💾 Save states e cheats	5 slots de save state, cheats GameShark e troca de disco pelo menu.
-📋 Requisitos e Instalação
+	Recurso	O que faz
+📚	Biblioteca	Capas, busca, filtro por região e ordenação (recentes, título, adicionados, tempo de jogo).
+💿	Arrastar e soltar	.cue + .bin, .iso, .img, .chd, .pbp, .ecm, .zip e .7z. Vários arquivos de uma vez, ou uma pasta inteira.
+🧩	.cue com várias faixas	O .cue e todos os .bin, incluindo faixas de áudio, são agrupados como um único jogo.
+🔎	Banco com ~11 mil jogos	O serial é lido da imagem (SYSTEM.CNF) ou do nome do arquivo e preenche título, região, gênero e editora.
+🖼️	Capas automáticas	Baixadas na primeira vez e guardadas em covers/, ou personalizadas por jogo.
+🎛️	Dois renderizadores	PCSX ReARMed: rápido e compatível. Beetle PSX HW: OpenGL, resolução interna de x1 a x16, PGXP, filtros de textura e hack de widescreen.
+📺	Vídeo	4:3, 16:9 ou esticar, scanlines, brilho e shaders (CRT Easymode, CRT Aperture, CRT Geom, SABR, bicúbico).
+🎮	Controles	Gamepads USB e Bluetooth (PS4, PS5, Xbox e genéricos) para os jogadores 1 e 2, teclado remapeável, zona morta, inversão do eixo Y e vibração.
+💾	Save states e cheats	5 slots de save state, cheats GameShark, troca de disco e reset pelo menu de pausa.
+⚡	Multi-thread	WebAssembly threads, com os cabeçalhos COOP/COEP já enviados pelo servidor.
+📴	Funciona offline	O EmulatorJS e os cores já estão em static/engine/. A internet só é usada para baixar capas.
+👤	Perfil por jogo	Renderizador e tipo de controle podem ser definidos individualmente.
+📋 Requisitos
+Item	Detalhe
+Python	3.8 ou superior (testado com 3.13). Não há dependências para instalar com pip.
+Navegador	Chrome ou Edge recentes são os recomendados. Precisa de WebAssembly, SharedArrayBuffer e WebGL2. Firefox deve funcionar; Safari não foi testado.
+Máquina	O PCSX ReARMed roda em computadores modestos. O Beetle PSX HW em resoluções altas exige uma GPU razoável.
+Disco	Cerca de 20 MB para o projeto (engine e capas incluídos), mais o tamanho dos seus jogos.
+Internet	Opcional, só para baixar capas.
+
+🚀 Início rápido
+Sistema	Como iniciar	Depois
+🪟 Windows	Dois cliques em iniciar.bat	O navegador abre em http://127.0.0.1:8765/
+🐧 Linux	python3 server.py na pasta do projeto	Abra http://127.0.0.1:8765/ se o navegador não abrir sozinho
+🍎 macOS	python3 server.py na pasta do projeto	Abra http://127.0.0.1:8765/ se o navegador não abrir sozinho
+
+Com a página aberta, arraste um jogo para a janela e clique nele para jogar.
 
 Requisitos:
     Python: 3.8 ou superior. Não há dependências para instalar com pip.
@@ -71,11 +89,40 @@ Requisitos:
     Dê um duplo clique no arquivo iniciar.bat (ou execute .\iniciar.ps1 no PowerShell).
     O navegador abrirá no endereço http://127.0.0.1:8765/.
     
-🐧 Linux / 🍎 macOS
-    Confirme a instalação do Python (python3 --version).
-    Clone o repositório ou extraia o .zip em uma pasta.
-    No terminal, execute: python3 server.py.
-    Acesse http://127.0.0.1:8765/ no seu navegador.
+🐧 Linux
+
+[!NOTE] Resumo: instale Python 3 e Git, clone o projeto e rode python3 server.py.
+
+1 · Instalar
+Instale Python 3 e Git (na maioria das distribuições o Python já vem instalado):
+bash
+   # Debian, Ubuntu, Linux Mint
+   sudo apt update && sudo apt install -y python3 git
+
+   # Fedora
+   sudo dnf install -y python3 git
+
+   # Arch, Manjaro
+   sudo pacman -S --needed python git
+
+Confirme:
+bash
+   python3 --version
+Baixe o projeto:
+bash
+   git clone https://github.com/analyst666/epsxe-web.git
+   cd epsxe-web
+
+Ou baixe o ZIP pelo GitHub e extraia com unzip epsxe-web-main.zip.
+
+2 · Configurar
+Nada é obrigatório. Estas são as opções mais úteis:
+[!NOTE] Os arquivos iniciar.bat e iniciar.ps1 são só para Windows. No Linux, inicie o servidor diretamente.
+<details> <summary><b>Mudar a porta</b> (padrão: 8765)</summary>
+bash
+python3 server.py 9000
+
+[!WARNING] Ao mudar a porta, o navegador trata como outro site e você precisa reconfigurar BIOS, preferências e controles.
 Dica para mudar a porta: Execute python3 server.py 9000. Lembre-se que o navegador trata portas diferentes como sites distintos (você precisará reconfigurar a BIOS e os controles).
 
 🎮 Usar o Emulador
