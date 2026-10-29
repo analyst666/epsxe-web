@@ -1,7 +1,7 @@
 <a id="readme-top"></a>
 
 <div align="center">
-<img src="docs/banner.svg" alt="ePSXe Web: PlayStation 1 no navegador" width="100%">
+<img src="banner.svg" alt="ePSXe Web: PlayStation 1 no navegador" width="100%">
 <br>Jogue PlayStation 1 direto no navegador.
 Interface escura, biblioteca com capas, controles USB e Bluetooth, save states e cheats, tudo rodando na sua máquina.
 
@@ -51,13 +51,33 @@ Projeto independente, sem vínculo com os autores do ePSXe, com a Sony ou com o 
 
 ✨ Recursos
 
-RecursoO que faz📚BibliotecaCapas, busca, filtro por região e ordenação (recentes, título, adicionados, tempo de jogo).💿Arrastar e soltar.cue + .bin, .iso, .img, .chd, .pbp, .ecm, .zip e .7z. Vários arquivos de uma vez, ou uma pasta inteira.🧩.cue com várias faixasO .cue e todos os .bin, incluindo faixas de áudio, são agrupados como um único jogo.🔎Banco com ~11 mil jogosO serial é lido da imagem (SYSTEM.CNF) ou do nome do arquivo e preenche título, região, gênero e editora.🖼️Capas automáticasBaixadas na primeira vez e guardadas em covers/, ou personalizadas por jogo.🎛️Dois renderizadoresPCSX ReARMed: rápido e compatível. Beetle PSX HW: OpenGL, resolução interna de x1 a x16, PGXP, filtros de textura e hack de widescreen.📺Vídeo4:3, 16:9 ou esticar, scanlines, brilho e shaders (CRT Easymode, CRT Aperture, CRT Geom, SABR, bicúbico).🎮ControlesGamepads USB e Bluetooth (PS4, PS5, Xbox e genéricos) para os jogadores 1 e 2, teclado remapeável, zona morta, inversão do eixo Y e vibração.💾Save states e cheats5 slots de save state, cheats GameShark, troca de disco e reset pelo menu de pausa.⚡Multi-threadWebAssembly threads, com os cabeçalhos COOP/COEP já enviados pelo servidor.📴Funciona offlineO EmulatorJS e os cores já estão em static/engine/. A internet só é usada para baixar capas.👤Perfil por jogoRenderizador e tipo de controle podem ser definidos individualmente.
+RecursoO que faz
+📚BibliotecaCapas, busca, filtro por região e ordenação (recentes, título, adicionados, tempo de jogo).
+💿Arrastar e soltar.cue + .bin, .iso, .img, .chd, .pbp, .ecm, .zip e .7z. Vários arquivos de uma vez, ou uma pasta inteira.
+🧩.cue com várias faixasO .cue e todos os .bin, incluindo faixas de áudio, são agrupados como um único jogo.
+🔎Banco com ~11 mil jogosO serial é lido da imagem (SYSTEM.CNF) ou do nome do arquivo e preenche título, região, gênero e editora.
+🖼️Capas automáticasBaixadas na primeira vez e guardadas em covers/, ou personalizadas por jogo.
+🎛️Dois renderizadoresPCSX ReARMed: rápido e compatível. Beetle PSX HW: OpenGL, resolução interna de x1 a x16, PGXP, filtros de textura e hack de widescreen.
+📺Vídeo4:3, 16:9 ou esticar, scanlines, brilho e shaders (CRT Easymode, CRT Aperture, CRT Geom, SABR, bicúbico).
+🎮ControlesGamepads USB e Bluetooth (PS4, PS5, Xbox e genéricos) para os jogadores 1 e 2, teclado remapeável, zona morta, inversão do eixo Y e vibração.
+💾Save states e cheats5 slots de save state, cheats GameShark, troca de disco e reset pelo menu de pausa.
+⚡Multi-threadWebAssembly threads, com os cabeçalhos COOP/COEP já enviados pelo servidor.
+📴Funciona offlineO EmulatorJS e os cores já estão em static/engine/. A internet só é usada para baixar capas.
+👤Perfil por jogoRenderizador e tipo de controle podem ser definidos individualmente.
 
 📋 Requisitos
-ItemDetalhePython3.8 ou superior (testado com 3.13). Não há dependências para instalar com pip.NavegadorChrome ou Edge recentes são os recomendados. Precisa de WebAssembly, SharedArrayBuffer e WebGL2. Firefox deve funcionar; Safari não foi testado.MáquinaO PCSX ReARMed roda em computadores modestos. O Beetle PSX HW em resoluções altas exige uma GPU razoável.DiscoCerca de 20 MB para o projeto (engine e capas incluídos), mais o tamanho dos seus jogos.InternetOpcional, só para baixar capas.
+ItemDetalhe
+Python3.8 ou superior (testado com 3.13). Não há dependências para instalar com pip.
+NavegadorChrome ou Edge recentes são os recomendados. Precisa de WebAssembly, SharedArrayBuffer e WebGL2. Firefox deve funcionar; Safari não foi testado.
+MáquinaO PCSX ReARMed roda em computadores modestos. O Beetle PSX HW em resoluções altas exige uma GPU razoável.
+DiscoCerca de 20 MB para o projeto (engine e capas incluídos), mais o tamanho dos seus jogos.
+InternetOpcional, só para baixar capas.
 
 🚀 Início rápido
-SistemaComo iniciarDepois🪟 WindowsDois cliques em iniciar.batO navegador abre em http://127.0.0.1:8765/🐧 Linuxpython3 server.py na pasta do projetoAbra http://127.0.0.1:8765/ se o navegador não abrir sozinho🍎 macOSpython3 server.py na pasta do projetoAbra http://127.0.0.1:8765/ se o navegador não abrir sozinho
+SistemaComo iniciarDepois
+🪟 WindowsDois cliques em iniciar.batO navegador abre em http://127.0.0.1:8765/
+🐧 Linuxpython3 server.py na pasta do projetoAbra http://127.0.0.1:8765/ se o navegador não abrir sozinho
+🍎 macOSpython3 server.py na pasta do projetoAbra http://127.0.0.1:8765/ se o navegador não abrir sozinho
 
 Com a página aberta, arraste um jogo para a janela e clique nele para jogar.
 
@@ -67,17 +87,21 @@ Com a página aberta, arraste um jogo para a janela e clique nele para jogar.
 Cada sistema abaixo segue a mesma ordem: instalar, configurar e usar.
 Ir direto para: 🪟 Windows  ·  🐧 Linux  ·  🍎 macOS
 
-<br>🪟 Windows
+<br>
+
+🪟 Windows
 [!NOTE]
 Resumo: instale o Python 3.8+, baixe o projeto e dê dois cliques em iniciar.bat.
+
 1 · Instalar
 1. Instale o Python 3.8+ em python.org/downloads e marque Add python.exe to PATH durante a instalação. Pelo terminal, o equivalente é:
-2. winget install Python.Python.3.12
-3. Confirme a instalação:
-4. python --version
-5. Baixe o projeto, de uma das duas formas:
-6. git clone https://github.com/SEU-USUARIO/epsxe-web.git
-7. ou use Code → Download ZIP no GitHub e extraia o arquivo.
+   winget install Python.Python.3.12
+2. Confirme a instalação:
+   python --version
+3. Baixe o projeto, de uma das duas formas:
+   git clone https://github.com/SEU-USUARIO/epsxe-web.git
+   ou use Code → Download ZIP no GitHub e extraia o arquivo.
+
 [!TIP]
 Prefira uma pasta sua, como C:\Jogos\epsxe-web ou dentro de Documentos. Evite C:\Program Files, porque o servidor grava em games\ e covers\ dentro da pasta do projeto.
 
@@ -111,12 +135,15 @@ powershell -ExecutionPolicy Bypass -File .\iniciar.ps1
 
 3 · Usar
 Dois cliques em iniciar.bat (ou .\iniciar.ps1 no PowerShell). O servidor abre uma janela de terminal e o navegador abre em http://127.0.0.1:8765/. Podem abrir duas abas, porque o script e o servidor abrem a página; feche a extra.
+
 Para iniciar sem os scripts:
 python server.py              :: porta 8765
 python server.py 9000         :: outra porta
 python server.py --no-browser :: não abre o navegador
+
 - Encerrar: Ctrl+C ou feche a janela do terminal.
 - Pasta no Disco: o botão da interface abre games\ no Explorer (recurso exclusivo do Windows).
+
 ➡️ Continue em Usando o emulador.
 
 <p align="right"><a href="#readme-top">⬆ voltar ao topo</a></p>
@@ -124,22 +151,21 @@ python server.py --no-browser :: não abre o navegador
 🐧 Linux
 [!NOTE]
 Resumo: instale Python 3 e Git, clone o projeto e rode python3 server.py.
+
 1 · Instalar
 1. Instale Python 3 e Git (na maioria das distribuições o Python já vem instalado):
-2. # Debian, Ubuntu, Linux Mint
-3. sudo apt update && sudo apt install -y python3 git
-4. 
-5. # Fedora
-6. sudo dnf install -y python3 git
-7. 
-8. # Arch, Manjaro
-9. sudo pacman -S --needed python git
-10. Confirme:
-11. python3 --version
-12. Baixe o projeto:
-13. git clone https://github.com/SEU-USUARIO/epsxe-web.git
-14. cd epsxe-web
-15. Ou baixe o ZIP pelo GitHub e extraia com unzip epsxe-web-main.zip.
+   # Debian, Ubuntu, Linux Mint
+   sudo apt update && sudo apt install -y python3 git
+   # Fedora
+   sudo dnf install -y python3 git
+   # Arch, Manjaro
+   sudo pacman -S --needed python git
+2. Confirme:
+   python3 --version
+3. Baixe o projeto:
+   git clone https://github.com/SEU-USUARIO/epsxe-web.git
+   cd epsxe-web
+   Ou baixe o ZIP pelo GitHub e extraia com unzip epsxe-web-main.zip.
 
 2 · Configurar
 Nada é obrigatório. Estas são as opções mais úteis:
@@ -185,13 +211,16 @@ ln -s /mnt/jogos/ps1 games
 cd epsxe-web
 python3 server.py
 O navegador padrão abre em http://127.0.0.1:8765/. Se não abrir, acesse o endereço manualmente. Para encerrar, Ctrl+C.
+
 Para deixar rodando em segundo plano:
 nohup python3 server.py --no-browser > epsxe.log 2>&1 &
 
 # para encerrar:
 pkill -f "python3 server.py"
+
 [!NOTE]
 O botão Pasta no Disco não funciona no Linux (ele chama o explorer.exe). Abra a pasta pelo gerenciador de arquivos ou com xdg-open games/.
+
 ➡️ Continue em Usando o emulador.
 
 <p align="right"><a href="#readme-top">⬆ voltar ao topo</a></p>
@@ -199,14 +228,15 @@ O botão Pasta no Disco não funciona no Linux (ele chama o explorer.exe). Abra 
 🍎 macOS
 [!NOTE]
 Resumo: confirme o Python 3, clone o projeto e rode python3 server.py.
+
 1 · Instalar
 1. Verifique se o Python 3 já está disponível:
-2. python3 --version
-3. Se o macOS pedir para instalar as Command Line Tools, aceite. Alternativamente, instale pelo Homebrew (brew install python git) ou pelo instalador de python.org.
-4. Baixe o projeto:
-5. git clone https://github.com/SEU-USUARIO/epsxe-web.git
-6. cd epsxe-web
-7. Ou baixe o ZIP pelo GitHub e extraia com um duplo clique.
+   python3 --version
+   Se o macOS pedir para instalar as Command Line Tools, aceite. Alternativamente, instale pelo Homebrew (brew install python git) ou pelo instalador de python.org.
+2. Baixe o projeto:
+   git clone https://github.com/SEU-USUARIO/epsxe-web.git
+   cd epsxe-web
+   Ou baixe o ZIP pelo GitHub e extraia com um duplo clique.
 
 2 · Configurar
 Nada é obrigatório. Estas são as opções mais úteis:
@@ -247,42 +277,61 @@ cd epsxe-web
 python3 server.py
 O navegador padrão abre em http://127.0.0.1:8765/. Se não abrir, acesse o endereço manualmente. Para encerrar, Ctrl+C.
 Opções úteis: python3 server.py 9000 (outra porta) e python3 server.py --no-browser (não abre o navegador).
+
 [!NOTE]
 O botão Pasta no Disco não funciona no macOS (ele chama o explorer.exe). Abra a pasta com open games/.
+
 ➡️ Continue em Usando o emulador.
 
 <p align="right"><a href="#readme-top">⬆ voltar ao topo</a></p>
 
-🔍 Como encontrar jogos
-
-Este projeto não inclui os jogos nativamente. Para encontrar as imagens dos discos (ROMs) na internet de forma fácil, você pode usar o Google. 
-
-Para chegar diretamente a catálogos completos e organizados de PlayStation 1, experimente pesquisar pelos seguintes termos:
-- `"romsfun playstation"`
-- `"romsfun ps1"`
-
-Os primeiros resultados dessas buscas costumam levar a acervos muito populares, onde você encontra a biblioteca inteira do console dividida por região e pronta para download. Formatos como `.zip`, `.7z` e `.chd` costumam funcionar muito bem. Após baixar o jogo de sua preferência, basta extraí-lo (se necessário) e arrastar para o emulador. Lembre-se de baixar apenas as imagens dos jogos que você já possui legalmente.
-
 🎮 Usando o emulador
 Vale para todos os sistemas operacionais.
+
 1. Adicionar jogos
 Na aba Biblioteca, arraste os arquivos para a janela, ou use Escolher arquivos, Escolher pasta ou ＋ Adicionar jogo. Os arquivos enviados pela interface são copiados para a pasta games/ do projeto. Você também pode copiar os jogos direto para essa pasta e clicar em 🔄 Atualizar.
-FormatoComo adicionar.cue + .binSelecione o .cue e todos os .bin ao mesmo tempo..iso .img .chd .pbp .ecmUm único arquivo..zip .7zUm único arquivo; o emulador descompacta na memória.[!TIP]
+
+FormatoComo adicionar
+.cue + .binSelecione o .cue e todos os .bin ao mesmo tempo.
+.iso .img .chd .pbp .ecmUm único arquivo.
+.zip .7zUm único arquivo; o emulador descompacta na memória.
+
+[!TIP]
 Ao copiar manualmente para games/, o nome dos .bin deve começar com o mesmo nome do .cue (por exemplo Jogo.cue e Jogo (Track 1).bin). Se houver só um .bin na pasta, ele é associado ao .cue automaticamente. Os nomes escritos dentro do .cue também precisam bater com os arquivos.
 - O servidor lê apenas os arquivos diretamente dentro de games/; subpastas são ignoradas.
 - A compatibilidade final de cada formato depende do core de emulação escolhido.
+
+### 🔎 Como encontrar jogos na internet
+Caso não possua os arquivos físicos e precise buscar cópias digitais (ROMs) dos seus jogos na internet, a forma mais prática de achar as versões compatíveis (nos formatos `.cue`/`.bin`, `.chd` ou `.iso`) é usando o Google com os termos de busca corretos.
+
+Experimente pesquisar no Google por:
+- **`romsfun playstation`**
+- **`romsfun psx`**
+
+Geralmente, o primeiro resultado te levará a uma biblioteca extensa e bem organizada de jogos para o console. 
+
+**Dicas importantes:**
+* Ao baixar, prefira as versões da região "USA" se desejar o jogo com textos/áudio em inglês.
+* Muitos jogos vêm compactados. Certifique-se de extrair os arquivos de dentro dos pacotes `.zip` ou `.7z` antes de adicioná-los ao emulador (a menos que seja um arquivo único compatível).
 
 2. BIOS (opcional)
 Por padrão o emulador usa uma BIOS simulada (HLE), de compatibilidade limitada. Para usar uma BIOS oficial:
 1. Abra a aba BIOS e clique em ＋ Enviar BIOS (.bin). Soltar na Biblioteca um .bin de 512 KB com nome como scph1001.bin também funciona: ele é reconhecido como BIOS.
 2. Em Preferências → BIOS, deixe Oficial se disponível, senão HLE.
 3. O selo no topo da tela mostra se a BIOS oficial ou a HLE está em uso.
-ArquivoRegiãoscph1001.binNTSC-U (América)scph7502.binPAL (Europa)scph5500.binNTSC-J (Japão)A BIOS é guardada no navegador. A pasta bios/ é criada pelo servidor, mas hoje não é lida. Com várias BIOS enviadas, o app prefere as de nome scph1001, scph7502 ou scph5500; fora isso, usa a primeira da lista.
+
+ArquivoRegião
+scph1001.binNTSC-U (América)
+scph7502.binPAL (Europa)
+scph5500.binNTSC-J (Japão)
+
+A BIOS é guardada no navegador. A pasta bios/ é criada pelo servidor, mas hoje não é lida. Com várias BIOS enviadas, o app prefere as de nome scph1001, scph7502 ou scph5500; fora isso, usa a primeira da lista.
 
 3. Jogar
 Clique na capa do jogo para iniciá-lo. Cada cartão tem dois botões:
 - ⚙️ Configurar / Capa: abre os detalhes do jogo, onde é possível Trocar Capa e salvar um perfil do jogo (renderizador e tipo de controle só para aquele título).
 - 🗑️ Excluir: remove o jogo da biblioteca. Para jogos que estão em games/, o arquivo é apagado do disco.
+
 Menu de pausa (<kbd>Esc</kbd>, botão ☰ ou botão Guide/Home do controle):
 - Salvar e carregar estado no slot selecionado (1 a 5)
 - Trocar disco (jogos com vários CDs)
@@ -290,25 +339,47 @@ Menu de pausa (<kbd>Esc</kbd>, botão ☰ ou botão Guide/Home do controle):
 - Cheats GameShark (um código por linha, linhas com # são comentários; valem para a sessão atual)
 - Ajustes rápidos de proporção de tela e volume
 - Sair do jogo
+
 [!TIP]
 Para garantir que o cartão de memória seja gravado, saia pelo Sair do Jogo em vez de simplesmente fechar a aba.
 
 4. Controles e atalhos
 Conecte o controle e aperte um botão para ele aparecer (o indicador no rodapé do menu lateral mostra o que foi detectado). A aba Controles permite escolher qual controle é de qual jogador, remapear botões, ajustar a zona morta, inverter o eixo Y e ligar ou desligar a vibração.
+
 Atalhos
-AçãoTecladoControle (jogador 1)Menu de pausa<kbd>Esc</kbd>Guide / HomeSalvar estado (slot ativo)menu de pausa<kbd>Select</kbd> + <kbd>R1</kbd>Carregar estado (slot ativo)menu de pausa<kbd>Select</kbd> + <kbd>L1</kbd>Turbo (avanço rápido)<kbd>Espaço</kbd><kbd>Select</kbd> + <kbd>R2</kbd> (segurar)Teclado padrão
-PlayStationJogador 1Jogador 2D-Pad<kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>✕ · ○ · □ · △<kbd>X</kbd> · <kbd>C</kbd> · <kbd>Z</kbd> · <kbd>S</kbd><kbd>K</kbd> · <kbd>L</kbd> · <kbd>J</kbd> · <kbd>I</kbd>L1 · R1<kbd>Q</kbd> · <kbd>E</kbd><kbd>U</kbd> · <kbd>O</kbd>L2 · R2<kbd>1</kbd> · <kbd>3</kbd><kbd>7</kbd> · <kbd>9</kbd>L3 · R3<kbd>F</kbd> · <kbd>G</kbd><kbd>H</kbd> · <kbd>Y</kbd>Select · Start<kbd>V</kbd> · <kbd>Enter</kbd><kbd>B</kbd> · <kbd>N</kbd>[!WARNING]
+AçãoTecladoControle (jogador 1)
+Menu de pausa<kbd>Esc</kbd>Guide / Home
+Salvar estado (slot ativo)menu de pausa<kbd>Select</kbd> + <kbd>R1</kbd>
+Carregar estado (slot ativo)menu de pausa<kbd>Select</kbd> + <kbd>L1</kbd>
+Turbo (avanço rápido)<kbd>Espaço</kbd><kbd>Select</kbd> + <kbd>R2</kbd> (segurar)
+
+Teclado padrão
+PlayStationJogador 1Jogador 2
+D-Pad<kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>
+✕ · ○ · □ · △<kbd>X</kbd> · <kbd>C</kbd> · <kbd>Z</kbd> · <kbd>S</kbd><kbd>K</kbd> · <kbd>L</kbd> · <kbd>J</kbd> · <kbd>I</kbd>
+L1 · R1<kbd>Q</kbd> · <kbd>E</kbd><kbd>U</kbd> · <kbd>O</kbd>
+L2 · R2<kbd>1</kbd> · <kbd>3</kbd><kbd>7</kbd> · <kbd>9</kbd>
+L3 · R3<kbd>F</kbd> · <kbd>G</kbd><kbd>H</kbd> · <kbd>Y</kbd>
+Select · Start<kbd>V</kbd> · <kbd>Enter</kbd><kbd>B</kbd> · <kbd>N</kbd>
+
+[!WARNING]
 A tecla <kbd>S</kbd> aparece nos dois padrões (△ do jogador 1 e ↓ do jogador 2). Se for jogar a dois no mesmo teclado, remapeie uma delas na aba Controles.
 
 5. Preferências
 A aba Preferências reúne os ajustes por categoria: BIOS, CPU / Desempenho, Tela, Vídeo, Som, Entrada e Interface. Alguns pontos úteis:
-ObjetivoO que fazerComputador lentoUse o renderizador PCSX ReARMed, mantenha Multi-thread ligado, ative CD turbo e, se ainda precisar, Frame skip automático.Visual mais nítidoUse Beetle PSX HW com resolução interna x2 ou x4 e ative PGXP para reduzir o tremor dos polígonos.Visual de TV de tuboScanlines ou um shader CRT em Vídeo e Tela.Jogo a dois ou com multitapMultitap, Memory card 2 e tipo de controle (digital ou DualShock) ficam em Entrada.
+
+ObjetivoO que fazer
+Computador lentoUse o renderizador PCSX ReARMed, mantenha Multi-thread ligado, ative CD turbo e, se ainda precisar, Frame skip automático.
+Visual mais nítidoUse Beetle PSX HW com resolução interna x2 ou x4 e ative PGXP para reduzir o tremor dos polígonos.
+Visual de TV de tuboScanlines ou um shader CRT em Vídeo e Tela.
+Jogo a dois ou com multitapMultitap, Memory card 2 e tipo de controle (digital ou DualShock) ficam em Entrada.
 
 6. Capas
 A capa é procurada nesta ordem:
 1. arquivo em covers/ (SERIAL.jpg, SERIAL.png ou nome do jogo);
 2. download de xlenore/psx-covers e libretro-thumbnails;
 3. covers/default.jpg.
+
 Capas baixadas ficam salvas em covers/. Para usar a sua, coloque uma imagem com o serial no nome (por exemplo SLUS-00330.jpg) ou use Trocar Capa nos detalhes do jogo.
 
 7. Atualizar o projeto
@@ -348,10 +419,18 @@ epsxe-web/
 
 🔌 API do servidor
 Útil para integrações e depuração. Todas as rotas respondem em http://127.0.0.1:8765.
-MétodoRotaDescriçãoGET/api/statusEstado do servidor, pastas e quantidade de jogosGET/api/gamesLista os jogos de games/ com serial, título, região e gêneroGET/api/games/file?name=ARQUIVOEntrega o arquivo, com suporte a RangePOST/api/games/upload?filename=ARQUIVOGrava o corpo da requisição em games/DELETE/api/games/delete?name=ARQUIVORemove o arquivo de games/GET/api/games/open_folderAbre games/ no Explorer (somente Windows)GET/api/cover?serial=&title=Devolve a capa (cache local, web ou imagem padrão)POST/api/cover/upload?serial=&title=Salva uma capa personalizada em covers/
+
+MétodoRotaDescrição
+GET/api/statusEstado do servidor, pastas e quantidade de jogos
+GET/api/gamesLista os jogos de games/ com serial, título, região e gênero
+GET/api/games/file?name=ARQUIVOEntrega o arquivo, com suporte a Range
+POST/api/games/upload?filename=ARQUIVOGrava o corpo da requisição em games/
+DELETE/api/games/delete?name=ARQUIVORemove o arquivo de games/
+GET/api/games/open_folderAbre games/ no Explorer (somente Windows)
+GET/api/cover?serial=&title=Devolve a capa (cache local, web ou imagem padrão)
+POST/api/cover/upload?serial=&title=Salva uma capa personalizada em covers/
 
 🛠️ Ferramentas de desenvolvimento
-
 <details>
 <summary><b>Atualizar o EmulatorJS e os cores</b></summary>
 <br>Baixa de cdn.emulatorjs.org para static/engine/. Arquivos que já existem são ignorados, então apague-os antes se quiser forçar a atualização.
@@ -371,7 +450,6 @@ python tools/analyze_apk.py
 </details>
 
 🩺 Solução de problemas
-
 <details>
 <summary><b><code>python</code> não é reconhecido (Windows)</b></summary>
 <br>Reinstale o Python marcando Add python.exe to PATH, ou use py server.py no lugar de python server.py.
