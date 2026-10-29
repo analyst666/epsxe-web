@@ -125,6 +125,20 @@ python3 server.py
 Ao mudar a porta, o navegador trata como outro site e você precisa reconfigurar BIOS, preferências e controles.
 Dica para mudar a porta: Execute python3 server.py 9000. Lembre-se que o navegador trata portas diferentes como sites distintos (você precisará reconfigurar a BIOS e os controles).
 
+
+## 🔎 Onde encontrar jogos na internet
+
+Caso não possua os arquivos físicos e precise buscar cópias digitais (ROMs) dos seus jogos, a forma mais prática de achar as versões compatíveis (nos formatos `.cue`/`.bin`, `.chd` ou `.iso`) é usando os termos de busca corretos no Google.
+
+Experimente pesquisar por:
+* `romsfun playstation`
+* `romsfun psx`
+
+**Dicas importantes:**
+* Ao baixar, prefira as versões da região **"USA"** se desejar o jogo com textos e áudio em inglês.
+* Muitos jogos vêm compactados. Certifique-se de extrair os arquivos de dentro dos pacotes `.zip` ou `.7z` antes de adicion
+
+
 ## 🎮 Como Jogar
 
 **1. Adicionando Jogos**
