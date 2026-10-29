@@ -1,0 +1,7353 @@
+       
+                                                             B/6.0,            (6.0 - 2.0*B)/6.0,                        B/6.0,               0.0);
+                                              (-3.0*B - 6.0*C)/6.0,                          0.0,          (3.0*B + 6.0*C)/6.0,               0.0,
+                                              (3.0*B + 12.0*C)/6.0, (-18.0 + 12.0*B + 6.0*C)/6.0, (18.0 - 15.0*B - 12.0*C)/6.0,                -C,
+                                  );
+                                 floor(mod(mod_factor, 2.0))
+                                 vec3(0.7, 1.0, 0.7),
+                                 vec3(1.0, 0.7, 1.0),
+              texture2D(Frame, v_texCoord.xy + dir * (0.0/3.0 - 0.5)).xyz +
+              texture2D(Frame, v_texCoord.xy + dir * (1.0/3.0 - 0.5)).xyz +
+              texture2D(Frame, v_texCoord.xy + dir * (2.0/3.0 - 0.5)).xyz);
+              texture2D(Frame, v_texCoord.xy + dir * (3.0/3.0 - 0.5)).xyz);
+        !
+        -adjusttiming              -   On the fly re-adjust timing.
+        -audiocd/noaudiocd         -   Enable/Disable CDDA audio.
+        -bios <file>               -   Load a bios file.
+        -deadzone <n>              -   Joystick deadzone value.
+        -extsubchanhle             -   Enable subchannel hle (extplug).
+        -fastboot/slowboot         -   Fast/Slow boot cdrom (psx logo).
+        -forcepad/-noforcepad      -   Enable/Disable SIO irq always ON.
+        -forcespu/-noforcespu      -   Enable/Disable SPU irq always ON.
+        -frc1                      -   Faster rootcounter1.
+        -gun                       -   Enable namco gun emulation
+        -help                      -   Where are you now? ;-)
+        -loadcheat <file>          -   Load internal cheat file.
+        -loadiso <file>            -   Load iso file. (Cdrwin/Clonecd)
+        -loadmemc0 <file>          -   Map file to memcard 0.
+        -loadmemc1 <file>          -   Map file to memcard 1.
+        -loadppf <file>            -   Load ppf file.
+        -mdectiming/-nomdectiming  -   Enable/Disable MDEC accurate timing.
+        -memcard/-nomemcard        -   Enable/Disable memcard emulation.
+        -mousesensitivity <n>      -   Mouse sensitivity (default 3).
+        -noauto                    -   Disable autoconf/patch.
+        -nocd                      -   Disable CDR emulation.
+        -nocdstatus                -   No return cdstatus.
+        -nocputrick                -   Disable a old cpu trick.
+        -nogui                     -   Disable internal GUI.
+        -noignorecmd               -   No Ignore cdrom commands.
+        -nosubchan/-subchan        -   Enable/Disable subchannel support.
+        -oldtiming                 -   Use pre-1.5.1 timing. 
+        -p <num>                   -   Mem access penalty (d.5).
+        -pe2                       -   Parasite eve 2 cheat.
+        -ppf/-noppf                -   Enable/Disable ppf patches.
+        -pslib                     -   Load libpsx.exe.
+        -sound/-nosound            -   Enable/Disable sound.
+        -ssv0                      -   Save sstate version v.0
+        -xasound/-noxasound        -   Enable/Disable XA sound.
+        col = texture2D(Frame, p2);
+        max(vec2(-FXAA_SPAN_MAX, -FXAA_SPAN_MAX), dir * rcpDirMin)) * texcoordOffset;
+      !
+      develop options: 
+      epsxe [options] [PS-EXE] 
+      options: 
+      outColor.rgb*=Mask(floor(v_texCoord.xy*(IN.texture_size.xy/IN.video_size.xy)*IN.output_size.xy)+vec2(0.5,0.5));
+      return df.r + df.g + df.b;
+      vec3 df = abs(c1 - c2);
+     vec3 color1x = color1.rgb;
+    //  Get min/max samples
+    // Anti-ringing
+    // These inequations define the line below which interpolation occurs.
+    PREGAP %d:%d:%d[^
+    aux = color1;
+    block_3d = vec4(equal(f0,f1))*vec4(equal(f1,f2))*vec4(equal(f2,f3))*vec4(equal(h0,h1))*vec4(equal(h1,h2))*vec4(equal(h2,h3));
+    color  = GAMMA_OUT(color);
+    color *= COLOR_BOOST*vec3(RED_BOOST, GREEN_BOOST, BLUE_BOOST);
+    color = clamp(color0x*d0+color1x*d1, 0.0, 1.0);
+    color.rgb *= mix(vec3(1.0,1.0,1.0), dotMaskWeights, PHOSPHOR);
+    color0 = clamp(color0, min_sample, max_sample);
+    color0 = mix(aux, color0, CRT_ANTI_RINGING);
+    color1 = clamp(color1, min_sample, max_sample);
+    color1 = mix(aux, color1, CRT_ANTI_RINGING);
+    d0 = exp(-10.0*SCANLINES_STRENGTH*d0*d0);
+    d1 = exp(-10.0*SCANLINES_STRENGTH*d1*d1);
+    edr   = step(wd1 + vec4(0.1, 0.1, 0.1, 0.1), wd2) * step(vec4(0.5, 0.5, 0.5, 0.5), irlv1);
+    edr_l = step( lv2_cf*df(f,g), df(h,c) ) * irlv2l * edr;
+    edr_u = step( lv2_cf*df(h,c), df(f,g) ) * irlv2u * edr;
+    edri  = step(wd1, wd2) * irlv0;
+    float  frame_count;
+    float  frame_direction;
+    float  frame_rotation;
+    float mod_factor = v_texCoord.x * IN.output_size.x * IN.texture_size.x / IN.video_size.x;
+    float pos0 = fp.y;
+    float pos1 = 1.0 - fp.y;
+    fx   = (Ao*fp.y+Bo*fp.x);
+    fx30  = edr_l * fx30;
+    fx45  = edr   * fx45;
+    fx45i = edri  * fx45i;
+    fx60  = edr_u * fx60;
+    fx_l = (Ax*fp.y+Bx*fp.x);
+    fx_u = (Ay*fp.y+By*fp.x);
+    gl_FragColor =  vec4(color, 1.0);
+    gl_FragColor = col;
+    gl_FragColor = texture2D(Frame, v_texCoord);
+    gl_FragColor.xyz = res;
+    gl_FragColor.xyz=rgbA;
+    gl_FragColor.xyz=rgbB;
+    gl_Position = a_position;
+    highp vec2 p2=Warp(v_texCoord.xy*(IN.texture_size.xy/IN.video_size.xy))*(IN.video_size.xy/IN.texture_size.xy);
+    highp vec4 col = vec4(0.0, 0.0, 0.0, 1.0);
+    if (all(greaterThanEqual(p2, vec2(0.0))) && all(lessThanEqual(p2, vec2(1.0))))
+    irlv1      = (irlv0 * ( neq(f,b) * neq(h,d) + eq(e,i) * neq(f,i4) * neq(h,i5) + eq(e,g) + eq(e,c) ) );
+    irlv1     = (irlv0  *  ( neq(f,b) * neq(h,d) + eq(e,i) * neq(f,i4) * neq(h,i5) + eq(e,g) + eq(e,c) ) * (diff(f,f4) * diff(f,i) + diff(h,h5) * diff(h,i) + diff(h,g) + diff(f,c) + eq(b,c1) * eq(d,g0)));
+    irlv1     = (irlv0  * ( neq(f,b) * neq(f,c) + neq(h,d) * neq(h,g) + eq(e,i) * (neq(f,f4) * neq(f,i4) + neq(h,h5) * neq(h,i5)) + eq(e,g) + eq(e,c)) );
+    irlv1 = irlv0 = block_3d * diff(e,f) * diff(e,h);
+    irlv2l = diff(e,g) * diff(d,g);
+    irlv2u = diff(e,c) * diff(b,c);
+    mat4 color_matrix0 = mat4(c00, c01, c02, c03);
+    mat4 color_matrix1 = mat4(c10, c11, c12, c13);
+    px = step(df(e,f), df(e,h));
+    res1 = mix(res1, mix(B, D, px.z), maximos.z);
+    res1 = mix(res1, mix(H, F, px.x), maximos.x);
+    res2 = mix(res2, mix(D, H, px.w), maximos.w);
+    res2 = mix(res2, mix(F, B, px.y), maximos.y);
+    return (df(a,b) + df(a,c) + df(d,e) + df(d,f) + 4.0*df(g,h));
+    return (step(df(A, B), vec4(XBR_EQ_THRESHOLD)));
+    return vec4(abs(A-B));
+    return vec4(notEqual(A, B));
+    v_texCoord = a_texCoord;
+    vec2 TextureSize = vec2(SHARPNESS*IN.texture_size.x, IN.texture_size.y);
+    vec2 dx = vec2(1.0/TextureSize.x, 0.0);
+    vec2 dy = vec2(0.0, 1.0/TextureSize.y);
+    vec2 fp  = fract(TexCoord[0].xy*OGLSize);
+    vec2 fp = fract(pix_coord);
+    vec2 output_size;
+    vec2 pix_coord = v_texCoord*TextureSize+vec2(-0.5,0.5);
+    vec2 tc = (floor(pix_coord)+vec2(0.5,0.5))/TextureSize;
+    vec2 tex = (floor(TexCoord_0*OGLSize) + vec2(0.5, 0.5))/OGLSize;
+    vec2 texture_size;
+    vec2 video_size;
+    vec3 A  = texture2D(Sample, TexCoord[2].xw ).xyz;
+    vec3 A0 = texture2D(Sample, TexCoord[6].xy ).xyz;
+    vec3 A1 = texture2D(Sample, TexCoord[1].xw ).xyz;
+    vec3 B  = texture2D(Sample, TexCoord[2].yw ).xyz;
+    vec3 B1 = texture2D(Sample, TexCoord[1].yw ).xyz;
+    vec3 B6 = texture2D(Sample, tex +0.25*dx +0.25*dy-dy).xyz;
+    vec3 B7 = texture2D(Sample, tex +0.25*dx -0.25*dy-dy).xyz;
+    vec3 B8 = texture2D(Sample, tex -0.25*dx -0.25*dy-dy).xyz;
+    vec3 B9 = texture2D(Sample, tex -0.25*dx +0.25*dy-dy).xyz;
+    vec3 C  = texture2D(Sample, TexCoord[2].zw ).xyz;
+    vec3 C1 = texture2D(Sample, TexCoord[1].zw ).xyz;
+    vec3 C4 = texture2D(Sample, TexCoord[7].xy ).xyz;
+    vec3 D  = texture2D(Sample, TexCoord[3].xw ).xyz;
+    vec3 D0 = texture2D(Sample, TexCoord[6].xz ).xyz;
+    vec3 D6 = texture2D(Sample, tex -dx+0.25*dx +0.25*dy).xyz;
+    vec3 D7 = texture2D(Sample, tex -dx+0.25*dx -0.25*dy).xyz;
+    vec3 D8 = texture2D(Sample, tex -dx-0.25*dx -0.25*dy).xyz;
+    vec3 D9 = texture2D(Sample, tex -dx-0.25*dx +0.25*dy).xyz;
+    vec3 E  = texture2D(Sample, TexCoord[3].yw ).xyz;
+    vec3 E6 = texture2D(Sample, tex +0.25*dx +0.25*dy).xyz;
+    vec3 E7 = texture2D(Sample, tex +0.25*dx -0.25*dy).xyz;
+    vec3 E8 = texture2D(Sample, tex -0.25*dx -0.25*dy).xyz;
+    vec3 E9 = texture2D(Sample, tex -0.25*dx +0.25*dy).xyz;
+    vec3 F  = texture2D(Sample, TexCoord[3].zw ).xyz;
+    vec3 F4 = texture2D(Sample, TexCoord[7].xz ).xyz;
+    vec3 F6 = texture2D(Sample, tex +dx+0.25*dx +0.25*dy).xyz;
+    vec3 F7 = texture2D(Sample, tex +dx+0.25*dx -0.25*dy).xyz;
+    vec3 F8 = texture2D(Sample, tex +dx-0.25*dx -0.25*dy).xyz;
+    vec3 F9 = texture2D(Sample, tex +dx-0.25*dx +0.25*dy).xyz;
+    vec3 G  = texture2D(Sample, TexCoord[4].xw ).xyz;
+    vec3 G0 = texture2D(Sample, TexCoord[6].xw ).xyz;
+    vec3 G5 = texture2D(Sample, TexCoord[5].xw ).xyz;
+    vec3 H  = texture2D(Sample, TexCoord[4].yw ).xyz;
+    vec3 H5 = texture2D(Sample, TexCoord[5].yw ).xyz;
+    vec3 H6 = texture2D(Sample, tex +0.25*dx +0.25*dy+dy).xyz;
+    vec3 H7 = texture2D(Sample, tex +0.25*dx -0.25*dy+dy).xyz;
+    vec3 H8 = texture2D(Sample, tex -0.25*dx -0.25*dy+dy).xyz;
+    vec3 H9 = texture2D(Sample, tex -0.25*dx +0.25*dy+dy).xyz;
+    vec3 I  = texture2D(Sample, TexCoord[4].zw ).xyz;
+    vec3 I4 = texture2D(Sample, TexCoord[7].xw ).xyz;
+    vec3 I5 = texture2D(Sample, TexCoord[5].zw ).xyz;
+    vec3 color0x = color0.rgb;
+    vec3 color;
+    vec3 d0 = clamp(pos0/(lum0+0.0000001), 0.0, 1.0);
+    vec3 d1 = clamp(pos1/(lum1+0.0000001), 0.0, 1.0);
+    vec3 dotMaskWeights = mix(
+    vec3 lum0 = mix(vec3(BEAM_MIN_WIDTH), vec3(BEAM_MAX_WIDTH), color0x);
+    vec3 lum1 = mix(vec3(BEAM_MIN_WIDTH), vec3(BEAM_MAX_WIDTH), color1x);
+    vec3 res = mix(res1, res2, step(c_df(E, res1), c_df(E, res2)));
+    vec3 res1 = E;
+    vec3 res2 = E;
+    vec4 aux = color0;
+    vec4 b  = vec4(dot(B ,rgbw), dot(D ,rgbw), dot(H ,rgbw), dot(F ,rgbw));
+    vec4 c  = vec4(dot(C ,rgbw), dot(A ,rgbw), dot(G ,rgbw), dot(I ,rgbw));
+    vec4 c00 = vec4(GAMMA_IN(texture2D(Sample, tc     - dx - dy).xyz),1.0);
+    vec4 c01 = vec4(GAMMA_IN(texture2D(Sample, tc          - dy).xyz),1.0);
+    vec4 c02 = vec4(GAMMA_IN(texture2D(Sample, tc     + dx - dy).xyz),1.0);
+    vec4 c03 = vec4(GAMMA_IN(texture2D(Sample, tc + 2.0*dx - dy).xyz),1.0);
+    vec4 c1 = i4.yzwx;
+    vec4 c10 = vec4(GAMMA_IN(texture2D(Sample, tc     - dx).xyz),1.0);
+    vec4 c11 = vec4(GAMMA_IN(texture2D(Sample, tc         ).xyz),1.0);
+    vec4 c12 = vec4(GAMMA_IN(texture2D(Sample, tc     + dx).xyz),1.0);
+    vec4 c13 = vec4(GAMMA_IN(texture2D(Sample, tc + 2.0*dx).xyz),1.0);
+    vec4 color0  = color_matrix0 * invX_Px;
+    vec4 color1  = color_matrix1 * invX_Px;
+    vec4 d  = b.yzwx;
+    vec4 e  = vec4(dot(E,rgbw));
+    vec4 e0 = vec4(dot(E6,rgbw), dot(E7,rgbw), dot(E8,rgbw), dot(E9,rgbw));
+    vec4 edri, edr, edr_l, edr_u, px; // px = pixel, edr = edge detection rule
+    vec4 f  = b.wxyz;
+    vec4 f0 = vec4(dot(F6,rgbw), dot(B6,rgbw), dot(D6,rgbw), dot(H6,rgbw));
+    vec4 f1 = vec4(dot(F7,rgbw), dot(B7,rgbw), dot(D7,rgbw), dot(H7,rgbw));
+    vec4 f2 = vec4(dot(F8,rgbw), dot(B8,rgbw), dot(D8,rgbw), dot(H8,rgbw));
+    vec4 f3 = vec4(dot(F9,rgbw), dot(B9,rgbw), dot(D9,rgbw), dot(H9,rgbw));
+    vec4 f4 = h5.yzwx;
+    vec4 fx, fx_l, fx_u; // inequations of straight lines.
+    vec4 fx30  = clamp((fx_l + delta_l -Cx     )/(2.0*delta_l), 0.0, 1.0);
+    vec4 fx45  = clamp((fx   + delta   -Co     )/(2.0*delta  ), 0.0, 1.0);
+    vec4 fx45i = clamp((fx   + delta   -Co - Ci)/(2.0*delta  ), 0.0, 1.0);
+    vec4 fx60  = clamp((fx_u + delta_u -Cy     )/(2.0*delta_u), 0.0, 1.0);
+    vec4 g  = c.zwxy;
+    vec4 g0 = i5.wxyz;
+    vec4 h  = b.zwxy;
+    vec4 h0 = f0.wxyz;
+    vec4 h1 = f1.wxyz;
+    vec4 h2 = f2.wxyz;
+    vec4 h3 = f3.wxyz;
+    vec4 h5 = vec4(dot(H5,rgbw), dot(F4,rgbw), dot(B1,rgbw), dot(D0,rgbw));
+    vec4 i  = c.wxyz;
+    vec4 i4 = vec4(dot(I4,rgbw), dot(C1,rgbw), dot(A0,rgbw), dot(G5,rgbw));
+    vec4 i5 = vec4(dot(I5,rgbw), dot(C4,rgbw), dot(A1,rgbw), dot(G0,rgbw));
+    vec4 invX_Px  = invX * lobes;
+    vec4 irlv0, irlv1, irlv2l, irlv2u, block_3d;
+    vec4 lobes = vec4(fp.x*fp.x*fp.x, fp.x*fp.x, fp.x, 1.0);
+    vec4 max_sample = max(max(c01,c11), max(c02,c12));
+    vec4 maximos = max(max(fx30, fx60), fx45);
+    vec4 maximos = max(max(fx30, fx60), max(fx45, fx45i));
+    vec4 min_sample = min(min(c01,c11), min(c02,c12));
+    vec4 wd1 = wd( e, c,  g, i, h5, f4, h, f);
+    vec4 wd2 = wd( h, d, i5, f, i4,  b, e, i);
+   FFF
+   float alpha;
+   float frame_count;
+   float frame_direction;
+   float frame_rotation;
+   gl_FragColor = vec4(ToSrgb(outColor.rgb),1.0);
+   if (scaleInLinearGamma==0) return c;
+   if(shadowMask != 0.0)
+   return (vec4(1.0, 1.0, 1.0, 1.0) - eq(A, B));
+   return vec3(ToLinear1(c.r),ToLinear1(c.g),ToLinear1(c.b));
+   return vec3(ToSrgb1(c.r),ToSrgb1(c.g),ToSrgb1(c.b));
+   return(c<0.0031308?c*12.92:1.055*pow(c,0.41666)-0.055);
+   return(c<=0.04045)?c/12.92:pow((c+0.055)/1.055,2.4);
+   vec2 TexCoord_0 = TexCoord[0].xy;
+   vec2 output_size;
+   vec2 pos=Warp(v_texCoord.xy*(IN.texture_size.xy/IN.video_size.xy))*(IN.video_size.xy/IN.texture_size.xy);
+   vec2 texture_size;
+   vec2 video_size;
+   vec3 outColor = Tri(pos);
+   |||
+  #define SMOOTH_TIPS
+  $,D#D 
+  // Convert distance to weight.
+  // Return filtered sample.
+  dir = min(vec2(FXAA_SPAN_MAX,  FXAA_SPAN_MAX), 
+  dir.x = -((lumaNW + lumaNE) - (lumaSW + lumaSE));
+  dir.y =  ((lumaNW + lumaSW) - (lumaNE + lumaSE));
+  else if(pos.x<0.666)mask.g=maskLight;
+  else mask.b=maskLight;
+  float FXAA_REDUCE_MIN = (1.0/128.0);
+  float FXAA_REDUCE_MUL = 1.0/8.0;
+  float FXAA_SPAN_MAX = 8.0;
+  float dirReduce = max((lumaNW + lumaNE + lumaSW + lumaSE) * (0.25 * FXAA_REDUCE_MUL), FXAA_REDUCE_MIN);
+  float dst=Dist(pos).x;
+  float dst=Dist(pos).y;
+  float lumaB = dot(rgbB, luma);
+  float lumaM  = dot( rgbM, luma);
+  float lumaMax = max(lumaM, max(max(lumaNW, lumaNE), max(lumaSW, lumaSE)));
+  float lumaMin = min(lumaM, min(min(lumaNW, lumaNE), min(lumaSW, lumaSE)));
+  float lumaNE = dot(rgbNE, luma);
+  float lumaNW = dot(rgbNW, luma);
+  float lumaSE = dot(rgbSE, luma);
+  float lumaSW = dot(rgbSW, luma);
+  float rcpDirMin = 1.0/(min(abs(dir.x), abs(dir.y)) + dirReduce);
+  float scale=hardPix;
+  float wa=Gaus(dst-2.0,scale);
+  float wa=Scan(pos,-1.0);
+  float wb=Gaus(dst-1.0,scale);
+  float wb=Scan(pos, 0.0);
+  float wc=Gaus(dst+0.0,scale);
+  float wc=Scan(pos, 1.0);
+  float wd=Gaus(dst+1.0,scale);
+  float we=Gaus(dst+2.0,scale);
+  gl_FragColor.a = 1.0;
+  if((lumaB < lumaMin) || (lumaB > lumaMax)){
+  if(pos.x<0.333)mask.r=maskLight;
+  pos = pos / (1.0 - IN.alpha * length(pos));
+  pos*=vec2(1.0+(pos.y*pos.y)*warp.x,1.0+(pos.x*pos.x)*warp.y);
+  pos.x+=pos.y*3.0;
+  pos.x=fract(pos.x/6.0);
+  pos=(floor(pos*IN.texture_size.xy+off)+vec2(0.5,0.5))/IN.texture_size.xy;
+  pos=pos*2.0-1.0;
+  return (a*wa+b*wb+c*wc+d*wd+e*we)/(wa+wb+wc+wd+we);}
+  return (b*wb+c*wc+d*wd)/(wb+wc+wd);}
+  return Gaus(dst+off,hardScan);}
+  return ToLinear(brightboost * texture2D(Sample,pos.xy).rgb);
+  return a*wa+b*wb+c*wc;}
+  return mask;}
+  return pos*0.5+0.5;}
+  vec2 dir;
+  vec3 a=Fetch(pos,vec2(-2.0,off));
+  vec3 a=Horz3(pos,-1.0);
+  vec3 b=Fetch(pos,vec2(-1.0,off));
+  vec3 b=Horz5(pos, 0.0);
+  vec3 c=Fetch(pos,vec2( 0.0,off));
+  vec3 c=Horz3(pos, 1.0);
+  vec3 d=Fetch(pos,vec2( 1.0,off));
+  vec3 e=Fetch(pos,vec2( 2.0,off));
+  vec3 luma = vec3(0.299, 0.587, 0.114);
+  vec3 mask=vec3(maskDark,maskDark,maskDark);
+  vec3 rgbA = (1.0/2.0) * (
+  vec3 rgbB = rgbA * (1.0/2.0) + (1.0/4.0) * (
+  vec3 rgbM  = texture2D(Frame, v_texCoord.xy).xyz;
+  vec3 rgbNE = texture2D(Frame, v_texCoord.xy + (vec2(+1.0, -1.0) * texcoordOffset)).xyz;
+  vec3 rgbNW = texture2D(Frame, v_texCoord.xy + (vec2(-1.0, -1.0) * texcoordOffset)).xyz;
+  vec3 rgbSE = texture2D(Frame, v_texCoord.xy + (vec2(+1.0, +1.0) * texcoordOffset)).xyz;
+  vec3 rgbSW = texture2D(Frame, v_texCoord.xy + (vec2(-1.0, +1.0) * texcoordOffset)).xyz;
+  } else {
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+ %s v.%1.1f.%d emulator by ePSXe team. Copyright 2000/2018. 
+ (%s) - Start %d: (%02d,%02d,%02d) 
+ (ECM File) 
+ (ECM File) (%d) 
+ (Error loading ecmfile: [%s]) 
+ (NO ECM File) 
+ (custom shader error) 
+ * !Error: PSX BIOS not found [%s]. 
+ * %08x %08x
+ * %s emulator version %1.1f.%d. %s
+ * All cheat codes disabled
+ * All cheat codes enabled
+ * CPU set mode: %s
+ * Changedisc! (%s)
+ * Cheat code [%s] disabled
+ * Cheat code [%s] enabled
+ * Closing ISO system. 
+ * Closing core spu...
+ * Closing gpu ...
+ * Closing gpu ... (g:%d,w:%d)
+ * Closing gpu cache ...
+ * Cue size too big (32Kb): [%s]
+ * Debug info -> irq (%04x/%04x) dma(%08x) SR[%08x]
+ * Disable framelimit! 
+ * EPSX: %s not found 
+ * EPSX: DEMO not found [%s]. 
+ * EPSX: [%s] is not a EXE file. 
+ * EPSX: error loading %s.
+ * EPSX: error loading .exe file in pll/zip.
+ * EPSX: error loading .pll file.
+ * EPSX: error loading .zip file.
+ * EPSX: trying slowboot 
+ * Enable framelimit! 
+ * Error audio disc: [%s]
+ * Error can't open sound handler. (try -nosound)
+ * Error loading binfile: [%s]
+ * Error loading ccdfile: [%s]
+ * Error loading cuefile: [%s]
+ * Error loading isofile: [%s]
+ * Error loading mdsfile: [%s]
+ * Error loading pbpfile: [%s]
+ * Error: overflow in GetTD %d
+ * Exit of library
+ * Fatal overflow
+ * First/Last track: %d %d
+ * Force NTSC cdrom detected. (%s) 
+ * Force PAL cdrom detected. (%s) 
+ * Force exit of library
+ * Frame per second (%d) - Time %d frames -> %d.%03d seconds.
+ * Frames/Second -> %d (%d.%03d ms) 
+ * GPU supports GTE Accurate
+ * Going out from gui. (exit)
+ * Init core spu ... 
+ * Init gpu core 
+ * Init gpu[%d][%s] 
+ * Init internal cdrom ... 
+ * Library core exit done.
+ * Library exit done.
+ * LoadState Done! (%d).
+ * LoadState Done!.
+ * LoadState Tmp Done! (%d)
+ * Loading CCD File 
+ * Loading ISO Format 
+ * Loading MDS File 
+ * Loading Multi CUE/BIN File 
+ * Loading PBP File 
+ * Loading PBP File ...
+ * Loading Single CUE File 
+ * Memory handlers init. 
+ * NTSC cdrom detected. (%s) 
+ * Number of frames -> %d 
+ * OGL: ogl threading, done exit
+ * OGL: ogl threading, received exit
+ * Open gpu...
+ * Open gpu[%d] 
+ * Overflow index multibin
+ * PAL cdrom detected. (%s) 
+ * PBP could be encrypted (the indexes size is not right) 
+ * PBP is incomplete (multifile not found disc)
+ * PBP is incomplete (no PSAR found)
+ * PBP is incomplete (not indexes found) 
+ * PBP not PS1
+ * Patching game ... (%s) 
+ * Reset game!
+ * Running %s emulator version %1.1f.%d. %s
+ * Running [%s] cpu mode, [%s] cdrom mode. 
+ * Running threading mode
+ * SOFT: soft threading, done exit
+ * SOFT: soft threading, init...
+ * SaveState Done! (%d).(%d)
+ * SaveState doing ...
+ * Shutdown gpu [%d]  
+ * Shutdown gpu...  
+ * Subchannel support from .m3s file. 
+ * Subchannel support from .sbi file. 
+ * Subchannel support from clonecd .sub file. 
+ * Subchannel support from fake .sbi. 
+ * Time running -> %d.%d seconds.
+ * Too big file size: [%s]
+ * Too big file size: [%s] (%d)
+ * Too big/small file size: [%s] (%d)
+ * Too small file size (256kb): [%s] (%llx) (%d)
+ * Track %d: 
+ * Warning: The memcard [%s] has NOT been saved to disk
+ * cheat code status: %d
+ * ePSXe error: %s param incorrect 
+ * ePSXe: DEMO Header not found [%s]. 
+ * ePSXe: DEMO not found [%s]. 
+ * ePSXe: PSX BIOS loaded [%s]. 
+ * ePSXe: [%s] is not a EXE file. 
+ * ePSXe: using HLE BIOS (compatibility limited)
+ * warning: skullmonkeys trick enabled. 
+ 0@9#,@9
+ < $ $ '
+ < $ %
+ <H9#@H9
+ <P$P$
+ ><*D*
+ >>* * * *
+ >|"D"D>|"D"D"|>D
+ ? $~>
+ @C9?D
+ D$D"D"D D D 
+ DC9"H
+ DC9?H
+ Error=%s
+ Length %02d:%02d
+ NBX naG
+ NJefN
+ NJegN
+ Start %d: (%02d,%02d,%02d) - 
+ addr (%08x) num (%04x) size (%04x)
+ ePSXe: (Demo bugged header) Real: %x Load: %x 
+ l@9 l
+!! 42-42-42-42-42-42-)(&
+!!!%%%
+!!!___
+!!)""*
+!*@|@K
+!H ( 0"
+!h`8?@
+!h`x{j`
+!kc8?k#8?
+!naha8
+!u@y q@yB
+!yax $
+!yax!$
+" " " > 
+" " " > #
+"""!  hcR
+"""UUUUUUUUUUUU%%%
+"?UUM?
+"@9&C;
+"D"D"D"D$L$L(<0
+"D$D(D 
+"D$T(<
+"HC9 @C9!DC9v
+#  game: %s
+#  opengl config file
+###############
+##################
+##################iii
+############MMM
+############uuu
+###???[[[
+###JJJAAA
+#0001 Adjust framebuffer access
+#0001 Fake Low Compatibility Frameread
+#0002 Ignore Small Framebuffer moves
+#0002 Use old texture filtering
+#0004 Ignore Black brighness
+#0004 Ignore black brighness color
+#0008 Swap front/back detection
+#0010 Disable coord check
+#0020 Remove blue glitches
+#0040 Use low-res fps timer
+#0080 Use PC fps calculation
+#0100 Use old frame skipping
+#0200 G4 Polygon cache
+#0400 Lazy upload detection
+#0800 Odd/even bit hack
+#1000 Expand screen width
+#2000 Special upload detection
+#4000 Mixed software FB access
+#Code in hexadecimal format
+#D>$"$"
+#Ex. dwActFixes = 0005 (enable 1 and 4)
+#Ex. dwActFixes = 0009 (enable 1 and 8)
+#Game Fixes
+#define BEAM_MAX_WIDTH 1.0
+#define BEAM_MIN_WIDTH 0.86
+#define BLUE_BOOST 1.0
+#define COLOR_BOOST 1.5
+#define CORNER_C
+#define CRT_ANTI_RINGING 1.0
+#define GAMMA_IN(color)     pow(color, vec3(InputGamma, InputGamma, InputGamma))
+#define GAMMA_OUT(color)    pow(color, vec3(1.0 / OutputGamma, 1.0 / OutputGamma, 1.0 / OutputGamma))
+#define GREEN_BOOST 1.0
+#define InputGamma 2.4
+#define OutputGamma 2.2
+#define PHOSPHOR 0.0
+#define RED_BOOST 1.0
+#define SCANLINES_STRENGTH 0.72
+#define SHARPNESS 1.0
+#define TEX_SIZEX       (1024.0*XBR_RES)
+#define TEX_SIZEY        (512.0*XBR_RES)
+#define XBR_EQ_THRESHOLD 15.0
+#define XBR_LV2_COEFFICIENT 2.0
+#define XBR_RES         2.0
+#define XBR_SCALE 3.0
+#define XBR_Y_WEIGHT 48.0
+#define brightboost 1.0
+#define hardPix -3.0
+#define hardScan -8.0
+#define lv2_cf XBR_LV2_COEFFICIENT
+#define maskDark 0.5
+#define maskLight 1.5
+#define scaleInLinearGamma 1
+#define shadowMask 1.0
+#define warp vec2(warpX,warpY)
+#define warpX 0.031
+#define warpY 0.041
+#endif
+#ifdef CORNER_B
+#ifdef CORNER_C
+#ifdef CORNER_D
+#ifdef GL_ES
+#ifdef SMOOTH_TIPS
+#ifndef CORNER_A
+#ifndef SMOOTH_TIPS
+$ $ $ $ < 
+$ $ $ '
+$ $ $0$P<H
+$ $ < 
+$ $P<P
+$$"[WI
+$$#42-42-42-42-42-42-&%$
+$$$############
+$$$$$$'
+$$$>>>yyy
+$$$OOO
+$$$XXX
+$$$uuu
+$C*!,D
+$D%T9T!
+$H*7Xb
+$P$$$H%
+$P$P$P<
+$nChc8
+% % >>$ $ $>$ < 
+% ' %~%P%
+%$%$%T%L=
+%$%$=$'
+%$%(& $ <P$P 
+%$@98 @9
+%%%VVV
+%31[^= ] = %254[^
+%@&@$|$@$@$|<@
+%NCT#OB
+%T%T%T%
+%T%T%\%
+%T%T&T$
+%T=T%T%T%
+%c%c%c%c_%c%c%c.%c%c
+%c:/psx.exe
+%d.%d.%d.%d
+%s    
+%s (CD%d)
+%s * Compressed: %d 
+%s * Iso format: %d 
+%s * Sector size: %d 
+%s * Subchannel: %d 
+%s%02x
+%s%04x
+%s%05x
+%s%08x
+%s%d%s
+%s%s (%s=pc)
+%s%s,%02x,%04x
+%s%s,%04x
+%s%s,%08x  (%08x)
+%s%s,%s
+%s%s,%s,%04x
+%s%s,%s,%08x
+%s%s.%03d
+%s%s.%03d.pic
+%s%s.%03dHLE.pic
+%s%s.M3S
+%s%s.SBI
+%s%s.SUB
+%s%s<-%s
+%s%s<-%s,%04x
+%s%s<-%s,%08x
+%s%s<-%s,%s
+%s%s<-[%s+%08x]
+%s%s<-[%s+%08x] ; %08x 
+%s%s<-[%s+%08x] ; %08x (%08x)
+%s%sHLE.%03d
+%s-%02d
+%s.ecm
+%s.pic
+%s/.epsxe/%s%s.%03d
+%s/.epsxe/%s%s.cfg
+%s/.epsxe/%s%sHLE.%03d
+%s/epsxe/%s%s-00.mcr
+%s/epsxe/%s%s-01.mcr
+%s/epsxe/shaders/shadererr.txt
+%s/gpuCore.ini
+%s/gpuCore.slf
+%s/gpuCore.slv
+%s/system.cnf
+%s:%d: tcg fatal error
+%s[%s+%08x]<-%s
+%s[%s+%08x]<-%s ; %08x (%08x)
+%s[%s+%08x]<-%s ; %08x (%08x) 
+%s_%s.%s
+&&$42-42-42-42-42-42-42-42-42-42-42-42-42-42-42-42-42-42-42-42--,(
+&&$^ZK
+&@C9%HC9
+'hg8&hf8%he8$hd8"hb8!hc8
+'|;T7T-|;
+(%X) (%d) ok
+(((eee
+(((|((|(((
+(+subchannel MDF) 
+(+subchannel SBI) 
+(+subchannel SUB) 
+(<$$$$ '
+(@9 GD
+(@9B CJB
+(@C9'HC9J
+(AUDIO) -
+(DATA)  -
+(IIII)V
+(Ljava/lang/String;)[B
+(Nrzrx
+(aN (!
+(incomplete d-tree)  
+(incomplete l-tree)  
+(indexed) 
+)))*********EEE
+)))???;;;
+)))EEE
+)))uuu
+)|-d-|-d/
+* * > 
+* *P>H
+* EPSX: DEMO .pll not found. 
+* EPSX: DEMO not found [%s]. 
+* Warning: Inflate error
+* dlsym error %s
+*!$B*!<
+*)&42-42-42-42-42-42-"! 
+***%%%
+**** Event handler priority [%d]
+**** end
+************
+***************)))
+***INVALID REDO RECOMPILED*** PC: %X cacheaddr: %X size: %X maxsize: %X
+***MMM
+***NNN
+***jjjjjjjjjjjjxxx
+*0*(*$> 
+*<*P+T:
+*B$C*B<
+*Ekl8U
+*GTE %08x
+*GTEMOVE %s<-%s
+*GTEMOVE %s<-%s ; %08x
+*GTEMOVE_ %s<-%s
+*GTEMOVE_ %s<-%s ; %08x
+*H*H>0
+*P>T(t
+*R*T*l*
+*`h58`
+*`k38_
+*b$B*B<
+*bnA9R
+*c$D*c<
+*dNA9)1
+*dj&x?
+*g~A9n
+*hj8)hi8
+*hj8)hi8'hg8&hf8%he8$hd8#hc8!hk8
+*ik-xB
+*info.base_type == *cur_base_info.base_type
+*kc8akc8_
+*r>A9)
++++++++
++++666
++T+T*T?
++kb8jkb8
++~*D*D>D
+,+(hbR
+,,,UUUuuuXXX
+,dnA,an
+,fnc,enA,ancT
+,hn=,cnB,
+,hnW,an
+,hn]-cnB,
+,hnb,an
+,inB,cn)U
+,jnB,cnJU
+,~n7,hnB,cn
+-$+$)$)8
+-$+$+$),
+-,(42-42-42-42-42-31,  
+------
+------------------
+---///
+---> socket client %d
+---> socket server %d
+-T7T!T?T!
+-adjusttiming
+-analog
+-analog1
+-analog2
+-analog3
+-analog4
+-analog5
+-audiocd
+-autofirebutton
+-autofirefreq
+-ccfast9
+-cdraccseek
+-cdrnowait
+-client
+-deadzone
+-disablereportmode
+-disablerp
+-dither
+-dmachaincore
+-dmachainpen
+-dnb,an
+-enB,cn
+-enablerp
+-extsubchanhle
+-fastboot
+-forcepad
+-forcespu
+-frameskip
+-fullscreen
+-gdmatrick
+-gpu2dscale
+-gpucore
+-gpuratio
+-gpuremovebb
+-gpuscanlines
+-gpuscanlinesthick
+-gpuscanlinestrans
+-gteaccuratehack
+-gtrace
+-icache
+-icache2
+-inshader
+-interlaced
+-konami
+-legaia
+-loadbin
+-loadcheat
+-loadiso
+-loadmemc0
+-loadmemc1
+-loadppf
+-loadstate
+-mdectiming
+-memcard
+-memcardbygame
+-mouse
+-mousesensitivity
+-multitap1
+-multitap2
+-noadjusttiming
+-noaudiocd
+-noauto
+-nocdinc
+-nocdoverwrite
+-nocdraccseek
+-nocdstatus
+-nocputrick
+-nodmachaincore
+-noforcepad
+-noforcespu
+-nogui
+-noignorecmd
+-nolog
+-nomdectiming
+-nomemcard
+-noppf
+-nosound
+-nosubchan
+-noxaread
+-noxasound
+-oldtiming
+-overclocking
+-pslib
+-psxbright
+-rewind
+-runbios
+-server
+-shader
+-slowboot
+-sound
+-soundlatency
+-subchan
+-widescreen
+-xaread
+-xasound
+.-)42-42-42-42-42-10+
+...eee
+.comment
+.data.rel.ro
+.dynamic
+.dynstr
+.dynsym
+.eh_frame
+.eh_frame_hdr
+.fini_array
+.gcc_except_table
+.init_array
+.rela.dyn
+.rela.plt
+.rodata
+.shstrtab
+/%s/epsxe/%s%s
+/%s/epsxe/%s%s.%03d
+/%s/epsxe/%s%s.SBI
+/%s/epsxe/%s%s.gl2.txt
+/%s/epsxe/%s%s.sbi
+/%s/epsxe/%s%s.txt
+/%s/epsxe/%s%sHLE.%03d
+/%s/epsxe/%ssavenet_tmp
+/%s/epsxe/%ssavetmp_snap
+/.*kfT
+//    B = 0.0, C = 0.0  =>  Hermite cubic filter.
+//    B = 0.0, C = 0.5  =>  Catmull-Rom Spline filter. This is the default used in this shader.
+//    B = 0.2620, C = 0.3690  =>  Robidoux Sharp filter.
+//    B = 0.36, C = 0.28  =>  My best config for ringing elimination in pixel art (Hyllian).
+//    B = 0.3782, C = 0.3109  =>  Robidoux filter.
+//    B = 1.0, C = 0.0  =>  Cubic B-Spline filter.
+//    B = C = 1.0/3.0   =>  Mitchell-Netravali cubic filter.
+//    vec2 TextureSize = vec2(SHARPNESS*1024.0, 512.0);
+// 1D Gaussian.
+// 3-tap Gaussian filter along horz line.
+// 5-tap Gaussian filter along horz line.
+// Allow nearest three lines to effect pixel.
+// Also zero's off screen.
+// Assuing using sRGB typed textures this should not be needed.
+// Change these params to configure the horizontal filter.
+// Compare two vectors and return their components are different.
+// Determine if two vector components are NOT equal based on a threshold.
+// Determine if two vector components are equal based on a threshold.
+// Difference between vector components.
+// Distance in emulated pixels to nearest texel.
+// Distortion of scanlines, and end of screen alpha.
+// Distortion of scanlines.
+// For more info, see: http://www.imagemagick.org/Usage/img_diagrams/cubic_survey.gif
+// Horizontal cubic filter.
+// Linear to sRGB.
+// Nearest emulated sample given floating point position and texel offset.
+// Return scanline weight.
+// Shadow mask.
+// Some known filters use these values:
+// Weighted distance.
+// sRGB to Linear.
+//#define CORNER_A
+//#define CORNER_B
+//#define CORNER_D
+///333333333333ooo
+///mmm
+/data/data/com.epsxe.ePSXe/lib/libopenglplugin.so
+/mnt/sdcard/epsxe/idx/%s
+/sdcard/libopenglplugin.so
+/storage/extSdCard/libopenglplugin.so
+/tmp/ndk-user/tmp/build-stlport/ndk/sources/cxx-stl/gabi++/src/dynamic_cast.cc
+/tmp/ndk-user/tmp/build-stlport/ndk/sources/cxx-stl/gabi++/src/vmi_class_type_info.cc
+000333333333333ddd
+000eee???
+000xxxxxxxxxxxx
+00HHHx
+0123456789ABCDEF
+0HHH0d
+1!'!$!E!;!H!
+10,42-42-42-42-42-/.*
+111111111111
+111111111111111
+111111111111111MMM
+111333333333333
+111777
+111___
+111jjjjjjjjjjjj
+2 h%x@
+2#PC9"TC9
+20,42-42-42-42-42--,(
+2f@A9eDA9
+3,0,[4]
+3,4,0,2
+3,CPSR
+3,SPSR
+333333333333222
+333333333333999
+333333333333CCC
+333YYY
+4!4C9!
+4,0,2,3
+42-42-42-42-42-42-*)&
+44444444
+444777
+444EEE999
+444___~~~jjjJJJ
+4` C9!
+4`k`8@
+5"$C9c
+555jjjjjj777
+5@@C9ADC9BHC9o
+5sNY`X
+5sN\`X
+6 0@x"
+6"0@xBx
+622225f5801aa3bedf8d2855899d3b5d
+66660000****$$$$
+666fff|||YYY...
+666{{{
+6oF:~N9
+756"""
+760tnZ
+777ddd
+777eee
+7azex!
+7byaxB
+7hzex(
+8 + # O E R 
+8,(,[4]'
+877###
+888(((
+888888
+888888888
+888888888888
+888888888888888888888888888888QQQ
+888888888888888888888MMM
+888888888888888888888WWW
+888888888:::BBBJJJccc
+888888888DDD
+888888888EEE
+888888888QQQ
+888888888\\\
+888888888ccc
+888888999
+888888;;;
+888888===
+888888ggg
+888888rrr
+888888www
+888___www]]]===
+8Nr{yx
+8YCSu]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]Su]MnV7UA7UA7UA7UA7UA7UA7UA7UA7UA7UA7UA7UA7UA7UA5T>
+999888888\\\
+999FFF777
+9B\@9"
+9DX@9d
+9D\@9d
+9FT@9&
+9FX@9&
+9JT@9*
+9JX@9*
+9J\@9*
+9NkefN)efN
+9`C{9bC;
+9`j#8 
+9`j$8 
+9`j%8 
+9`j&8 
+9`j'8 
+9eT@9%
+9eX@9%
+9e\@9%
+9ej$8 
+9fc8ba651f0a9b7216fd1410cdda56a7
+:::888888GGG
+:::===;;;BBB
+:N)egNJegN
+:NJegN)egN
+;,:,3,
+;92wq]
+;99%%%
+<        
+<           <
+<;;(&'
+<<<888???
+<D$D$D$
+<N)efNJefN_gfNc
+=$%$%$%
+===888888888888888888888888888888
+================BIG OVERFLOW!!!
+=Nuzux
+=UUU>UUU>
+=ww7>ww7>
+>557]]a]]a]]a]]a]]a]]a
+>>>lllyyyUUU&&&
+>ww7>ww7>
+>|"D"D"D>|
+>|"D"D"D>|"D"D"D"|>
+>|"D>|"D>|
+>|"D>|"D>| 
+>|"D>|"D>|!
+>|"D>|"D>|$$"D'
+>|"D>|"D>|$D"
+>|"D>|"D>|/
+? ;card ;[r4+18h]=00000000h ;card_clear_error(fcb) or so
+?==)((
+???888888
+???bbb
+???bbb<<<
+?EEE?UU=?
+?HHH?UUU?UU
+?ZZZ?UU
+?ZZZ?UUe?
+?ooo?UU=?
+@*djd8aja8`j`8
+@9 $@8
+@9 hc8
+@9Dh#8 
+@9_h38
+@9cC;9
+@><:8520
+@>@"D"D"H"P"`#
+@?33s?
+@??+**
+@@*#dY
+@@@888888
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@BBB```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@\\\{{{
+@@@@@@@@@@@@@@@@@@VVVrrr
+@@@@@@@@@QQQnnn
+@@@LLL
+@@@TTT
+@@@XXX
+@@@]]]
+@@@ggg
+@@C9ADC9BHC9
+@@C9ADC9BHC9c
+@@C9ADC9c
+@fLCuRCxRCwRCwQAwQAvP:yLA
+A9@ C9
+A9Q4 .
+A@A.+,
+AAA888888;;;
+AAA888;;;
+ADC9@@C9BHC9r
+ADC9BHC9
+ADC9BHC9`
+ADPCM_DecodeBlock16
+ADPCM_InitDecode
+AUDIO not supported!!!
+AUDIO not supported!!! CODING changed on the fly
+AddCDROMDevice()
+AddDevice(device_info) ;subfunction for AddXxxDevice functions
+AddDuartTtyDevice() ;DTL-H: AddAdconsTtyDevice ;PS2: SystemError
+AddDummyTtyDevice()
+AddMemCardDevice() ;DTL-H: SystemError
+Addition
+AdjustA0Table()
+Ah`8?@
+AnalogRange
+AndroidBitmap_getInfo
+AndroidBitmap_getInfo() failed ! error=%d
+AndroidBitmap_lockPixels
+AndroidBitmap_lockPixels() failed ! error=%d
+AndroidBitmap_unlockPixels
+Attempting to rethrow an exception that doesn't exist!
+AvAvAvAv
+Ayax $
+B*Eke8
+BBB111111111,,,
+BBK   
+BC9!|G
+BC96$@
+BFC   
+BIN.ECM
+BOOT = CDROM:%s
+BOOT = CDROM:\%s
+BOOT = CDROM:\\%s
+BOOT = cdrom:%s
+BOOT = cdrom:%s;2
+BOOT = cdrom:\%s
+BOOT = cdrom:\\%s
+BUFFER_AVELIMIT
+BUFFER_HIGHLIMIT
+Bha8_@
+Bios_HLE
+Bios_interrupt
+Bios_unimplemented
+Bitmap format is not RGB_565 !
+Blit - vram2 
+BranchDelay
+C Aya @Q$
+C@C9BDC9
+CBC/..
+CCC^^^
+CCCjjj
+CD get track start failed (%d)
+CD play failed (%d)
+CD read toc header failed (%d)
+CD readsub failed (%d)
+CD resume failed (%d)
+CD stop failed (%d)
+CD(%d,%d,%d) read ioctl failed (%d)
+CDRIsoIdxName
+CDRIsoImgName
+CDRIsoImgNameTmp
+CDRIsoImgNumber
+CDROM UNK CMD %d 
+CDROM:%s
+CDROM:\%s
+CDVolL
+CDVolR
+CD_Init: open of "%s" failed (%i)
+CODE [%07x]
+CPSR,0
+CPSR_flg,*
+CPUs found: %d! (%s)
+Can't allocate C++ runtime pthread_key_t
+Can't allocate thread-specific C++ runtime info block.
+Can't handle non-C++ exception!
+Caught signal %d
+CdAsyncGetStatus(dst)
+CdAsyncReadSector(count,dst,mode)
+CdAsyncSeekL(src)
+CdAsyncSetMode(mode)
+CdGetLbn(filename) ;get 1st sector number (or garbage when not found)
+CdGetStatus()
+CdInit()
+CdInitSubFunc()
+CdReadSector(count,sector,buffer)
+CdRemove()
+CdromDmaIrqFunc1()
+CdromDmaIrqFunc2()
+CdromGetInt5errCode(dst1,dst2)
+CdromIoIrqFunc1()
+CdromIoIrqFunc2()
+ChangeClearPad(int)
+ChangeClearRCnt(t,flag)
+ChangeFileExtension
+ChangeFileExtensionAddECM
+ChangeFileExtensionLong
+ChangeThread(handle)
+Chc8Bhd8
+ClearBuffer
+CloseEvent(event)
+CloseSoundHardware
+CloseThread(handle)
+Could not compile shader %d:
+Could not create 32K sliding window for zipfile %s
+Could not create input buffer for zipfile %s
+Could not create scanline program.
+Could not create screen program.
+Could not find %s in zipfile %s
+Could not link program:
+Could not open zipfile %s
+Couldn't allocate %d bytes for zipfile %s output buffer
+Couldn't allocate %ld bytes for input buffer for zipfile %s
+Couldn't extract uncompressed file from zipfile %s
+CurrVol
+Cycx`$
+DATAAddr
+DATAFILE 
+DDDTTTTT((
+DDDUUU
+DDTTT((
+DEMO_999.99
+DISABLED
+DMA[2] mode NOT implemented (%08x)
+DMA[4] mode NOT implemented (%08x)
+DMA[6] mode NOT implemented (%08x)
+DMA_get_uint32
+DMA_set_uint16
+DMA_set_uint32
+DMAcontrolRegister
+DMAirqRegister
+DQA   
+DQB   
+DSPBuffer
+DYNAREC
+DebugMissing00
+DebugMissing01
+DecodeADPCM
+DefInt()
+Default(%d) (%08x)
+Deleted virtual function called!
+DeliverEvent(class, spec)
+DequeueCdIntr() ;does NOT work due to SysDeqIntRP bug
+Dh!xa6@9a
+DisableDMAStatus2
+DisableEvent(event)
+Do'h... crazy MVMVA from hell!
+DoExecute(headerbuf,param1,param2)
+DoHwException
+DoHwExceptionTCG
+DoSwException
+DoSwException4
+DoSwExceptionTCG
+Dynarec      
+E+rriw
+EB:}va
+EBUFFER_LOWLIMIT
+ECD1/0
+EDEAFDFA
+EEE888888
+EEE888888888888888888888888888888
+EEE???AAASSS
+EEEEEEE
+EEErrr
+EQNECSCCMIPLVSVCHILSGELTGTLEALNV
+ERROR ERROR GLThread %x %x %d (%x,%x,%x,%x)
+ERROR ERROR SoftThread %x %x %d (%x,%x,%x,%x)
+ERROR connecting
+ERROR create socket (1)
+ERROR create socket (start server)
+ERROR creating socket
+ERROR creating socket (server)
+ERROR on accept %d
+ERROR on bind
+EVENT =
+EVENT = %x
+EVENT=
+EVENT=%x
+EXTVolL
+EXTVolR
+EnableDMAStatus2
+EnableEvent(event)
+EnqueueCdIntr() ;with prio=0 (fixed)
+EnqueueSyscallHandler(priority) ;used with prio=0
+EnqueueTimerAndVblankIrqs(priority) ;used with prio=1
+Error %d inflating compressed file from zipfile %s
+Error in zipfile %s: OS for file %s not supported.
+Error in zipfile %s: compression method for file %s unsupported.
+Error in zipfile %s: couldn't find 'end of central dir' signature
+Error in zipfile %s: couldn't fseek to local file header
+Error in zipfile %s: couldn't fseek to start of central directory
+Error in zipfile %s: couldn't read %ld bytes from central directory
+Error in zipfile %s: couldn't read %ld bytes from end of file
+Error in zipfile %s: couldn't read %ld bytes from local file header
+Error in zipfile %s: couldn't read %ld bytes of compressed data
+Error in zipfile %s: fseek failed
+Error in zipfile %s: get_file_length() failed
+Error in zipfile %s: version for file %s too new.
+Error in zipfile %s: zipfile cannot span disks
+Error on Dynarec, emulation stopped
+Error reading 'end of central directory' in zipfile %s
+Error reading 'local file header' in zipfile %s
+Error reading zipfile %s: fseek to compressed data failed
+Error: can't open sound handler.
+Exception destructor has thrown!
+ExceptionHandler()
+FC9#;@
+FC9D(@
+FE = %d
+FFF888888uuu
+FI = %d
+FILE "%[^"]
+FIRSamples
+FLAG  
+FM = %d
+FS = %d
+FU = %d
+Fatal error PC: %08x unaligned
+Fatal error R0 != 0
+FileClose(fd)
+FileDelete(filename)
+FileExits
+FileGetDeviceFlag(fd)
+FileGetc(fd)
+FileIoctl(fd,cmd,arg)
+FileOpen(filename,accessmode)
+FilePutc(char,fd)
+FileRead(fd,dst,length)
+FileRename(old_filename,new_filename)
+FileSeek(fd,offset,seektype)
+FileUndelete(filename)
+FileWrite(fd,src,length)
+FindImgName
+FlushCache()
+FlushStdInOutPut()
+ForceFlag
+FormatDevice(devicename)
+Found cheat code: %s
+FreqMod
+Full C       
+Full C_events
+Full JAVA    
+GAbi++
+GBK   
+GCC: (GNU) 4.9 20140827 (prerelease)
+GFC   
+GL_format
+GL_iformat
+GL_type
+GPU Update   
+GPUCORE
+GPUCOREGL2
+GPUWrapper_addVertex
+GPUWrapper_close
+GPUWrapper_displayFlags
+GPUWrapper_dmaChain
+GPUWrapper_getFlipEGL
+GPUWrapper_getLibInfos
+GPUWrapper_getMode
+GPUWrapper_getOptionGL
+GPUWrapper_getOptionGLFixes
+GPUWrapper_getScreenPic
+GPUWrapper_getScreenPicSet
+GPUWrapper_getVRAM
+GPUWrapper_getVersion
+GPUWrapper_glBindTextureVirtual
+GPUWrapper_gpuFreeze
+GPUWrapper_init
+GPUWrapper_keypressed
+GPUWrapper_makeSnapshot
+GPUWrapper_open
+GPUWrapper_readData
+GPUWrapper_readDataMem
+GPUWrapper_readStatus
+GPUWrapper_setAddPrimFunc
+GPUWrapper_setClearBufferFunc
+GPUWrapper_setDithering
+GPUWrapper_setGetAccuracy
+GPUWrapper_setInitBufferFunc
+GPUWrapper_setMode
+GPUWrapper_setOptionGL2Off
+GPUWrapper_setOptionGL2On
+GPUWrapper_setOptionGLOff
+GPUWrapper_setOptionGLOn
+GPUWrapper_setPluginMode
+GPUWrapper_setPluginMode2
+GPUWrapper_setResizeGL
+GPUWrapper_setResizefbGL
+GPUWrapper_setScanlines
+GPUWrapper_showScreenPic
+GPUWrapper_shutdown
+GPUWrapper_updateGetAccuracy
+GPUWrapper_updateLace
+GPUWrapper_updateResizeGL
+GPUWrapper_writeData
+GPUWrapper_writeDataMem
+GPUWrapper_writeEVRAM
+GPUWrapper_writeStatus
+GPU_addVertex
+GPU_blit_mode
+GPU_buffer
+GPU_bufferCache
+GPU_buffer_index
+GPU_buffer_indexCache
+GPU_buffer_trigger
+GPU_buffer_triggerCache
+GPU_change
+GPU_changeCache
+GPU_close
+GPU_cw(gp0cmd)
+GPU_cwp(src,num)
+GPU_data
+GPU_dataCache
+GPU_displayFlags
+GPU_display_h
+GPU_display_hCache
+GPU_display_w
+GPU_display_wCache
+GPU_display_x
+GPU_display_xCache
+GPU_display_y
+GPU_display_yCache
+GPU_dmaChain
+GPU_drawing_bottomCache
+GPU_drawing_br
+GPU_drawing_brCache
+GPU_drawing_dither
+GPU_drawing_ditherCache
+GPU_drawing_leftCache
+GPU_drawing_nomask
+GPU_drawing_nomaskCache
+GPU_drawing_noscreen
+GPU_drawing_noscreenCache
+GPU_drawing_of
+GPU_drawing_ofCache
+GPU_drawing_of_xCache
+GPU_drawing_of_yCache
+GPU_drawing_rightCache
+GPU_drawing_setmask
+GPU_drawing_setmaskCache
+GPU_drawing_tl
+GPU_drawing_tlCache
+GPU_drawing_topCache
+GPU_drawing_tp_allowdisable
+GPU_drawing_tp_allowdisableCache
+GPU_drawing_tp_disable
+GPU_drawing_tp_disableCache
+GPU_drawing_tp_mirror_x
+GPU_drawing_tp_mirror_xCache
+GPU_drawing_tp_mirror_y
+GPU_drawing_tp_mirror_yCache
+GPU_drawing_tp_mode
+GPU_drawing_tp_modeCache
+GPU_drawing_tp_x
+GPU_drawing_tp_xCache
+GPU_drawing_tp_y
+GPU_drawing_tp_yCache
+GPU_drawing_tr_mode
+GPU_drawing_tr_modeCache
+GPU_drawing_tw
+GPU_drawing_twCache
+GPU_drawing_tw_h
+GPU_drawing_tw_hCache
+GPU_drawing_tw_on
+GPU_drawing_tw_onCache
+GPU_drawing_tw_w
+GPU_drawing_tw_wCache
+GPU_drawing_tw_x
+GPU_drawing_tw_xCache
+GPU_drawing_tw_y
+GPU_drawing_tw_yCache
+GPU_dw(Xdst,Ydst,Xsiz,Ysiz,src)
+GPU_freeze
+GPU_getFlipEGL
+GPU_getLibInfos
+GPU_getOptionGL
+GPU_getOptionGLFixes
+GPU_getScreenPic
+GPU_getScreenPicSet
+GPU_getVRAM
+GPU_getVersion
+GPU_glBindTextureVirtual
+GPU_gpuFreeze
+GPU_init
+GPU_irqFunc
+GPU_keypressed
+GPU_makeSnapshot
+GPU_memtransfer_h
+GPU_memtransfer_hCache
+GPU_memtransfer_on
+GPU_memtransfer_onCache
+GPU_memtransfer_ptr
+GPU_memtransfer_ptrCache
+GPU_memtransfer_size
+GPU_memtransfer_sizeCache
+GPU_memtransfer_w
+GPU_memtransfer_wCache
+GPU_memtransfer_x
+GPU_memtransfer_xCache
+GPU_memtransfer_x_warp
+GPU_memtransfer_x_warpCache
+GPU_memtransfer_y
+GPU_memtransfer_yCache
+GPU_open
+GPU_opengl_version
+GPU_plugin_mode
+GPU_polyline_cmd
+GPU_polyline_cmdCache
+GPU_polyline_on
+GPU_polyline_onCache
+GPU_primitive
+GPU_primitiveCache
+GPU_ratio
+GPU_readData
+GPU_readDataMem
+GPU_readStatus
+GPU_registerAddPrimCallback
+GPU_registerCallback
+GPU_registerClearBufferCallback
+GPU_registerInitBufferCallback
+GPU_registerResolutionCallback
+GPU_savestateSlot
+GPU_savestateSlotCache
+GPU_screen_disabled
+GPU_screen_disabledCache
+GPU_screen_height
+GPU_screen_heightCache
+GPU_screen_interlaced
+GPU_screen_interlacedCache
+GPU_screen_pal
+GPU_screen_palCache
+GPU_screen_range_x1
+GPU_screen_range_x1Cache
+GPU_screen_range_x2
+GPU_screen_range_x2Cache
+GPU_screen_range_y1
+GPU_screen_range_y1Cache
+GPU_screen_range_y2
+GPU_screen_range_y2Cache
+GPU_screen_rgb24
+GPU_screen_rgb24Cache
+GPU_screen_width
+GPU_screen_widthCache
+GPU_setAddPrimFunc
+GPU_setClearBufferFunc
+GPU_setDithering
+GPU_setGetAccuracy
+GPU_setInitBufferFunc
+GPU_setOptionGL2Off
+GPU_setOptionGL2On
+GPU_setOptionGLOff
+GPU_setOptionGLOn
+GPU_setPluginMode
+GPU_setPluginMode2
+GPU_setResizeGL
+GPU_setResizefbGL
+GPU_setResolutionFunc
+GPU_setScanlines
+GPU_showScreenPic
+GPU_shutdown
+GPU_start_of_x
+GPU_start_of_xCache
+GPU_start_of_y
+GPU_start_of_yCache
+GPU_status
+GPU_statusCache
+GPU_statusControl
+GPU_statusControlCache
+GPU_statusbusy
+GPU_updateGetAccuracy
+GPU_updateLace
+GPU_updateResizeGL
+GPU_writeData
+GPU_writeDataMem
+GPU_writeEVRAM
+GPU_writeStatus
+GPUaddVertex
+GPUclose
+GPUcloseCache
+GPUdisplayFlags
+GPUdisplayFlagsCache
+GPUdmaChain
+GPUdmaChainCache
+GPUfreeze
+GPUfreezeCache
+GPUgetMode
+GPUgetModeCache
+GPUgetScreenPic
+GPUgetScreenPicCache
+GPUinit
+GPUinitCache
+GPUkeypressed
+GPUkeypressedCache
+GPUmakeSnapshot
+GPUmakeSnapshotCache
+GPUopen
+GPUopenCache
+GPUreadData
+GPUreadDataCache
+GPUreadDataMemCore
+GPUreadDataMemCoreCache
+GPUreadStatus
+GPUreadStatusCache
+GPUsetMode
+GPUsetModeCache
+GPUshowScreenPic
+GPUshowScreenPicCache
+GPUshutdown
+GPUshutdownCache
+GPUupdateLace
+GPUupdateLaceCache
+GPUupdateLaceVRAMCache
+GPUupdategteaccuracy
+GPUupdategteaccuracy_real
+GPUwriteData
+GPUwriteDataCache
+GPUwriteDataCacheAdd
+GPUwriteDataCacheEnd
+GPUwriteDataCacheInit
+GPUwriteDataMemCore
+GPUwriteDataMemCoreCache
+GPUwriteStatus
+GPUwriteStatusCache
+GSEnabled
+GSNames
+GX&xEX
+GetB0Table
+GetC0Table
+GetConf(num_EvCB_dst,num_TCB_dst,stacktop_dst)
+GetEmptySaveStatePic
+GetEmptyScreenPic
+GetGPUStatus()
+GetLastError()
+GetLastFileError(fd)
+GetMouseX
+GetMouseY
+GetRadius
+GetRadiusf
+GetRatio
+GetSystemInfo(index) ;CEX-1000: jump_to_00000000h
+GetTickCount
+GetTickCountProfile
+H     
+H)|+H?H)~
+HEG211
+HH00HH
+HHH000
+HHHKKK
+HhhxGhgxFhfx
+I @9S$@9W(@9
+IHI523
+IIIJJJ
+IMG.ECM
+IN.alpha
+IN.frame_count
+IN.frame_direction
+IN.output_size
+IN.texture_size
+IN.video_size
+INDEX %d %d:%d:%d[^
+INDEX 00
+INDEX 00 %d:%d:%d[^
+INDEX 01
+INDEX 01 %d:%d:%d[^
+INDEX 1
+INDEX 1=
+INDEX 1=%d[^
+INTERNAL
+INTERPRETER
+IRQAddr
+IRQAfterLoop
+ISO.ECM
+ISOCacheSeekPos
+ISOClose
+ISOFillBufferCompressedReadSector
+ISOFillBufferReadSector
+ISOGetNoIndexedECM
+ISOGetSc
+ISOGetTd
+ISOGetTn
+ISOGetTrackEnd
+ISOGetTrackFrame
+ISOGetTrackStartFrame
+ISOInfo
+ISOInit
+ISOInitCcd
+ISOInitCue
+ISOInitCueMulti
+ISOInitCueSingle
+ISOInitECM
+ISOInitImg
+ISOInitMds
+ISOInitPbp
+ISOInitPrintToc
+ISOInitSub
+ISOInitToc
+ISOLoadIdxECM
+ISOMakeIndexECM
+ISOPBPInit
+ISOPBPgetFileName
+ISOPBPgetNumfiles
+ISOPlay
+ISORead
+ISOReadCdda
+ISOReadSector
+ISOReadSectorECM
+ISOReadSectorMulti
+ISOReadSectorSub
+ISOReset
+ISOSaveIdxECM
+ISOStop
+ISOUndefined
+ISOUtilCloseSCSBI
+ISOUtilInitFakeSbi
+ISOUtilInitSbi
+ISOUtilreadSCSBI
+ISOVolume
+ISOgetFormat
+ISOtestsubchannel
+Init OpenGL
+Init bios: %s
+InitCard(pad_enable) ;uses/destroys k0/k1 !!!
+InitDefInt(priority) ;used with prio=3
+InitHeap(addr,size)
+InitPad(buf1,siz1,buf2,siz2)
+InitSoundHardware
+InstallDevices(ttyflag)
+InstallExceptionHandlers() ;destroys/uses k0/k1
+IntSamples
+Internal error during exception handling!
+InterpolateFIR
+Interpreter
+Invalid constraint '%s' for arg %d of operation '%s'
+ItX_}h
+JAh 8H
+JFB=,(
+JJJ@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AAA```|||
+JNI_OnLoad
+Java_com_epsxe_ePSXe_ePSXeNative_initVibration
+Java_com_epsxe_ePSXe_ePSXe_initVibration
+Java_com_epsxe_ePSXe_jni_libepsxe_changedisc
+Java_com_epsxe_ePSXe_jni_libepsxe_copyPixelsFromVRAMToBitmap
+Java_com_epsxe_ePSXe_jni_libepsxe_copyPixelsFromVRAMToBuffer
+Java_com_epsxe_ePSXe_jni_libepsxe_disableAllGS
+Java_com_epsxe_ePSXe_jni_libepsxe_disableGS
+Java_com_epsxe_ePSXe_jni_libepsxe_disableautofire
+Java_com_epsxe_ePSXe_jni_libepsxe_enableAllGS
+Java_com_epsxe_ePSXe_jni_libepsxe_enableGS
+Java_com_epsxe_ePSXe_jni_libepsxe_enableautofire
+Java_com_epsxe_ePSXe_jni_libepsxe_getCode
+Java_com_epsxe_ePSXe_jni_libepsxe_getError
+Java_com_epsxe_ePSXe_jni_libepsxe_getFPS
+Java_com_epsxe_ePSXe_jni_libepsxe_getGPUVersion
+Java_com_epsxe_ePSXe_jni_libepsxe_getGSName
+Java_com_epsxe_ePSXe_jni_libepsxe_getGSNumber
+Java_com_epsxe_ePSXe_jni_libepsxe_getGSStatus
+Java_com_epsxe_ePSXe_jni_libepsxe_getGameInfo
+Java_com_epsxe_ePSXe_jni_libepsxe_getepsxesoundata
+Java_com_epsxe_ePSXe_jni_libepsxe_getepsxesoundatafmod
+Java_com_epsxe_ePSXe_jni_libepsxe_getheight
+Java_com_epsxe_ePSXe_jni_libepsxe_getwidth
+Java_com_epsxe_ePSXe_jni_libepsxe_gpugetoptionfixesgl
+Java_com_epsxe_ePSXe_jni_libepsxe_gpugetoptiongl
+Java_com_epsxe_ePSXe_jni_libepsxe_gpusaveoptiongl
+Java_com_epsxe_ePSXe_jni_libepsxe_gpusaveoptiongl2
+Java_com_epsxe_ePSXe_jni_libepsxe_gpusetopenglmode
+Java_com_epsxe_ePSXe_jni_libepsxe_gpusetoptiongl
+Java_com_epsxe_ePSXe_jni_libepsxe_gpusetoptiongl2
+Java_com_epsxe_ePSXe_jni_libepsxe_hasframe
+Java_com_epsxe_ePSXe_jni_libepsxe_isSkip
+Java_com_epsxe_ePSXe_jni_libepsxe_isTainted
+Java_com_epsxe_ePSXe_jni_libepsxe_isX86
+Java_com_epsxe_ePSXe_jni_libepsxe_loadautosnap
+Java_com_epsxe_ePSXe_jni_libepsxe_loadepsxe
+Java_com_epsxe_ePSXe_jni_libepsxe_loadtmpsnap
+Java_com_epsxe_ePSXe_jni_libepsxe_motionevent
+Java_com_epsxe_ePSXe_jni_libepsxe_motionevent2P
+Java_com_epsxe_ePSXe_jni_libepsxe_openglinit
+Java_com_epsxe_ePSXe_jni_libepsxe_openglrender
+Java_com_epsxe_ePSXe_jni_libepsxe_openglresize
+Java_com_epsxe_ePSXe_jni_libepsxe_openglstartthread
+Java_com_epsxe_ePSXe_jni_libepsxe_quit
+Java_com_epsxe_ePSXe_jni_libepsxe_reloadAllGS
+Java_com_epsxe_ePSXe_jni_libepsxe_reset
+Java_com_epsxe_ePSXe_jni_libepsxe_resetdefaultvalues
+Java_com_epsxe_ePSXe_jni_libepsxe_runClient
+Java_com_epsxe_ePSXe_jni_libepsxe_runClientInputReceiver
+Java_com_epsxe_ePSXe_jni_libepsxe_runServer
+Java_com_epsxe_ePSXe_jni_libepsxe_runServerInputSender
+Java_com_epsxe_ePSXe_jni_libepsxe_runemulatorframeGLext
+Java_com_epsxe_ePSXe_jni_libepsxe_runepsxeframe
+Java_com_epsxe_ePSXe_jni_libepsxe_runwrapper
+Java_com_epsxe_ePSXe_jni_libepsxe_sendClientOK
+Java_com_epsxe_ePSXe_jni_libepsxe_sendGameInfo
+Java_com_epsxe_ePSXe_jni_libepsxe_setAuxVol
+Java_com_epsxe_ePSXe_jni_libepsxe_setBios
+Java_com_epsxe_ePSXe_jni_libepsxe_setBiosHle
+Java_com_epsxe_ePSXe_jni_libepsxe_setBootMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setCpuMaxFreq
+Java_com_epsxe_ePSXe_jni_libepsxe_setDithering
+Java_com_epsxe_ePSXe_jni_libepsxe_setDmachaincore
+Java_com_epsxe_ePSXe_jni_libepsxe_setFilterhw
+Java_com_epsxe_ePSXe_jni_libepsxe_setFrameLimit
+Java_com_epsxe_ePSXe_jni_libepsxe_setFrameSkip
+Java_com_epsxe_ePSXe_jni_libepsxe_setGpu
+Java_com_epsxe_ePSXe_jni_libepsxe_setGpuMtMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setGpuShader
+Java_com_epsxe_ePSXe_jni_libepsxe_setGpuSoftMtMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setGteaccurateH
+Java_com_epsxe_ePSXe_jni_libepsxe_setGunData
+Java_com_epsxe_ePSXe_jni_libepsxe_setInterpreter
+Java_com_epsxe_ePSXe_jni_libepsxe_setMemcard1
+Java_com_epsxe_ePSXe_jni_libepsxe_setMemcard2
+Java_com_epsxe_ePSXe_jni_libepsxe_setMemcardFileMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setMemcardMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setMouseData
+Java_com_epsxe_ePSXe_jni_libepsxe_setPadDataDown
+Java_com_epsxe_ePSXe_jni_libepsxe_setPadDataMultitap
+Java_com_epsxe_ePSXe_jni_libepsxe_setPadDataUp
+Java_com_epsxe_ePSXe_jni_libepsxe_setPadModeMultitap
+Java_com_epsxe_ePSXe_jni_libepsxe_setPauseMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setPlayerMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setPluginMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setResumeMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setSaveMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setSdCardPath
+Java_com_epsxe_ePSXe_jni_libepsxe_setSoundLatency
+Java_com_epsxe_ePSXe_jni_libepsxe_setSplitMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setStopMode
+Java_com_epsxe_ePSXe_jni_libepsxe_setVibration
+Java_com_epsxe_ePSXe_jni_libepsxe_setWidescreen
+Java_com_epsxe_ePSXe_jni_libepsxe_setblackbands
+Java_com_epsxe_ePSXe_jni_libepsxe_setbuffer
+Java_com_epsxe_ePSXe_jni_libepsxe_setcpuoverclocking
+Java_com_epsxe_ePSXe_jni_libepsxe_setcustomfps
+Java_com_epsxe_ePSXe_jni_libepsxe_setfbosettings
+Java_com_epsxe_ePSXe_jni_libepsxe_setgpu2dfilter
+Java_com_epsxe_ePSXe_jni_libepsxe_setgpublitskip
+Java_com_epsxe_ePSXe_jni_libepsxe_setgpubrightnessprofile
+Java_com_epsxe_ePSXe_jni_libepsxe_setgpuiresolution
+Java_com_epsxe_ePSXe_jni_libepsxe_setgpuoverscanbottom
+Java_com_epsxe_ePSXe_jni_libepsxe_setgpuoverscantop
+Java_com_epsxe_ePSXe_jni_libepsxe_setpadanalog
+Java_com_epsxe_ePSXe_jni_libepsxe_setpadanalogMoga
+Java_com_epsxe_ePSXe_jni_libepsxe_setpadanalogXP
+Java_com_epsxe_ePSXe_jni_libepsxe_setpadanalogmode
+Java_com_epsxe_ePSXe_jni_libepsxe_setpadmode
+Java_com_epsxe_ePSXe_jni_libepsxe_setscanlines
+Java_com_epsxe_ePSXe_jni_libepsxe_setscreendepth
+Java_com_epsxe_ePSXe_jni_libepsxe_setscreenorientation
+Java_com_epsxe_ePSXe_jni_libepsxe_setspuquality
+Java_com_epsxe_ePSXe_jni_libepsxe_setsslot
+Java_com_epsxe_ePSXe_jni_libepsxe_setwh
+Java_com_epsxe_ePSXe_jni_libepsxe_updategteaccuracy
+Java_com_epsxe_ePSXe_jni_libepsxe_updatescanlines
+Java_com_epsxe_ePSXe_jni_libepsxe_updatewh
+Java_com_epsxe_ePSXe_jni_libepsxe_waitClientConnect
+Java_com_epsxe_ePSXe_jni_libepsxe_waitClientOK
+Java_com_epsxe_ePSXe_jni_libepsxe_waitGameInfo
+JoypadType
+KII755
+KernelRedirect(ttyflag) ;PS2: ttyflag=1 causes SystemError
+KeyOff
+Krom2Offset(shiftjis_code)
+Krom2RawAdd(shiftjis_code)
+L11L12
+L13L21
+L22L23
+L31L32
+L33   
+L?ff&?fff?{
+LB1LB2
+LB3   
+LG2LG3
+LLLiii
+LLLnnn|||\\\;;;
+LR1LR2
+LR3LG1
+Licensed by Sony Computer Entertainment Inc.
+LoadAndExecute(filename,stackbase,stackoffset)
+LoadDelay
+LoadDelay2nd
+LoadExeFile(filename,headerbuf)
+LoadExeHeader(filename,headerbuf)
+LogModeTable
+Lx&x!4@
+Lx'x((
+M*vky8ykl8mkm8
+MB = %d
+MCD init memcard %d
+MCD read file 1
+MCD read file 2
+MCD save memcard1 %d
+MCD save memcard1 done!
+MCD save memcard2!
+MDF.ECM
+MEMCARD
+MEMCARD_Poll
+MEMCARD_startPoll
+MKL877
+MMM333333333JJJ
+MMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMyyy[[[
+MODE2/2336
+MSB2DWORD
+MainCDDA
+MainNoise
+MainReverb
+MainXA
+Method: $%04x  must be $0000 (Stored) or $0008 (Deflated)
+MotorBigType
+MotorSmallType
+MotorType
+MouseNeeded
+MsYD~WD~WE~WE~WE~WF~XF~XF~XF~XF~XF~XF~YF~YG~YG~YG~YG~YH~YH
+N!X n!X n 
+N%kex7
+N%kexc
+N+kjx)5sN*kixB
+N/A ;jump_to_00000000h
+N10__cxxabiv116__shim_type_infoE
+N10__cxxabiv117__class_type_infoE
+N10__cxxabiv117__pbase_type_infoE
+N10__cxxabiv119__pointer_type_infoE
+N10__cxxabiv120__function_type_infoE
+N10__cxxabiv120__si_class_type_infoE
+N10__cxxabiv121__vmi_class_type_infoE
+N10__cxxabiv123__fundamental_type_infoE
+N3eCXo_
+N4{`xB
+N6{uxk5sN4{txE
+N7{vx8{xx
+N@xvx~
+NDkdxc
+NET_close
+NET_compareData
+NET_init
+NET_open
+NET_padState
+NET_pause
+NET_queryPlayer
+NET_resume
+NET_shutdown
+NET_transferData
+NEkexB
+NKhjxq
+NNN888888999???GGGXXX
+NNN:88
+NNNjjjjjjjjjjjjjjjjjjjjj
+NNNrrr
+NNNtttUUU
+NOTHING
+NUxtxt
+N[kjxd
+NdkdxB
+Nejex}
+Nekex$
+NetPlay
+Ngjgx~
+Nnztxc
+Not enough memory to allocate exception!
+Nozvxc
+Nq{xxb
+Ntzpxc
+Number of frames: %d 
+Nu{`xB
+Nu{wxC
+Nv{`xc
+Nv{vx$
+Nw{wxB
+O!deNBdeN
+O!ldNcX nBldN
+O)Y n!ldNBldN1feNI
+O1ndN9[ nsndNRfeN1V
+O1ndNJ
+OBX nBX n
+OBdeN{[ n!ldN
+OD = %d
+OFX   
+OFY   
+OGL: emu core, exit core and close wrapper
+OGL: ogl threading, init...
+OOO+++
+OOO@@@@@@@@@@@@@@@@@@@@@AAA___{{{
+OOOxxxrrrUUU&&&
+OOO}}}
+OPC=%x
+ORndN1
+OS: $%02x must be $00
+Opcode [%02x-%08x] in PC [%08x] UNKNOWN [%0d:%03d:%d]
+OpenEvent(class,spec,mode,func)
+OpenGL2 Resize(%d, %d, %d)
+OpenThread(reg_PC,reg_SP_FP,reg_GP)
+OutdatedPadGetButtons()
+OutdatedPadInitAndStart(type,button_dest,unused,unused)
+P!R"R$
+P<P$T%T<
+P@9!0@
+PAD1_Poll
+PAD1_startPoll
+PAD1bios_Poll
+PAD1bios_startPoll
+PAD2_Poll
+PAD2_startPoll
+PAD2bios_Poll
+PAD2bios_startPoll
+PAD_MultitapPort
+PAD_Poll
+PANIC:GAbi++:%s
+PBPNameFiles
+PBPNumFiles
+PC %lld %lld %lld %lld %lld %lld %lld %lld
+PCMbuffer
+PPP888888
+PPPSSSTTTVVV
+PREGAP 
+PS-X EXE
+PSISOIMG
+PSTITLEIMG00
+PSX.EXE;1
+PSX_HLINES
+PSX_MIPS_HBL
+PSX_MIPS_OVERCLOCKING
+PSX_MIPS_TOTAL
+PSX_MIPS_TOTAL_ADJUST
+PadCardIrqFunc1()
+PadCardIrqFunc2()
+PaintPicDot
+PitchA
+PlugCdrIsoInfo
+PluginToc
+Primitives   
+PrintInstalledDevices()
+Profiler %s (%d): %ld ms 
+Pure virtual function called!
+Q h#8!
+QOO<;;
+QQQ888888888
+QQQ888888888DDD
+QQQHHHIIIIIIBBBppp
+QQxRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvQQx==
+Qb@9XJ
+QueryControl
+QueryNetplayPlayer
+QueryStatus1
+QueryStatus2
+Qx?333?
+Q|_]vdZ
+R (C9$<C9
+R ,C9"0C9
+R11R12
+R13R21
+R22R23
+R31R32
+R33   
+R?T@jA
+RBK   
+RBhaxA
+RC %lld %lld %lld %lld
+RC'@9Z+
+REG %s [%08x] -> %08x sizeof(%d)
+REG %s [%08x] <- %08x sizeof(%d) (%08x)
+RFC   
+RGB1555toRGB565
+RGB1555toRGB565psxbright
+RGB1555toRGB888
+RGB1555toRGB888psxbright
+RGB24toRGB565
+RGB24toRGB565HD
+RGB24toRGB565HD4
+RGB24toRGB888
+RGB24toRGB888HD
+RGB24toRGB888HD4
+RQR><<
+RRcntCounter
+RRcntMode
+RRcntTarget
+RRvRRvRRvRRvRRvRRv
+RRvRRvRRvRRvRRvRRv""a
+RRvRRvRRvRRvRRvRRv++e
+RRvRRvRRvRRvRRvRRv66j
+RRvRRvRRvRRvRRvRRvCCo
+RRvRRvRRvRRvRRvRRvNNt
+RRvRRvRRvRRvRRvRRvRRv
+RRvRRvRRvRRvRRvRRvRRv66j
+RRvRRvRRvRRvRRvRRvRRvJJs
+RRvRRvRRvRRvRRvRRvRRvRRv..f
+RRvRRvRRvRRvRRvRRvRRvRRvIIr
+RRvRRvRRvRRvRRvRRvRRvRRvRRv>>n
+RRvRRvRRvRRvRRvRRvRRvRRvRRvRRv;;l!!a
+RRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvGGq55i..f**e//g99lLLsRRvRRvRRvRRvRRvRRvRRvNNt@@n@@n@@nCCoRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvNNt@@n@@n@@nBBoRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvEE
+RRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvQQvNNuRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvEE
+RRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvLL
+RRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvCC
+RRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvDD
+RRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvEE
+RSioBaudrate
+RSioControl
+RSioData
+RSioMode
+RSioStatus
+R_ADDI
+R_ADDIU
+R_ADDU
+R_ANDI
+R_BGEZ
+R_BGEZAL
+R_BGTZ
+R_BLEZ
+R_BLTZ
+R_BLTZAL
+R_BREAK
+R_COP0
+R_COPERR
+R_DEBUG
+R_DEBUG2
+R_DEBUG3
+R_JALR
+R_LWC2
+R_MFC0
+R_MFHI
+R_MFLO
+R_MTC0
+R_MTHI
+R_MTLO
+R_MULT
+R_MULTU
+R_REGIM
+R_RFE0
+R_SB_icache
+R_SB_icacheARM
+R_SLLV
+R_SLTI
+R_SLTIU
+R_SLTU
+R_SPEC
+R_SRAV
+R_SRLV
+R_SUBU
+R_SWC2
+R_SYSCL
+R_T@ja
+R_UNDEF
+R_XORI
+R_debugline
+R_icache
+R_icache_asm
+R_icache_slow
+R`h`8$
+Rc:D9b
+RcntIRQDone
+ReadAddr
+ReadCdrom_42
+ReadCdrom_Subchannel_Mode_Test_ext
+ReadMem
+Recompiler
+RemoveDevice(device_name_lowercase)
+RequiredPause
+Reseting time base %ld
+RestoreState(buf,param)
+ReturnFromException()
+RevAddr
+RevConfig
+RevSamples
+Rl$@9k @9
+S!@CJ!
+S!`CJ!
+S%cES_%d%d%d.%d%d
+S*Skt8Lkl8sj
+SBk38s
+SCAJ-01001
+SCAJ-01002
+SCED-01832
+SCES-00011
+SCES-00867
+SCES-00868
+SCES-00869
+SCES-00900
+SCES-01565
+SCES-01566
+SCES-01567
+SCES-01568
+SCES-01569
+SCES-01705
+SCES-01706
+SCES-02099
+SCES-02100
+SCES-02101
+SCES-02102
+SCES-02103
+SCES-02149
+SCES-02150
+SCES-02151
+SCES-02152
+SCES-02153
+SCES-02159
+SCES-02160
+SCES-02161
+SCES-02285
+SCES-02286
+SCES-02287
+SCES-02288
+SCES-02289
+SCES-02380
+SCES-02565
+SCES-02566
+SCES-02567
+SCES-02568
+SCES-02812
+SCES-02813
+SCES-02814
+SCES-02815
+SCES-02816
+SCES-03043
+SCES-03044
+SCES-03045
+SCES-03046
+SCES-03047
+SCES-03840
+SCES-10011
+SCES-10867
+SCES-10868
+SCES-10869
+SCES-10900
+SCES-11565
+SCES-11566
+SCES-11567
+SCES-11568
+SCES-11569
+SCES-11705
+SCES-12099
+SCES-12100
+SCES-12101
+SCES-12102
+SCES-12103
+SCES-12149
+SCES-12150
+SCES-12151
+SCES-12152
+SCES-12153
+SCES-12159
+SCES-12160
+SCES-12161
+SCES-12285
+SCES-12286
+SCES-12287
+SCES-12288
+SCES-12289
+SCES-12380
+SCES-12565
+SCES-12566
+SCES-12567
+SCES-12568
+SCES-12812
+SCES-12813
+SCES-12814
+SCES-12815
+SCES-12816
+SCES-13043
+SCES-13044
+SCES-13045
+SCES-13046
+SCES-13047
+SCES-13840
+SCES-20867
+SCES-20868
+SCES-20869
+SCES-20900
+SCES-21565
+SCES-21566
+SCES-21567
+SCES-21568
+SCES-21569
+SCES-23043
+SCES-23044
+SCES-23045
+SCES-23046
+SCES-23047
+SCES-31565
+SCES-31566
+SCES-31567
+SCES-31568
+SCES-31569
+SCES-33043
+SCES-33044
+SCES-33045
+SCES-33046
+SCES-33047
+SCES_008.67
+SCES_008.68
+SCES_008.69
+SCES_009.00
+SCES_012.37
+SCES_019.79
+SCES_021.04
+SCES_022.22
+SCES_027.77
+SCES_027.78
+SCES_027.79
+SCES_028.34
+SCES_028.35
+SCES_030.70
+SCES_030.72
+SCES_030.75
+SCES_030.76
+SCES_032.36
+SCES_034.04
+SCES_034.23
+SCES_034.24
+SCES_035.24
+SCES_038.40
+SCES_038.86
+SCES_108.67
+SCES_108.68
+SCES_108.69
+SCES_109.00
+SCES_208.67
+SCES_208.68
+SCES_208.69
+SCES_209.00
+SCPS-10018
+SCPS-10019
+SCPS-10040
+SCPS-10041
+SCPS-10053
+SCPS-10054
+SCPS-10056
+SCPS-10057
+SCPS-10065
+SCPS-10066
+SCPS-10067
+SCPS-10068
+SCPS-10069
+SCPS-10070
+SCPS-10077
+SCPS-10078
+SCPS-10083
+SCPS-10084
+SCPS-10089
+SCPS-10090
+SCPS-10094
+SCPS-10095
+SCPS-10106
+SCPS-10107
+SCPS-10109
+SCPS-10110
+SCPS-10112
+SCPS-10113
+SCPS-10114
+SCPS-10116
+SCPS-10117
+SCPS-10119
+SCPS-10120
+SCPS-10121
+SCPS-10122
+SCPS-10131
+SCPS-10132
+SCPS-10142
+SCPS-10143
+SCPS-18004
+SCPS-18005
+SCPS-18007
+SCPS-18008
+SCPS-18009
+SCPS-18010
+SCPS-45007
+SCPS-45008
+SCPS-45009
+SCPS-45014
+SCPS-45015
+SCPS-45016
+SCPS-45017
+SCPS-45037
+SCPS-45038
+SCPS-45045
+SCPS-45046
+SCPS-45087
+SCPS-45088
+SCPS-45122
+SCPS-45123
+SCPS-45163
+SCPS-45164
+SCPS-45170
+SCPS-45171
+SCPS-45190
+SCPS-45191
+SCPS-45199
+SCPS-45200
+SCPS-45203
+SCPS-45204
+SCPS-45254
+SCPS-45255
+SCPS-45300
+SCPS-45301
+SCPS-45303
+SCPS-45304
+SCPS-45305
+SCPS-45317
+SCPS-45318
+SCPS-45319
+SCPS-45320
+SCPS-45321
+SCPS-45322
+SCPS-45351
+SCPS-45352
+SCPS-45354
+SCPS-45355
+SCPS-45375
+SCPS-45376
+SCPS-45377
+SCPS-45378
+SCPS-45388
+SCPS-45389
+SCPS-45390
+SCPS-45397
+SCPS-45398
+SCPS-45405
+SCPS-45406
+SCPS-45407
+SCPS-45412
+SCPS-45413
+SCPS-45414
+SCPS-45416
+SCPS-45417
+SCPS-45429
+SCPS-45430
+SCPS-45438
+SCPS-45439
+SCPS-45441
+SCPS-45442
+SCPS-45443
+SCPS-45444
+SCPS-45447
+SCPS-45448
+SCPS-45451
+SCPS-45452
+SCPS-45453
+SCPS-45454
+SCPS-45455
+SCPS-45457
+SCPS-45458
+SCPS-45459
+SCPS-45460
+SCPS-45461
+SCPS-45462
+SCPS-45463
+SCPS-45464
+SCPS-45467
+SCPS-45468
+SCPS-45473
+SCPS-45474
+SCPS-45475
+SCPS-45478
+SCPS-45479
+SCPS-45483
+SCPS-45484
+SCPS-45485
+SCPS-45495
+SCPS-45496
+SCPS-45500
+SCPS-45501
+SCPS-45502
+SCPS-45503
+SCPS-45504
+SCPS-45505
+SCPS-45507
+SCPS-45508
+SCPS-45509
+SCPS-91208
+SCPS-91209
+SCPS-91220
+SCPS-91221
+SCPS-91222
+SCPS-91228
+SCPS-91229
+SCPS-91238
+SCPS-91239
+SCPS-91240
+SCPS-91241
+SCPS-91242
+SCPS-91243
+SCPS-91244
+SCPS-91245
+SCPS-91313
+SCPS-91314
+SCPS-91315
+SCPS-91316
+SCPS-91317
+SCPS-91321
+SCPS-91322
+SCPS-91326
+SCPS-91327
+SCPS_101.01
+SCPS_101.40
+SCPS_450.07
+SCPS_450.08
+SCPS_450.09
+SCPS_450.29
+SCPS_452.15
+SCPS_453.80
+SCPS_454.86
+SCPS_455.11
+SCPS_913.19
+SCREEN_BPP
+SCREEN_HEIGHT
+SCREEN_WIDTH
+SCUS-94163
+SCUS-94164
+SCUS-94165
+SCUS-94208
+SCUS-94404
+SCUS-94407
+SCUS-94421
+SCUS-94422
+SCUS-94451
+SCUS-94455
+SCUS-94457
+SCUS-94465
+SCUS-94484
+SCUS-94488
+SCUS-94491
+SCUS-94492
+SCUS-94498
+SCUS-94584
+SCUS-94585
+SCUS-94586
+SCUS-94604
+SCUS-94700
+SCUS-94701
+SCUS-94961
+SCUS-94964
+SCUS_941.10
+SCUS_941.63
+SCUS_941.64
+SCUS_941.65
+SCUS_945.70
+SJf@9Cj@91~
+SLED_017.35
+SLES-00039
+SLES-00065
+SLES-00070
+SLES-00071
+SLES-00074
+SLES-00082
+SLES-00104
+SLES-00105
+SLES-00160
+SLES-00161
+SLES-00165
+SLES-00166
+SLES-00167
+SLES-00191
+SLES-00192
+SLES-00461
+SLES-00462
+SLES-00463
+SLES-00464
+SLES-00465
+SLES-00519
+SLES-00530
+SLES-00531
+SLES-00532
+SLES-00584
+SLES-00643
+SLES-00644
+SLES-00654
+SLES-00656
+SLES-00659
+SLES-00660
+SLES-00661
+SLES-00853
+SLES-00854
+SLES-00855
+SLES-00856
+SLES-00860
+SLES-00861
+SLES-00862
+SLES-00863
+SLES-00864
+SLES-00949
+SLES-00963
+SLES-00972
+SLES-00973
+SLES-00974
+SLES-00975
+SLES-00976
+SLES-00998
+SLES-01006
+SLES-01007
+SLES-01099
+SLES-01100
+SLES-01343
+SLES-01344
+SLES-01345
+SLES-01370
+SLES-01436
+SLES-01480
+SLES-01502
+SLES-01503
+SLES-01504
+SLES-01505
+SLES-01506
+SLES-01507
+SLES-01508
+SLES-01602
+SLES-01603
+SLES-01604
+SLES-01605
+SLES-01734
+SLES-01879
+SLES-01880
+SLES-01881
+SLES-02080
+SLES-02081
+SLES-02082
+SLES-02083
+SLES-02084
+SLES-02098
+SLES-02166
+SLES-02167
+SLES-02168
+SLES-02187
+SLES-02328
+SLES-02329
+SLES-02330
+SLES-02346
+SLES-02347
+SLES-02348
+SLES-02349
+SLES-02350
+SLES-02397
+SLES-02398
+SLES-02399
+SLES-02441
+SLES-02558
+SLES-02559
+SLES-02560
+SLES-02561
+SLES-02562
+SLES-02757
+SLES-02758
+SLES-02759
+SLES-02760
+SLES-02761
+SLES-02762
+SLES-02801
+SLES-02802
+SLES-02803
+SLES-02804
+SLES-02805
+SLES-02867
+SLES-02897
+SLES-02898
+SLES-02899
+SLES-02900
+SLES-02901
+SLES-02964
+SLES-02965
+SLES-02966
+SLES-02967
+SLES-02968
+SLES-02969
+SLES-02993
+SLES-02994
+SLES-02995
+SLES-02996
+SLES-02997
+SLES-03158
+SLES-03159
+SLES-03160
+SLES-03161
+SLES-03162
+SLES-03348
+SLES-03349
+SLES-03350
+SLES-03351
+SLES-03352
+SLES-03386
+SLES-03428
+SLES-03485
+SLES-03493
+SLES-03494
+SLES-03495
+SLES-03496
+SLES-03497
+SLES-03498
+SLES-03752
+SLES-03813
+SLES-04034
+SLES-04107
+SLES-10039
+SLES-10065
+SLES-10070
+SLES-10071
+SLES-10074
+SLES-10082
+SLES-10104
+SLES-10105
+SLES-10160
+SLES-10161
+SLES-10165
+SLES-10166
+SLES-10167
+SLES-10191
+SLES-10192
+SLES-10461
+SLES-10462
+SLES-10463
+SLES-10464
+SLES-10465
+SLES-10519
+SLES-10530
+SLES-10531
+SLES-10532
+SLES-10584
+SLES-10643
+SLES-10644
+SLES-10654
+SLES-10656
+SLES-10659
+SLES-10660
+SLES-10661
+SLES-10853
+SLES-10854
+SLES-10855
+SLES-10856
+SLES-10860
+SLES-10861
+SLES-10862
+SLES-10863
+SLES-10864
+SLES-10949
+SLES-10963
+SLES-10972
+SLES-10973
+SLES-10974
+SLES-10975
+SLES-10976
+SLES-10998
+SLES-11006
+SLES-11007
+SLES-11099
+SLES-11100
+SLES-11343
+SLES-11344
+SLES-11345
+SLES-11370
+SLES-11436
+SLES-11480
+SLES-11502
+SLES-11503
+SLES-11504
+SLES-11505
+SLES-11506
+SLES-11507
+SLES-11508
+SLES-11602
+SLES-11603
+SLES-11604
+SLES-11605
+SLES-11734
+SLES-11879
+SLES-11880
+SLES-11881
+SLES-12080
+SLES-12081
+SLES-12082
+SLES-12083
+SLES-12084
+SLES-12098
+SLES-12166
+SLES-12167
+SLES-12168
+SLES-12187
+SLES-12328
+SLES-12329
+SLES-12330
+SLES-12346
+SLES-12347
+SLES-12348
+SLES-12349
+SLES-12350
+SLES-12397
+SLES-12398
+SLES-12399
+SLES-12441
+SLES-12558
+SLES-12559
+SLES-12560
+SLES-12561
+SLES-12562
+SLES-12757
+SLES-12758
+SLES-12759
+SLES-12760
+SLES-12761
+SLES-12762
+SLES-12801
+SLES-12802
+SLES-12803
+SLES-12804
+SLES-12805
+SLES-12867
+SLES-12897
+SLES-12898
+SLES-12899
+SLES-12900
+SLES-12901
+SLES-12964
+SLES-12965
+SLES-12966
+SLES-12967
+SLES-12968
+SLES-12969
+SLES-12993
+SLES-12994
+SLES-12995
+SLES-12996
+SLES-12997
+SLES-13158
+SLES-13159
+SLES-13160
+SLES-13161
+SLES-13162
+SLES-13348
+SLES-13349
+SLES-13350
+SLES-13351
+SLES-13352
+SLES-13386
+SLES-13428
+SLES-13485
+SLES-13493
+SLES-13494
+SLES-13495
+SLES-13496
+SLES-13497
+SLES-13498
+SLES-13752
+SLES-13813
+SLES-14034
+SLES-14107
+SLES-20065
+SLES-20070
+SLES-20074
+SLES-20104
+SLES-20105
+SLES-20160
+SLES-20161
+SLES-20659
+SLES-20660
+SLES-20661
+SLES-20963
+SLES-21099
+SLES-21100
+SLES-21602
+SLES-21603
+SLES-21604
+SLES-21605
+SLES-21881
+SLES-22080
+SLES-22081
+SLES-22082
+SLES-22083
+SLES-22084
+SLES-22098
+SLES-22166
+SLES-22167
+SLES-22168
+SLES-22328
+SLES-22329
+SLES-22330
+SLES-22897
+SLES-22898
+SLES-22899
+SLES-22900
+SLES-22901
+SLES-22965
+SLES-22966
+SLES-22967
+SLES-22968
+SLES-22969
+SLES-23386
+SLES-23485
+SLES-30074
+SLES-30104
+SLES-30105
+SLES-30659
+SLES-30660
+SLES-30661
+SLES-30963
+SLES-31099
+SLES-31100
+SLES-31881
+SLES-32080
+SLES-32081
+SLES-32082
+SLES-32083
+SLES-32084
+SLES-32166
+SLES-32167
+SLES-32168
+SLES-32897
+SLES-32898
+SLES-32899
+SLES-32900
+SLES-32901
+SLES-32965
+SLES-32966
+SLES-32967
+SLES-32968
+SLES-32969
+SLES-33386
+SLES-40963
+SLES-41099
+SLES-41100
+SLES_000.56
+SLES_001.06
+SLES_002.59
+SLES_003.30
+SLES_004.83
+SLES_005.81
+SLES_005.84
+SLES_005.85
+SLES_006.06
+SLES_006.40
+SLES_006.44
+SLES_006.46
+SLES_006.54
+SLES_006.56
+SLES_006.85
+SLES_006.86
+SLES_007.03
+SLES_009.87
+SLES_012.11
+SLES_012.12
+SLES_012.13
+SLES_012.14
+SLES_012.15
+SLES_014.46
+SLES_014.54
+SLES_014.55
+SLES_014.56
+SLES_014.57
+SLES_015.14
+SLES_017.12
+SLES_021.98
+SLES_023.43
+SLES_024.66
+SLES_025.58
+SLES_025.59
+SLES_025.60
+SLES_025.61
+SLES_025.62
+SLES_026.89
+SLES_027.00
+SLES_027.31
+SLES_027.54
+SLES_027.55
+SLES_027.56
+SLES_027.72
+SLES_029.13
+SLES_031.81
+SLES_032.52
+SLES_032.98
+SLES_033.31
+SLES_033.33
+SLES_033.34
+SLES_033.35
+SLES_033.36
+SLES_034.49
+SLES_035.47
+SLES_038.10
+SLES_038.22
+SLES_105.84
+SLES_106.44
+SLES_106.54
+SLES_106.56
+SLES_125.58
+SLES_125.59
+SLES_125.60
+SLES_125.61
+SLES_125.62
+SLPM-86048
+SLPM-86049
+SLPM-86070
+SLPM-86071
+SLPM-86088
+SLPM-86089
+SLPM-86090
+SLPM-86091
+SLPM-86097
+SLPM-86098
+SLPM-86100
+SLPM-86101
+SLPM-86102
+SLPM-86105
+SLPM-86106
+SLPM-86107
+SLPM-86111
+SLPM-86112
+SLPM-86113
+SLPM-86114
+SLPM-86115
+SLPM-86116
+SLPM-86126
+SLPM-86127
+SLPM-86130
+SLPM-86131
+SLPM-86135
+SLPM-86136
+SLPM-86137
+SLPM-86138
+SLPM-86179
+SLPM-86180
+SLPM-86181
+SLPM-86185
+SLPM-86186
+SLPM-86187
+SLPM-86196
+SLPM-86197
+SLPM-86210
+SLPM-86211
+SLPM-86212
+SLPM-86213
+SLPM-86214
+SLPM-86224
+SLPM-86225
+SLPM-86231
+SLPM-86232
+SLPM-86247
+SLPM-86248
+SLPM-86249
+SLPM-86254
+SLPM-86255
+SLPM-86256
+SLPM-86257
+SLPM-86269
+SLPM-86270
+SLPM-86280
+SLPM-86281
+SLPM-86350
+SLPM-86351
+SLPM-86352
+SLPM-86353
+SLPM-86354
+SLPM-86355
+SLPM-86356
+SLPM-86357
+SLPM-86358
+SLPM-86359
+SLPM-86361
+SLPM-86362
+SLPM-86371
+SLPM-86372
+SLPM-86373
+SLPM-86374
+SLPM-86379
+SLPM-86380
+SLPM-86390
+SLPM-86391
+SLPM-86431
+SLPM-86432
+SLPM-86470
+SLPM-86471
+SLPM-86472
+SLPM-86475
+SLPM-86476
+SLPM-86477
+SLPM-86478
+SLPM-86479
+SLPM-86480
+SLPM-86485
+SLPM-86486
+SLPM-86500
+SLPM-86501
+SLPM-86506
+SLPM-86507
+SLPM-86508
+SLPM-86509
+SLPM-86510
+SLPM-86549
+SLPM-86550
+SLPM-86568
+SLPM-86569
+SLPM-86570
+SLPM-86571
+SLPM-86609
+SLPM-86610
+SLPM-86611
+SLPM-86717
+SLPM-86718
+SLPM-86723
+SLPM-86724
+SLPM-86725
+SLPM-86726
+SLPM-86727
+SLPM-86755
+SLPM-86756
+SLPM-86757
+SLPM-86758
+SLPM-86775
+SLPM-86776
+SLPM-86780
+SLPM-86781
+SLPM-86782
+SLPM-86783
+SLPM-86821
+SLPM-86822
+SLPM-86823
+SLPM-86826
+SLPM-86827
+SLPM-86828
+SLPM-86850
+SLPM-86851
+SLPM-86852
+SLPM-86881
+SLPM-86882
+SLPM-86884
+SLPM-86885
+SLPM-86903
+SLPM-86934
+SLPM-86935
+SLPM-86936
+SLPM-86941
+SLPM-86942
+SLPM-86976
+SLPM-86977
+SLPM-86978
+SLPM-87005
+SLPM-87006
+SLPM-87030
+SLPM-87031
+SLPM-87091
+SLPM-87092
+SLPM-87108
+SLPM-87109
+SLPM-87111
+SLPM-87112
+SLPM-87113
+SLPM-87114
+SLPM-87146
+SLPM-87147
+SLPM-87148
+SLPM-87149
+SLPM-87184
+SLPM-87185
+SLPM-87217
+SLPM-87218
+SLPM-87221
+SLPM-87222
+SLPM-87223
+SLPM-87234
+SLPM-87246
+SLPM-87247
+SLPM-87248
+SLPM-87290
+SLPM-87291
+SLPM-87302
+SLPM-87303
+SLPM-87304
+SLPM-87305
+SLPM-87308
+SLPM-87309
+SLPM-87310
+SLPM-87311
+SLPM-87312
+SLPM-87313
+SLPM-87324
+SLPM-87325
+SLPM-87326
+SLPM-87352
+SLPM-87353
+SLPM-87354
+SLPM-87355
+SLPM-87357
+SLPM-87358
+SLPM-87372
+SLPM-87373
+SLPM-87378
+SLPM-87379
+SLPM-87380
+SLPM-87381
+SLPM-87382
+SLPM-87383
+SLPM-87384
+SLPM-87385
+SLPM-87386
+SLPM-87387
+SLPM-87388
+SLPM-87389
+SLPM-87390
+SLPM-87391
+SLPM-87395
+SLPM-87396
+SLPM-87411
+SLPM-87412
+SLPM-87413
+SLPM_803.63
+SLPM_860.18
+SLPM_860.28
+SLPM_861.92
+SLPM_862.35
+SLPM_864.98
+SLPM_866.01
+SLPM_866.70
+SLPM_867.79
+SLPM_868.61
+SLPM_869.29
+SLPM_870.11
+SLPM_870.29
+SLPM_870.58
+SLPM_871.02
+SLPM_871.60
+SLPM_872.03
+SLPM_872.89
+SLPM_873.80
+SLPM_873.81
+SLPM_873.82
+SLPM_873.83
+SLPM_873.93
+SLPS-00055
+SLPS-00056
+SLPS-00057
+SLPS-00071
+SLPS-00072
+SLPS-00080
+SLPS-00081
+SLPS-00094
+SLPS-00095
+SLPS-00117
+SLPS-00118
+SLPS-00120
+SLPS-00121
+SLPS-00133
+SLPS-00134
+SLPS-00135
+SLPS-00144
+SLPS-00145
+SLPS-00185
+SLPS-00186
+SLPS-00192
+SLPS-00193
+SLPS-00215
+SLPS-00216
+SLPS-00225
+SLPS-00226
+SLPS-00227
+SLPS-00285
+SLPS-00286
+SLPS-00287
+SLPS-00290
+SLPS-00291
+SLPS-00292
+SLPS-00304
+SLPS-00305
+SLPS-00314
+SLPS-00315
+SLPS-00316
+SLPS-00317
+SLPS-00325
+SLPS-00326
+SLPS-00343
+SLPS-00344
+SLPS-00370
+SLPS-00371
+SLPS-00383
+SLPS-00384
+SLPS-00397
+SLPS-00398
+SLPS-00400
+SLPS-00401
+SLPS-00410
+SLPS-00411
+SLPS-00412
+SLPS-00451
+SLPS-00452
+SLPS-00477
+SLPS-00478
+SLPS-00479
+SLPS-00480
+SLPS-00514
+SLPS-00515
+SLPS-00535
+SLPS-00536
+SLPS-00537
+SLPS-00561
+SLPS-00562
+SLPS-00563
+SLPS-00564
+SLPS-00578
+SLPS-00579
+SLPS-00580
+SLPS-00590
+SLPS-00638
+SLPS-00639
+SLPS-00645
+SLPS-00646
+SLPS-00660
+SLPS-00661
+SLPS-00669
+SLPS-00670
+SLPS-00671
+SLPS-00672
+SLPS-00680
+SLPS-00681
+SLPS-00700
+SLPS-00701
+SLPS-00702
+SLPS-00706
+SLPS-00707
+SLPS-00708
+SLPS-00709
+SLPS-00715
+SLPS-00716
+SLPS-00760
+SLPS-00761
+SLPS-00770
+SLPS-00771
+SLPS-00775
+SLPS-00776
+SLPS-00800
+SLPS-00801
+SLPS-00815
+SLPS-00816
+SLPS-00823
+SLPS-00824
+SLPS-00826
+SLPS-00827
+SLPS-00844
+SLPS-00845
+SLPS-00846
+SLPS-00847
+SLPS-00848
+SLPS-00867
+SLPS-00868
+SLPS-00869
+SLPS-00870
+SLPS-00913
+SLPS-00914
+SLPS-00946
+SLPS-00947
+SLPS-00951
+SLPS-00952
+SLPS-00973
+SLPS-00974
+SLPS-00975
+SLPS-00976
+SLPS-00977
+SLPS-00996
+SLPS-00997
+SLPS-01001
+SLPS-01002
+SLPS-01003
+SLPS-01004
+SLPS-01005
+SLPS-01018
+SLPS-01019
+SLPS-01041
+SLPS-01042
+SLPS-01045
+SLPS-01046
+SLPS-01047
+SLPS-01051
+SLPS-01052
+SLPS-01053
+SLPS-01057
+SLPS-01058
+SLPS-01059
+SLPS-01060
+SLPS-01068
+SLPS-01069
+SLPS-01082
+SLPS-01083
+SLPS-01084
+SLPS-01087
+SLPS-01088
+SLPS-01108
+SLPS-01109
+SLPS-01136
+SLPS-01137
+SLPS-01138
+SLPS-01142
+SLPS-01143
+SLPS-01147
+SLPS-01148
+SLPS-01160
+SLPS-01161
+SLPS-01180
+SLPS-01181
+SLPS-01182
+SLPS-01183
+SLPS-01184
+SLPS-01187
+SLPS-01188
+SLPS-01189
+SLPS-01190
+SLPS-01191
+SLPS-01192
+SLPS-01193
+SLPS-01194
+SLPS-01195
+SLPS-01196
+SLPS-01197
+SLPS-01198
+SLPS-01199
+SLPS-01213
+SLPS-01214
+SLPS-01217
+SLPS-01218
+SLPS-01222
+SLPS-01223
+SLPS-01230
+SLPS-01231
+SLPS-01232
+SLPS-01233
+SLPS-01234
+SLPS-01235
+SLPS-01240
+SLPS-01241
+SLPS-01261
+SLPS-01262
+SLPS-01264
+SLPS-01265
+SLPS-01274
+SLPS-01275
+SLPS-01276
+SLPS-01277
+SLPS-01291
+SLPS-01292
+SLPS-01293
+SLPS-01297
+SLPS-01298
+SLPS-01326
+SLPS-01327
+SLPS-01328
+SLPS-01329
+SLPS-01340
+SLPS-01341
+SLPS-01351
+SLPS-01352
+SLPS-01377
+SLPS-01378
+SLPS-01397
+SLPS-01398
+SLPS-01403
+SLPS-01404
+SLPS-01432
+SLPS-01433
+SLPS-01442
+SLPS-01443
+SLPS-01444
+SLPS-01445
+SLPS-01446
+SLPS-01447
+SLPS-01448
+SLPS-01456
+SLPS-01457
+SLPS-01458
+SLPS-01490
+SLPS-01491
+SLPS-01495
+SLPS-01496
+SLPS-01497
+SLPS-01498
+SLPS-01499
+SLPS-015.64
+SLPS-01503
+SLPS-01504
+SLPS-01507
+SLPS-01508
+SLPS-01509
+SLPS-01510
+SLPS-01511
+SLPS-01512
+SLPS-01513
+SLPS-01527
+SLPS-01528
+SLPS-01529
+SLPS-01533
+SLPS-01534
+SLPS-01543
+SLPS-01544
+SLPS-01545
+SLPS-01560
+SLPS-01561
+SLPS-01562
+SLPS-01563
+SLPS-01588
+SLPS-01589
+SLPS-01603
+SLPS-01604
+SLPS-01609
+SLPS-01610
+SLPS-01611
+SLPS-01612
+SLPS-01613
+SLPS-01614
+SLPS-01626
+SLPS-01627
+SLPS-01643
+SLPS-01644
+SLPS-01657
+SLPS-01658
+SLPS-01671
+SLPS-01672
+SLPS-01673
+SLPS-01708
+SLPS-01709
+SLPS-01722
+SLPS-01723
+SLPS-01743
+SLPS-01744
+SLPS-01745
+SLPS-01771
+SLPS-01772
+SLPS-01780
+SLPS-01781
+SLPS-01791
+SLPS-01792
+SLPS-01798
+SLPS-01799
+SLPS-01800
+SLPS-01801
+SLPS-01803
+SLPS-01804
+SLPS-01805
+SLPS-01806
+SLPS-01807
+SLPS-01808
+SLPS-01810
+SLPS-01811
+SLPS-01818
+SLPS-01819
+SLPS-01830
+SLPS-01831
+SLPS-01834
+SLPS-01835
+SLPS-01840
+SLPS-01841
+SLPS-01843
+SLPS-01844
+SLPS-01845
+SLPS-01846
+SLPS-01855
+SLPS-01856
+SLPS-01880
+SLPS-01881
+SLPS-01882
+SLPS-01883
+SLPS-01890
+SLPS-01891
+SLPS-01892
+SLPS-01895
+SLPS-01896
+SLPS-01897
+SLPS-01908
+SLPS-01912
+SLPS-01913
+SLPS-01917
+SLPS-01918
+SLPS-01919
+SLPS-01920
+SLPS-01921
+SLPS-01922
+SLPS-01923
+SLPS-01945
+SLPS-01946
+SLPS-01947
+SLPS-01948
+SLPS-01949
+SLPS-01950
+SLPS-01958
+SLPS-01959
+SLPS-01972
+SLPS-01973
+SLPS-01988
+SLPS-01989
+SLPS-01990
+SLPS-01991
+SLPS-01995
+SLPS-01996
+SLPS-01997
+SLPS-01998
+SLPS-02000
+SLPS-02001
+SLPS-02002
+SLPS-02003
+SLPS-02005
+SLPS-02006
+SLPS-02007
+SLPS-02016
+SLPS-02017
+SLPS-02018
+SLPS-02019
+SLPS-02020
+SLPS-02021
+SLPS-02025
+SLPS-02026
+SLPS-02027
+SLPS-02028
+SLPS-02045
+SLPS-02046
+SLPS-02070
+SLPS-02071
+SLPS-02076
+SLPS-02077
+SLPS-02081
+SLPS-02082
+SLPS-02083
+SLPS-02088
+SLPS-02089
+SLPS-02095
+SLPS-02096
+SLPS-02108
+SLPS-02109
+SLPS-02124
+SLPS-02125
+SLPS-02148
+SLPS-02149
+SLPS-02170
+SLPS-02171
+SLPS-02182
+SLPS-02183
+SLPS-02184
+SLPS-02190
+SLPS-02191
+SLPS-02192
+SLPS-02193
+SLPS-02194
+SLPS-02200
+SLPS-02201
+SLPS-02202
+SLPS-02206
+SLPS-02207
+SLPS-02223
+SLPS-02224
+SLPS-02240
+SLPS-02241
+SLPS-02242
+SLPS-02243
+SLPS-02244
+SLPS-02246
+SLPS-02247
+SLPS-02266
+SLPS-02267
+SLPS-02268
+SLPS-02269
+SLPS-02280
+SLPS-02281
+SLPS-02286
+SLPS-02287
+SLPS-02290
+SLPS-02291
+SLPS-02313
+SLPS-02314
+SLPS-02325
+SLPS-02326
+SLPS-02327
+SLPS-02328
+SLPS-02329
+SLPS-02340
+SLPS-02341
+SLPS-02342
+SLPS-02364
+SLPS-02365
+SLPS-02380
+SLPS-02381
+SLPS-02393
+SLPS-02394
+SLPS-02395
+SLPS-02396
+SLPS-02401
+SLPS-02402
+SLPS-02456
+SLPS-02457
+SLPS-02460
+SLPS-02461
+SLPS-02462
+SLPS-02463
+SLPS-02465
+SLPS-02466
+SLPS-02480
+SLPS-02481
+SLPS-02504
+SLPS-02505
+SLPS-02512
+SLPS-02513
+SLPS-02521
+SLPS-02522
+SLPS-02523
+SLPS-02570
+SLPS-02571
+SLPS-02576
+SLPS-02577
+SLPS-02580
+SLPS-02581
+SLPS-02620
+SLPS-02621
+SLPS-02641
+SLPS-02642
+SLPS-02661
+SLPS-02662
+SLPS-02665
+SLPS-02666
+SLPS-02681
+SLPS-02682
+SLPS-02705
+SLPS-02706
+SLPS-02733
+SLPS-02734
+SLPS-02735
+SLPS-02761
+SLPS-02762
+SLPS-02763
+SLPS-02773
+SLPS-02774
+SLPS-02775
+SLPS-02776
+SLPS-02777
+SLPS-02778
+SLPS-02779
+SLPS-02780
+SLPS-02785
+SLPS-02786
+SLPS-028.28
+SLPS-02821
+SLPS-02822
+SLPS-02825
+SLPS-02826
+SLPS-02834
+SLPS-02835
+SLPS-02836
+SLPS-02837
+SLPS-02861
+SLPS-02862
+SLPS-02900
+SLPS-02901
+SLPS-02902
+SLPS-02903
+SLPS-02912
+SLPS-02913
+SLPS-02914
+SLPS-02915
+SLPS-02916
+SLPS-02917
+SLPS-02918
+SLPS-02925
+SLPS-02926
+SLPS-02927
+SLPS-02928
+SLPS-02929
+SLPS-02930
+SLPS-02940
+SLPS-02941
+SLPS-02962
+SLPS-02963
+SLPS-02966
+SLPS-02967
+SLPS-02968
+SLPS-02975
+SLPS-02976
+SLPS-02977
+SLPS-02978
+SLPS-03012
+SLPS-03013
+SLPS-03045
+SLPS-03046
+SLPS-03047
+SLPS-03050
+SLPS-03051
+SLPS-03052
+SLPS-03058
+SLPS-03059
+SLPS-03061
+SLPS-03062
+SLPS-03141
+SLPS-03142
+SLPS-03143
+SLPS-03144
+SLPS-03154
+SLPS-03155
+SLPS-03156
+SLPS-03157
+SLPS-03206
+SLPS-03207
+SLPS-03220
+SLPS-03221
+SLPS-03232
+SLPS-03233
+SLPS-03237
+SLPS-03238
+SLPS-03240
+SLPS-03241
+SLPS-03289
+SLPS-03290
+SLPS-03292
+SLPS-03293
+SLPS-03330
+SLPS-03331
+SLPS-03332
+SLPS-03333
+SLPS-03334
+SLPS-03335
+SLPS-03340
+SLPS-03341
+SLPS-03342
+SLPS-03343
+SLPS-03415
+SLPS-03416
+SLPS-03426
+SLPS-03427
+SLPS-03500
+SLPS-03501
+SLPS-03516
+SLPS-03517
+SLPS-03518
+SLPS-03521
+SLPS-03522
+SLPS-03523
+SLPS-03524
+SLPS-03556
+SLPS-03557
+SLPS-03558
+SLPS-03559
+SLPS-03567
+SLPS-03568
+SLPS-03571
+SLPS-03572
+SLPS-03573
+SLPS-03574
+SLPS-91043
+SLPS-91044
+SLPS-91060
+SLPS-91061
+SLPS-91062
+SLPS-91072
+SLPS-91073
+SLPS-91074
+SLPS-91076
+SLPS-91077
+SLPS-91093
+SLPS-91094
+SLPS-91096
+SLPS-91097
+SLPS-91100
+SLPS-91101
+SLPS-91102
+SLPS-91106
+SLPS-91107
+SLPS-91129
+SLPS-91130
+SLPS-91140
+SLPS-91141
+SLPS-91188
+SLPS-91189
+SLPS-91200
+SLPS-91201
+SLPS-91203
+SLPS-91204
+SLPS-91205
+SLPS-91206
+SLPS-91214
+SLPS-91215
+SLPS-91247
+SLPS-91248
+SLPS-91249
+SLPS-91436
+SLPS-91437
+SLPS-91440
+SLPS-91441
+SLPS-91442
+SLPS-91443
+SLPS-91444
+SLPS-91445
+SLPS-91464
+SLPS-91465
+SLPS-91479
+SLPS-91480
+SLPS-91489
+SLPS-91490
+SLPS-91500
+SLPS-91501
+SLPS-91517
+SLPS-91518
+SLPS-91527
+SLPS-91528
+SLPS_003.09
+SLPS_003.33
+SLPS_003.86
+SLPS_003.94
+SLPS_006.36
+SLPS_006.38
+SLPS_006.39
+SLPS_006.85
+SLPS_007.00
+SLPS_007.01
+SLPS_007.02
+SLPS_007.23
+SLPS_007.77
+SLPS_008.65
+SLPS_008.86
+SLPS_010.57
+SLPS_010.58
+SLPS_010.59
+SLPS_010.60
+SLPS_011.58
+SLPS_012.25
+SLPS_012.97
+SLPS_012.98
+SLPS_013.00
+SLPS_013.12
+SLPS_013.92
+SLPS_014.79
+SLPS_014.80
+SLPS_015.25
+SLPS_015.57
+SLPS_017.03
+SLPS_017.61
+SLPS_017.93
+SLPS_019.19
+SLPS_019.20
+SLPS_019.28
+SLPS_019.45
+SLPS_019.48
+SLPS_020.33
+SLPS_021.15
+SLPS_021.46
+SLPS_022.79
+SLPS_022.99
+SLPS_023.76
+SLPS_023.77
+SLPS_024.25
+SLPS_024.68
+SLPS_024.77
+SLPS_024.80
+SLPS_024.81
+SLPS_025.16
+SLPS_025.70
+SLPS_025.71
+SLPS_026.72
+SLPS_028.20
+SLPS_028.43
+SLPS_029.64
+SLPS_029.82
+SLPS_029.87
+SLPS_031.98
+SLPS_033.22
+SLPS_033.89
+SLPS_034.32
+SLPS_034.43
+SLPS_453.88
+SLPS_911.38
+SLPS_911.82
+SLPS_912.02
+SLPS_914.40
+SLPS_914.41
+SLPS_914.42
+SLPS_914.43
+SLPS_914.57
+SLPS_914.67
+SLPS_915.23
+SLUS-00019
+SLUS-00028
+SLUS-00083
+SLUS-00101
+SLUS-00120
+SLUS-00128
+SLUS-00134
+SLUS-00135
+SLUS-00136
+SLUS-00137
+SLUS-00165
+SLUS-00166
+SLUS-00167
+SLUS-00171
+SLUS-00173
+SLUS-00174
+SLUS-00175
+SLUS-00176
+SLUS-00182
+SLUS-00270
+SLUS-00271
+SLUS-00272
+SLUS-00273
+SLUS-00319
+SLUS-00379
+SLUS-00381
+SLUS-00386
+SLUS-00410
+SLUS-00421
+SLUS-00423
+SLUS-00431
+SLUS-00468
+SLUS-00485
+SLUS-00535
+SLUS-00543
+SLUS-00544
+SLUS-00554
+SLUS-00555
+SLUS-00556
+SLUS-00563
+SLUS-00564
+SLUS-00565
+SLUS-00580
+SLUS-00584
+SLUS-00592
+SLUS-00594
+SLUS-00628
+SLUS-00662
+SLUS-00664
+SLUS-00665
+SLUS-00667
+SLUS-00668
+SLUS-00669
+SLUS-00681
+SLUS-00696
+SLUS-00710
+SLUS-00716
+SLUS-00718
+SLUS-00726
+SLUS-00731
+SLUS-00741
+SLUS-00748
+SLUS-00756
+SLUS-00762
+SLUS-00771
+SLUS-00776
+SLUS-00797
+SLUS-00845
+SLUS-00858
+SLUS-00879
+SLUS-00892
+SLUS-00894
+SLUS-00896
+SLUS-00898
+SLUS-00899
+SLUS-00900
+SLUS-00908
+SLUS-00909
+SLUS-00910
+SLUS-00915
+SLUS-00920
+SLUS-00921
+SLUS-00949
+SLUS-00950
+SLUS-00951
+SLUS-00986
+SLUS-00988
+SLUS-00989
+SLUS-01030
+SLUS-01037
+SLUS-01040
+SLUS-01041
+SLUS-01042
+SLUS-01051
+SLUS-01055
+SLUS-01056
+SLUS-01057
+SLUS-01058
+SLUS-01070
+SLUS-01071
+SLUS-01072
+SLUS-01080
+SLUS-01081
+SLUS-01092
+SLUS-01098
+SLUS-01099
+SLUS-01100
+SLUS-01101
+SLUS-01102
+SLUS-01142
+SLUS-01151
+SLUS-01156
+SLUS-01157
+SLUS-01158
+SLUS-01161
+SLUS-01163
+SLUS-01164
+SLUS-01179
+SLUS-01199
+SLUS-01201
+SLUS-01206
+SLUS-01224
+SLUS-01239
+SLUS-01240
+SLUS-01251
+SLUS-01252
+SLUS-01253
+SLUS-01254
+SLUS-01255
+SLUS-01256
+SLUS-01257
+SLUS-01266
+SLUS-01275
+SLUS-01276
+SLUS-01277
+SLUS-01284
+SLUS-01294
+SLUS-01295
+SLUS-01296
+SLUS-01297
+SLUS-01314
+SLUS-01316
+SLUS-01318
+SLUS-01326
+SLUS-01339
+SLUS-01346
+SLUS-01355
+SLUS-01360
+SLUS-01363
+SLUS-01367
+SLUS-01368
+SLUS-01377
+SLUS-01440
+SLUS-01443
+SLUS-90029
+SLUS-90049
+SLUS-90075
+SLUS-90078
+SLUS-90083
+SLUS_000.14
+SLUS_002.82
+SLUS_002.97
+SLUS_003.41
+SLUS_003.55
+SLUS_003.71
+SLUS_003.81
+SLUS_003.86
+SLUS_004.02
+SLUS_004.16
+SLUS_004.49
+SLUS_005.10
+SLUS_006.33
+SLUS_006.39
+SLUS_007.07
+SLUS_007.36
+SLUS_008.23
+SLUS_008.59
+SLUS_008.70
+SLUS_008.79
+SLUS_009.64
+SLUS_010.03
+SLUS_010.40
+SLUS_010.42
+SLUS_010.55
+SLUS_011.04
+SLUS_011.34
+SLUS_011.38
+SLUS_011.60
+SLUS_012.30
+SLUS_012.60
+SLUS_012.61
+SLUS_013.11
+SLUS_013.60
+SLUS_807.07
+SLUS_900.50
+SLUS_900.75
+SLU__%03d.%02d
+SLU__320.10
+SLU__528.33
+SLU__836.73
+SPSR,0
+SPSR_flg,*
+SPU update   
+SPUCORE
+SPU_about
+SPU_async
+SPU_close
+SPU_configure
+SPU_freeze
+SPU_getOne
+SPU_init
+SPU_irqFunc
+SPU_open
+SPU_playADPCMchannel
+SPU_playCDDAchannel
+SPU_putOne
+SPU_readDMA
+SPU_readDMAMem
+SPU_readRegister
+SPU_setAddr
+SPU_setPitch
+SPU_setVolumeL
+SPU_setVolumeR
+SPU_shutdown
+SPU_startChannels1
+SPU_startChannels2
+SPU_stopChannels1
+SPU_stopChannels2
+SPU_test
+SPU_update
+SPU_writeDMA
+SPU_writeDMAMem
+SPU_writeRegister
+SSSjjjkkkmmmnnnpppwwwxxxxxxxxxrrrppppppppppppjjj```
+STACK =
+STACK = %x
+STACK=
+STACK=%x
+SYSTEM.CNF;1
+S_PIXELS_SIZE
+S_|Dk 
+Sa.A9l}
+SaveState(buf)
+Sd^A9!
+Se^A9F|
+SendGP1Command(gp1cmd)
+Sendstate size:cmd=%d slot=%d size=%d
+SetAddr
+SetCdromIrqAutoAbort(type,flag)
+SetConf(num_EvCB,num_TCB,stacktop)
+SetCustomExitFromException(addr)
+SetDefaultExitFromException()
+SetIrqAutoAck(irq,flag)
+SetMemSize(megabytes)
+Sfyxx8
+Sg^A9$}
+SgnA9*}
+Sj,@9y
+SoundNoiseClock
+SoundProcess
+SoundProcessStreaming
+SoundProcess_lowquality
+SoundProcess_nosound
+SpuRegs
+St10bad_typeid
+St11logic_error
+St11range_error
+St12domain_error
+St12length_error
+St12out_of_range
+St13bad_exception
+St13runtime_error
+St14overflow_error
+St15underflow_error
+St16invalid_argument
+St17__Named_exception
+St20bad_array_new_length
+St8bad_cast
+St9bad_alloc
+St9exception
+St9type_info
+StartCard()
+StartPad()
+StopCard()
+StopPad()
+Super2xSaI_ex565
+Super2xSaI_ex8
+SysDeqIntRP(priority,struc) ;bugged, use with care
+SysEnqIntRP(priority,struc) ;bugged, use with care
+SysInitKernelVariables()
+SysInitMemory(addr,size)
+SystemError
+SystemError ----OR---- 'GetSysSp()' ?
+SystemError ;DTL-H: AddCdromSimDevice
+SystemError ;DTL-H: AddMessageWindowDevice
+SystemError ;PS2: return 0
+SystemErrorBootOrDiskFailure(type,errorcode)
+SystemErrorExit(exitcode)
+SystemErrorUnresolvedException()
+S{y{xuyfxZ
+T#$C9d
+T#0@xc8
+T#0@xc@
+T*Kkk8Pkl8ki
+T36HZEnabled
+T? @1J
+T?T@k`
+TAH 8CU
+TAH xCU
+TC %lld %lld %lld %lld
+TCB = %x
+TCB=%x
+TCGR_DIV
+TCGR_DIVU
+TEXTURE_HEIGHT
+TEXTURE_WIDTH
+TG$@9e
+TG0@9e
+TG<@9e
+TGH@9e
+TGT@9e 
+TG`@9e$
+TGl@9e(
+TGx@9e,
+TIMING OFF
+TIMING ON
+TRACK 
+TRACK %d[^
+TRACK 01
+TRX   
+TRY   
+TRZ   
+TSS?=>
+TTObTTO
+TTT888888888<<<
+TTTzzzUUU
+T`C;9:
+T`Ku8d
+T`kt8`
+Tb[dxc
+Tcja8"$@
+TestEvent(event)
+TexCoord[0].xy = a_texCoord;
+TexCoord[1] = TexCoord[0].xxxy + vec4( -dx, 0, dx,-2.0*dy); // A1 B1 C1
+TexCoord[2] = TexCoord[0].xxxy + vec4( -dx, 0, dx,    -dy); //  A  B  C
+TexCoord[3] = TexCoord[0].xxxy + vec4( -dx, 0, dx,      0); //  D  E  F
+TexCoord[4] = TexCoord[0].xxxy + vec4( -dx, 0, dx,     dy); //  G  H  I
+TexCoord[5] = TexCoord[0].xxxy + vec4( -dx, 0, dx, 2.0*dy); // G5 H5 I5
+TexCoord[6] = TexCoord[0].xyyy + vec4(-2.0*dx,-dy, 0,  dy); // A0 D0 G0
+TexCoord[7] = TexCoord[0].xyyy + vec4( 2.0*dx,-dy, 0,  dy); // C4 F4 I4
+Tgzbx&
+This library is part of com.epsxe.ePSXe App. It is forgiven to include this library in other APKs. It is copyrighted by the ePSXe Team.
+TimerXirq
+TimerXirq(0)
+TimerXirq(1)
+TimerXirq(2)
+Trying to generate exceptions not implemented yet
+UUU888888888
+UUU@@@@@@@@@@@@AAA```zzz
+UUUUUU
+UUUUUU###
+UnDeliverEvent(class,spec)
+Undefined instruction
+Unknown
+Unrecognized operation %d in do_constant_folding.
+Unsupported zipfile %s: zipfile cannot span disks
+UpdateControl
+UpdateStatus1
+UpdateStatus2
+UpdateVoice
+VState
+VUUB@@
+VVV333333333333===
+VblankIrq
+VblankIrq()
+Version: $%02x must be $14 or less
+Voices
+VoicesNoises
+W  aRRvRRvRRvRRv>>m
+W""aRRvRRvRRvRRvRRvRRvPPu
+W##bRRvRRvRRv>>m
+W$$bHHrRRvRRvRRvRRvRRv>>m
+W))dPPuRRvRRvRRvRRv>>m
+W))dRRvRRv>>m
+W))dRRvRRvRRvRRvRRvRRvRRv
+W*(kn8,kl8
+W**eRRvRRv>>m
+W--fRRvRRv>>m
+W--fRRvRRvRRvRRvRRvRRvRRv
+W00gRRvRRvRRvRRvRRvRRvEE
+W11gRRvRRv>>m
+W11gRRvRRvRRvRRvRRvRRvRRv
+W22hRRvRRvRRv@@n
+W44iRRvRRvRRvRRvRRvRRvRRv
+W55iRRvRRvRRv>>m
+W88jRRvRRv>>m
+W99kRRvRRvRRvRRvRRv##b
+W<T7&Z;)oI2tM6
+W<W9'^>+vM5oYL
+W<X:(hD/pI3oYL
+W<gC.T7&
+W<qJ3xN6
+WAAoRRvRRv>>m
+WARNING creating memcard with blocks = 0 (unk)
+WIIrRRvRRvRRvRRvRRv55i
+WKKsRRvRRv>>m
+WRcntCounter
+WRcntMode
+WRcntTarget
+WSTgbdhcegbdhcefbdgbdgbdgcdgcdgcdiefuqs
+WSioBaudrate
+WSioControl
+WSioData
+WSioMode
+WWWMMMWWW
+WWWTTTWWWSSSccc
+WWWxxxxxxxxxZZZ
+WaitEvent(event)
+WarmBoot()
+Warning: Exception error
+Warning: File %s not cdrom!
+Warning: ISORead overflow A
+Warning: ISORead overflow B
+Warning: cdrom DMA wrap in memory (%x) (%x) (%x)
+Warning: system.cnf in EXE File %s not found!
+WriteDataList
+WriteDataListCache
+WriteMem
+Wxwxc 
+X  a  a  a  a  a  a::lRRvRRvRRvRRvRRvRRvEE
+X n'.A
+X n*X n
+X n+X n
+X n+X n@
+X njX n
+X nkY n
+X11hJJsQQvFFq##b
+X86 arch NOT detected!
+XWXCAB
+XXX@@@www
+Y  a  a  a  a  a  a<<lRRvRRvRRv@@n
+Y n,X n`
+Y22h22h22h22h22h22hCCoRRvRRvRRvRRvRRvRRvEE
+Y22h22h22h22h22h22hDDpRRvRRvRRv@@n
+Y99k99k99k99k99k99k;;lRRvRRvRRvRRvRRvRRvEE
+Y@@nRRvRRvRRvRRv>>m
+YIIrRRvRRvRRv>>m
+YRRvRRvRRvRRvRRvRRvEE
+YYY&&&############################################################(((ccc
+YYY888888888888
+YYY@@@
+Z&&c..g""a
+Z99k99k99k99k99k99k<<lRRvRRvRRv@@n
+Z@nOH|WH|WG{WF{WF{VFzU@
+ZRRvRRvRRv@@n
+ZSF3  
+ZSF4  
+ZVVe``keelffmggnhhoiipjj_\\yyy
+ZVW^\]
+ZYYEBC
+ZZZXXX
+ZZZZTTTT
+ZZZxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxwwwNNN
+[ n!lcN
+[ n!lcNZocN
+[ n!ldN
+[ n9[ n,X n
+[ nJY nkX n
+[ n{[ njX n)
+[ n{ocN
+[CDI2336] 
+[GzK2vdSy
+[MDF/BIN/IMG%d] 
+[MDF2448] 
+[NRG2336] 
+[NRG2352] 
+[NRG2448] 
+[PBP2352MD] 
+[PBP2352] 
+[PBPCompressedMD] 
+[PBPCompressed] 
+[QQvRRvRRv>>m
+[RRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvRRvEE
+[TCG profiler not compiled]
+[TRACK
+[TRACK %d]
+[UNK2352] 
+[XY{sv
+[ZZGDE
+[[[!!!
+[[[666444333///
+[[[XXXVVVSSS
+[[[kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkZZZ
+[[[kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkZZZ
+[[[yyyMMM
+\''dFFqRRvRRvRRvRRvRRvRRvBBp
+\QQvRRvRRvRRvRRvRRvFFq
+\RRvRRvRRvRRvRRvRRvRRvRRvRRvRRv@@n
+\[[HEF
+\\\%%%
+\\\nnnnnnnnnmmmnnnrrrtttvvvwwwxxxzzz{{{}}}~~~
+\x`xZxax"
+]!!aRRvRRvRRvEEp
+]]]^^^ddd
+]]]kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk]]]}}}
+]]]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxMMM
+]]]xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxPPP
+]]a]]a]]a]]a]]a]]a``b
+^&TTOC
+^\\JGH
+^\]KHI
+^^^(((############################################################(((^^^
+^^^888888888
+^^^@@@
+^^^@@@AAAbbb}}}
+^^^vvv
+_NNtRRvRRvRRvCCo
+_Unwind_Backtrace
+_Unwind_DeleteException
+_Unwind_FindEnclosingFunction
+_Unwind_Find_FDE
+_Unwind_ForcedUnwind
+_Unwind_GetCFA
+_Unwind_GetDataRelBase
+_Unwind_GetGR
+_Unwind_GetIP
+_Unwind_GetIPInfo
+_Unwind_GetLanguageSpecificData
+_Unwind_GetRegionStart
+_Unwind_GetTextRelBase
+_Unwind_RaiseException
+_Unwind_Resume
+_Unwind_Resume_or_Rethrow
+_Unwind_SetGR
+_Unwind_SetIP
+_ZN4xbrz14equalColorTestEjjNS_11ColorFormatEdd
+_ZN4xbrz20nearestNeighborScaleEPKjiiiPjiiiNS_9SliceTypeEii
+_ZN4xbrz5scaleEmPKjPjiiNS_11ColorFormatERKNS_9ScalerCfgEii
+_ZNKSt17__Named_exception4whatEv
+_ZNSt11logic_errorD0Ev
+_ZNSt11logic_errorD1Ev
+_ZNSt11logic_errorD2Ev
+_ZNSt11range_errorD0Ev
+_ZNSt11range_errorD1Ev
+_ZNSt11range_errorD2Ev
+_ZNSt12__node_alloc11_M_allocateERm
+_ZNSt12__node_alloc13_M_deallocateEPvm
+_ZNSt12domain_errorD0Ev
+_ZNSt12domain_errorD1Ev
+_ZNSt12domain_errorD2Ev
+_ZNSt12length_errorD0Ev
+_ZNSt12length_errorD1Ev
+_ZNSt12length_errorD2Ev
+_ZNSt12out_of_rangeD0Ev
+_ZNSt12out_of_rangeD1Ev
+_ZNSt12out_of_rangeD2Ev
+_ZNSt13runtime_errorD0Ev
+_ZNSt13runtime_errorD1Ev
+_ZNSt13runtime_errorD2Ev
+_ZNSt14__malloc_alloc18set_malloc_handlerEPFvvE
+_ZNSt14__malloc_alloc8allocateEm
+_ZNSt14overflow_errorD0Ev
+_ZNSt14overflow_errorD1Ev
+_ZNSt14overflow_errorD2Ev
+_ZNSt15underflow_errorD0Ev
+_ZNSt15underflow_errorD1Ev
+_ZNSt15underflow_errorD2Ev
+_ZNSt16invalid_argumentD0Ev
+_ZNSt16invalid_argumentD1Ev
+_ZNSt16invalid_argumentD2Ev
+_ZNSt17__Named_exceptionC1ERKS_
+_ZNSt17__Named_exceptionC1ERKSs
+_ZNSt17__Named_exceptionC2ERKS_
+_ZNSt17__Named_exceptionC2ERKSs
+_ZNSt17__Named_exceptionD0Ev
+_ZNSt17__Named_exceptionD1Ev
+_ZNSt17__Named_exceptionD2Ev
+_ZNSt17__Named_exceptionaSERKS_
+_ZNSt4priv14_Pthread_alloc10deallocateEPvm
+_ZNSt4priv14_Pthread_alloc10deallocateEPvmPNS_31_Pthread_alloc_per_thread_stateE
+_ZNSt4priv14_Pthread_alloc10reallocateEPvmRm
+_ZNSt4priv14_Pthread_alloc23_S_get_per_thread_stateEv
+_ZNSt4priv14_Pthread_alloc8allocateERm
+_ZNSt4priv14_Pthread_alloc8allocateERmPNS_31_Pthread_alloc_per_thread_stateE
+_ZNSt6vectorIjSaIjEED1Ev
+_ZNSt6vectorIjSaIjEED2Ev
+_ZSt23__stl_throw_range_errorPKc
+_ZSt24__stl_throw_length_errorPKc
+_ZSt24__stl_throw_out_of_rangePKc
+_ZSt25__stl_throw_runtime_errorPKc
+_ZSt26__stl_throw_overflow_errorPKc
+_ZSt28__stl_throw_invalid_argumentPKc
+_ZTIDd
+_ZTIDe
+_ZTIDf
+_ZTIDi
+_ZTIDn
+_ZTIDs
+_ZTIPDd
+_ZTIPDe
+_ZTIPDf
+_ZTIPDi
+_ZTIPDn
+_ZTIPDs
+_ZTIPKDd
+_ZTIPKDe
+_ZTIPKDf
+_ZTIPKDi
+_ZTIPKDn
+_ZTIPKDs
+_ZTIPKa
+_ZTIPKb
+_ZTIPKc
+_ZTIPKd
+_ZTIPKe
+_ZTIPKf
+_ZTIPKh
+_ZTIPKi
+_ZTIPKj
+_ZTIPKl
+_ZTIPKm
+_ZTIPKn
+_ZTIPKo
+_ZTIPKs
+_ZTIPKt
+_ZTIPKv
+_ZTIPKw
+_ZTIPKx
+_ZTIPKy
+_ZTIPa
+_ZTIPb
+_ZTIPc
+_ZTIPd
+_ZTIPe
+_ZTIPf
+_ZTIPh
+_ZTIPi
+_ZTIPj
+_ZTIPl
+_ZTIPm
+_ZTIPn
+_ZTIPo
+_ZTIPs
+_ZTIPt
+_ZTIPv
+_ZTIPw
+_ZTIPx
+_ZTIPy
+_ZTISt11logic_error
+_ZTISt11range_error
+_ZTISt12domain_error
+_ZTISt12length_error
+_ZTISt12out_of_range
+_ZTISt13runtime_error
+_ZTISt14overflow_error
+_ZTISt15underflow_error
+_ZTISt16invalid_argument
+_ZTISt17__Named_exception
+_ZTSDd
+_ZTSDe
+_ZTSDf
+_ZTSDi
+_ZTSDn
+_ZTSDs
+_ZTSPDd
+_ZTSPDe
+_ZTSPDf
+_ZTSPDi
+_ZTSPDn
+_ZTSPDs
+_ZTSPKDd
+_ZTSPKDe
+_ZTSPKDf
+_ZTSPKDi
+_ZTSPKDn
+_ZTSPKDs
+_ZTSPKa
+_ZTSPKb
+_ZTSPKc
+_ZTSPKd
+_ZTSPKe
+_ZTSPKf
+_ZTSPKh
+_ZTSPKi
+_ZTSPKj
+_ZTSPKl
+_ZTSPKm
+_ZTSPKn
+_ZTSPKo
+_ZTSPKs
+_ZTSPKt
+_ZTSPKv
+_ZTSPKw
+_ZTSPKx
+_ZTSPKy
+_ZTSPa
+_ZTSPb
+_ZTSPc
+_ZTSPd
+_ZTSPe
+_ZTSPf
+_ZTSPh
+_ZTSPi
+_ZTSPj
+_ZTSPl
+_ZTSPm
+_ZTSPn
+_ZTSPo
+_ZTSPs
+_ZTSPt
+_ZTSPv
+_ZTSPw
+_ZTSPx
+_ZTSPy
+_ZTSSt11logic_error
+_ZTSSt11range_error
+_ZTSSt12domain_error
+_ZTSSt12length_error
+_ZTSSt12out_of_range
+_ZTSSt13runtime_error
+_ZTSSt14overflow_error
+_ZTSSt15underflow_error
+_ZTSSt16invalid_argument
+_ZTSSt17__Named_exception
+_ZTVSt11logic_error
+_ZTVSt11range_error
+_ZTVSt12domain_error
+_ZTVSt12length_error
+_ZTVSt12out_of_range
+_ZTVSt13runtime_error
+_ZTVSt14overflow_error
+_ZTVSt15underflow_error
+_ZTVSt16invalid_argument
+_ZTVSt17__Named_exception
+_Z\xps{sv~vy
+_ZdaPv
+_ZdlPv
+_^^MJJ
+___"""
+___@@@
+___NETWORK___
+___RUNBIOS___
+___UUU]]]vvv
+__aarch64_sync_cache_range
+__android_log_print
+__android_log_write
+__assert2
+__bss_end__
+__bss_start
+__bss_start__
+__clear_cache
+__cxa_atexit
+__cxa_call_unexpected
+__cxa_finalize
+__deregister_frame
+__deregister_frame_info
+__deregister_frame_info_bases
+__end__
+__errno
+__frame_state_for
+__gxx_personality_v0
+__register_frame
+__register_frame_info
+__register_frame_info_bases
+__register_frame_info_table
+__register_frame_info_table_bases
+__register_frame_table
+__stack_chk_fail
+__stack_chk_guard
+_bu_init()
+_card_async_load_directory(port)
+_card_info(port)
+_card_info_subfunc(port) ;subfunction for '_card_info'
+_edata
+_emu_enable_psxbright
+_emu_enable_scanlines
+`BC9aFC9bJC9
+`BC9aFC9bJC9c
+`BC9aFC9bJC9t
+`N!X n!X n
+`N!ddN
+`N!ddNZgdN
+`N!deN
+`N!deNBdeN1
+`N)Y n)Y n
+`N)Y n)Y n9
+`N)Y n)Y ns
+`N,X n
+`N9[ n+[ nz
+`N?X n
+`NBX n
+`NBdeN
+`NJY nDY n
+`NJY nJY n
+`NJY nJY nE
+`NcX ncX n
+`NcX nzX n
+`NcX n{X n
+`NcX n{X n+
+`NkX n
+`NkY nkY n9
+`NlX n
+`NmX nZ[ n,X n 
+`NnX nJY n-X n
+`NsfeNR
+`N{[ nJY nkX n)
+`N{[ nd[ n
+`N{[ nd[ n0
+`N{gdN
+`RRvRRvRRvRRvRRvRRvEE
+```$$$
+```888888888
+`b@9cf@9bZ@9
+`h`8bC;
+`n@9aj@9  
+a*Ay`"Ay
+aFC9`BC9C
+aFC9bJC9cZ
+aN%kex
+aN%kex7
+aN'kfxB
+aN(kgx)5sN'kfxB
+aN(khx 
+aN7{vx@
+aNJkix`
+aNNhkx
+aN[kix_
+aNc4lN
+aNgkfx_
+aNjkix
+aNuzqx
+aNwztx
+aNx{xx{7rN@
+aNy{yx
+aV@9bR@9A 
+a^_NKL
+a_`PMM
+a_position
+a_texCoord
+aaa222
+aaaGGG@@@@@@@@@@@@@@@@@@@@@@@@ggg
+aaaUUU111
+abortHandler
+abs(val)
+accept
+accept %d
+ack start cmd %08x val %08x
+ackStart
+ackStartres
+act_lines
+add2_i32
+add2_i64
+addPrim
+add_i32
+add_i64
+add_op
+adjust_timing_country
+after %s() glError (0x%x)
+alloc_kernel_memory(size)
+allow_new_card()
+anaMouseX
+anaMouseY
+analog_axis
+and_i32
+and_i64
+andc_i32
+andc_i64
+asyncspu
+atob(src,num_dst)
+atof(src)
+atoi(src)
+atol(src)
+attribute vec2 a_texCoord;
+attribute vec4 a_position;
+autoconf_cdrom
+autofire_freq
+autofire_nextFrame
+autofire_phase
+a~jQx^|
+bAdvancedBlend
+bAdvancedBlend = %d
+bN&kfx
+bN&kfx0
+bN&kfx7
+bN*kix
+bN+kjx
+bN6{ux
+bN:{zx
+bNHkgx
+bNhkgx
+bNu{ux
+bNw{wx97sN 
+bOpaquePass
+bOpaquePass = %d
+bUseFrameSkip
+bUseFrameSkip = %d
+bad_array_new_length
+badvaddr
+basic_string
+bbbwww
+bcd2DEC
+bcmp(ptr1,ptr2,len)
+bcopy(src,dst,len)
+bin.ecm
+biosA0
+biosB0
+biosC0
+biosInterrrupt (%08x,%08x, %08x)
+biosTRACE
+bios_ascii_font
+bios_default_values
+bios_init
+bios_jis_font
+bios_name_select
+biosmd5p1
+blit_debug
+blit_frameskip
+blit_screen_android
+blk_info
+blockCacheData
+brbCache
+brcond2_i32
+brcond_i32
+brcond_i64
+brgCache
+brightCache
+bright_t
+bright_tCache
+bright_t_b
+bright_t_bCache
+bright_t_dit
+bright_t_ditCache
+bright_t_g
+bright_t_gCache
+bright_t_nc_dit
+bright_t_r
+bright_t_rCache
+brrCache
+bsearch(key,base,nel,width,callback)
+bswap16_i32
+bswap16_i64
+bswap32_i32
+bswap32_i64
+bswap64_i64
+bu_callback_err_busy()
+bu_callback_err_eject()
+bu_callback_err_prev_write()
+bu_callback_err_write()
+bu_callback_okay(
+buffersize
+bytebufferaddr
+bzero(dst,len)
+c$D*c<
+cError
+cN(kgx
+cN(khx'kgxB
+cN)khx
+cN)kixe
+cN3{sxa
+cN8{xx
+cNGkfx
+cNIhhx"
+cNgkfx
+cNrzpxK
+cNt{tx
+cNuzqx
+cNz{zxa
+cV@9`R@9bJ@9aN@9
+cX n$<
+c]_WVV
+c_events
+c_recompile_code
+c``miiqkkpjjoiinhhmgglffjdd\YY
+caaNLM
+caaRNP
+calculateEnvx
+calculateSweepVol
+callA0
+callB0
+callC0
+calloc(sizx,sizy)
+card_write_test(port) ;CEX-1000: jump_to_00000000h
+catch_signal11
+cbc}wz
+ccc(((############################################################&&&YYY
+ccc333
+ccchhhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhhh```
+cd_dev
+cd_get_cd_info
+cd_get_track_start
+cd_read
+cdatap1
+cdda_decode_sector
+cdda_decode_sector_external
+cdda_set_volume
+cddaspu
+cddavol
+cdr_api
+cdraccseek
+cdrnowait
+cdrom:%s
+cdrom:%s\%s
+cdrom:\%s
+cdrom:\PSX.EXE;1
+cdromTRACE
+cdrom_GetTrackFrame
+cdrom_GetTrackStartFrame
+cdrom_ReadCdda
+cdrom_cdcmd11
+cdrom_check_for_delay
+cdrom_copyright
+cdrom_default_values
+cdrom_eur
+cdrom_getbuffersub
+cdrom_gette
+cdrom_increase_hline_counter
+cdrom_init_hline_counter
+cdrom_irq_count
+cdrom_jap
+cdrom_letter
+cdrom_nexttrack
+cdrom_paused
+cdrom_play
+cdrom_read_info
+cdrom_reset
+cdrom_speed_mode
+cdrom_stop
+cdrom_subchannel
+cdrom_update
+cdrom_updatedma
+cdrom_usa
+cdrom_volume
+cdtimer
+chain_GPU_drawing_bottom
+chain_GPU_drawing_left
+chain_GPU_drawing_of_x
+chain_GPU_drawing_of_y
+chain_GPU_drawing_right
+chain_GPU_drawing_top
+chain_header
+chain_header_addr
+chain_inpline
+chain_intransfer
+chain_len
+chain_link_broke
+chain_oldaddr
+chain_on
+chain_timer
+chain_update
+change_plugin_restart
+change_snapslot_gpu
+chdir(name)
+cheatfilename
+cheats/
+cheats/database.dat
+cheats/dataconf.dat
+check_address
+check_address2
+check_bios
+check_cdrom_irq
+check_cdrom_nextirq
+check_cdrom_nextnextirq
+check_cheat
+check_cheatGL2_conf
+check_cheatGL_conf
+check_cheat_conf
+check_clear_dynarec_mem
+check_demo
+check_demo_size
+check_dll
+check_memcard_autosave
+check_open_cdrom
+check_redo_recompiled
+check_repeat_code
+check_repeat_code_database
+check_right_label
+check_snapshot
+check_sub_crc
+checkdllWrapper
+chrono_cross_patch
+ckcalc
+clearGSlist
+clear_dynarec
+clear_frameskip
+clear_screen
+clearbuffer
+cleartexture
+clientRunning
+client_close
+client_process_input
+closeWrapper
+close_cdrom
+close_client_input_receiver
+close_dynarec
+close_motor
+close_netplay
+close_rewind
+close_server
+close_server_input_sender
+close_spu
+clutCache
+cmd:%d
+cmdDigital45
+cmdDualshock43
+cmdDualshock44
+cmdDualshock45
+cmdDualshock45m
+cmdDualshock46
+cmdDualshock47
+cmdDualshock47m
+cmdDualshock4c
+cmdDualshock4d
+cmdMultitap0
+cmdMultitap1
+colorCache
+compiletcg_default_values
+config/
+connect
+connecting (%s:%d)
+connection accepted (%d)
+connection established (%d)
+console.log
+consoleTRACE
+const   float coef          = 2.0;
+const   vec2 OGLInvSize = 1.0/OGLSize;
+const   vec2 OGLSize    = vec2( 1024.0, 512.0);
+const   vec2 dx         = vec2( XBR_RES/TEX_SIZEX, 0.0);
+const   vec2 dy         = vec2( 0.0, XBR_RES/TEX_SIZEY);
+const   vec3  rgbw          = vec3(14.352, 28.176, 5.472);
+const   vec4  eq_threshold  = vec4(15.0, 15.0, 15.0, 15.0);
+const  mat4 invX = mat4(                          (-B - 6.0*C)/6.0,   (12.0 - 9.0*B - 6.0*C)/6.0,  -(12.0 - 9.0*B - 6.0*C)/6.0,   (B + 6.0*C)/6.0,
+const  vec4 Ao = vec4( 1.0, -1.0, -1.0, 1.0 );
+const  vec4 Ax = vec4( 1.0, -1.0, -1.0, 1.0 );
+const  vec4 Ay = vec4( 1.0, -1.0, -1.0, 1.0 );
+const  vec4 Bo = vec4( 1.0,  1.0, -1.0,-1.0 );
+const  vec4 Bx = vec4( 0.5,  2.0, -0.5,-2.0 );
+const  vec4 By = vec4( 2.0,  0.5, -2.0,-0.5 );
+const  vec4 Ci = vec4(0.25, 0.25, 0.25, 0.25);
+const  vec4 Co = vec4( 1.5,  0.5, -0.5, 0.5 );
+const  vec4 Cx = vec4( 1.0,  1.0, -0.5, 0.0 );
+const  vec4 Cy = vec4( 2.0,  0.0, -1.0, 0.5 );
+const float  B =  0.0;
+const float  C =  0.5;
+const vec2 OGLSize = vec2( 1024.0, 512.0);
+const vec4 delta   = vec4(1.0/XBR_SCALE, 1.0/XBR_SCALE, 1.0/XBR_SCALE, 1.0/XBR_SCALE);
+const vec4 delta_l = vec4(0.5/XBR_SCALE, 1.0/XBR_SCALE, 0.5/XBR_SCALE, 1.0/XBR_SCALE);
+const vec4 delta_u = delta_l.yxwz;
+const void* {anonymous}::walk_object(const void*, const __cxxabiv1::__class_type_info*, const void*, const __cxxabiv1::__class_type_info*)
+const1
+const128
+const2
+const5
+const6
+controller_keys
+cop0_enabledmemwrite
+copySamplesToExtBuffer
+create scanlines texture %x
+createProgram
+createProgramCustom
+create_folders
+create_scanlines_texture
+create_scanlines_texturev1
+create_scanlines_texturev2
+createfileMCD
+cserver
+ctexture
+ctrack
+currTCB
+current_gpu_height
+current_gpu_width
+d"d$D$
+d-$!<&
+dN@9aJ@9cB@9bF@9!<
+dabSPQ
+dataTD
+dataTN
+datanull
+davemask
+dbdUQR
+ddd333
+dddMMM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+debugGSCodes
+debugLOGenable
+debug_cdrom_irq
+debug_compile
+debug_get_uint16
+debug_get_uint32
+debug_get_uint8
+debug_insn_start
+debug_set_uint16
+debug_set_uint32
+dec2BCD
+dec_sector
+defintA
+delay_read_and_write_in_load
+delay_read_in_branch
+delay_read_in_double_load
+delay_read_in_load
+delete_game_profile
+deletefileMCD
+demo_name
+demo_name_select
+deposit32
+deposit_i32
+deposit_i64
+dequant
+dequant_buf
+destCache
+detect_country
+detect_device_features
+dev_card_close(fcb)
+dev_card_erase(fcb,'path\name')
+dev_card_firstfile(fcb,'path\name',direntry)
+dev_card_format(fcb)
+dev_card_nextfile(fcb,direntry)
+dev_card_open(fcb,'path\name',accessmode)
+dev_card_read(fcb,dst,len)
+dev_card_rename(fcb1,'path\name1',fcb2,'path\name2')
+dev_card_undelete(fcb,'path\name')
+dev_card_write(fcb,src,len)
+dev_cd_chdir(fcb,'path')
+dev_cd_close(fcb)
+dev_cd_firstfile(fcb,'path\name',direntry)
+dev_cd_nextfile(fcb,direntry)
+dev_cd_open(fcb,'path\name',accessmode)
+dev_cd_read(fcb,dst,len)
+dev_tty_in_out(fcb,cmd)
+dev_tty_init()
+dev_tty_ioctl(fcb,cmd,arg)
+dev_tty_open(fcb,and unused:'path\name',accessmode)
+dfNcdfN!4zN
+dir_buffer
+dirname
+disableAutofireButton
+disableMesg
+disable_gpuaddvertex
+disable_timer_irq(t)
+disam_param
+disarm64
+discard
+dit_table
+dit_table31Cache
+dit_tableCache
+div2_i32
+div2_i64
+div_i32
+div_i64
+divu2_i32
+divu2_i64
+divu_i32
+divu_i64
+dl_iterate_phdr
+dlclose
+dlerror
+dlopen
+dma1_addr
+dma1destaddr
+dma1inprocess
+dma1origaddr
+doError
+doErrorJava
+doVibration
+doVibrationJava
+do_DMA0
+do_DMA1
+do_DMA2
+do_DMA3
+do_DMA4
+do_DMA6
+do_end_render
+do_init_render
+do_nextirq
+do_save_rewind_snapshot
+do_sync
+do_sync_render
+do_unlockrender
+do_zgpusavefreezePic
+dotCache
+dpN!dpNc
+dpNAdpN
+drawControls
+draw_scanlines
+draw_scanlinesv2
+dualAnalogVibration
+dump_event_handlers
+dwActFixes
+dwActFixes = %04x
+d~mEmSv
+e8@9f<@9
+e?{O>{O=zM;zM:zL9zL8{J9
+eNA9B 
+ePSXe - Enhanced PSX emulator
+ePSXe error doing malloc!!!! 
+eVRAMIn
+ecmsync
+eee)))
+eee...))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))000ooo
+eeeCCC
+eeegggkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgggbbb
+efN!gfNc
+egN?ggN!
+egN@ggN
+egNAdgN
+egN_ggN!
+emu_active_multitap1
+emu_active_multitap2
+emu_adjust_timing
+emu_adjustcountrytiming
+emu_api
+emu_cdrom_command09_fast
+emu_cpumaxfreq
+emu_custom_fps
+emu_default_filter
+emu_default_filter_overflow
+emu_disableautoconf
+emu_dmachain_penalty
+emu_dmagpublock
+emu_dmagpuchainplugin
+emu_dmagpuchainpluginmode
+emu_dmagpuchainpluginreq
+emu_enable_2dscale
+emu_enable_autofire
+emu_enable_blitskip
+emu_enable_busygpu
+emu_enable_dithering
+emu_enable_filterhw
+emu_enable_framelimit
+emu_enable_framelimit_custom
+emu_enable_framelimit_gpu
+emu_enable_framelimit_local
+emu_enable_framelimit_req
+emu_enable_frameskip
+emu_enable_frameskip_force
+emu_enable_fullscreen
+emu_enable_gpushader
+emu_enable_interlaced
+emu_enable_interlaced_draw
+emu_enable_multitap1
+emu_enable_multitap2
+emu_enable_pete_subchannel_hle
+emu_enable_removeblackbands
+emu_enable_removeprotect
+emu_enable_rewind
+emu_enable_soundlatency
+emu_enable_subchannel
+emu_enable_subchannel_caching
+emu_enable_subchannel_cdrom
+emu_enable_touchscreen
+emu_enableadsrtrick
+emu_enablealwaysinc
+emu_enableaudiocd
+emu_enablecddmairq3
+emu_enablecdrom
+emu_enablecdtimingval
+emu_enablecdtimingval2
+emu_enablecdtimingval2cmd
+emu_enablecdtimingval3
+emu_enablecdtimingval3cmd
+emu_enablecmd10random
+emu_enablegtetrace
+emu_enablegui
+emu_enableicache
+emu_enableignorecmd
+emu_enablememcard
+emu_enablememcardslot
+emu_enablenocdoverwrite
+emu_enablenocdstatus
+emu_enableppf
+emu_enableprevblank
+emu_enablereportmode
+emu_enablerootcounter2
+emu_enablerootcounter3div4
+emu_enablesound
+emu_enablespuirq
+emu_enablewidescreen
+emu_enablexamdec
+emu_enablexaread
+emu_enablexasound
+emu_gpu_mt_mode
+emu_gpu_soft_mt_mode
+emu_gpu_soft_mt_mode_pending
+emu_gpu_soft_mt_mode_pending_param
+emu_gpuclear_onloadstate
+emu_gpucorevsync
+emu_gteaccuratehack
+emu_gteaccuratehack_req
+emu_hlebios
+emu_loadpsxlib
+emu_maintiming
+emu_mem_penalty
+emu_memcard1_enable
+emu_memcard2_enable
+emu_memcardbygame
+emu_mesg
+emu_mesg_console
+emu_mesg_exit
+emu_mesg_exit_core
+emu_mesg_exit_error
+emu_mesg_exit_error_ui
+emu_mesg_file
+emu_mesg_force
+emu_mesg_tcg
+emu_multiplayer
+emu_number_of_cpus
+emu_player_mode
+emu_psxfastboot
+emu_quick_load_sstate
+emu_screen_orientation
+emu_smcurblock
+emu_split_mode
+emu_spunonqueueirq
+emu_spuquality
+emu_sstate_version
+emu_stopped
+emu_windowlogs
+emulinuxkeys_default_values
+enableAutofireButton
+enableVibration
+enable_config
+enable_hle_opcode
+enable_timer_irq(t)
+endGSCodes
+end_compile
+end_port
+endsavedone
+enqueue_data
+epsxe/memcards/epsxe000.mcr
+epsxe/memcards/epsxe001.mcr
+epsxe_default_values
+epsxe_on_exit
+epsxe_on_exit_loop
+epsxegl
+epsxegl: dlclose gpu
+epsxegl: dlopen %s
+eqv_i32
+eqv_i64
+error loadgin dll 
+evrampos
+ewrite
+execfunc
+execfunc2
+exit(exitcode)
+exit_blit
+exit_tb
+exitdone
+exiting hardware renderer c-thread
+ext16s_i32
+ext16s_i64
+ext16u_i32
+ext16u_i64
+ext32s_i64
+ext32u_i64
+ext8s_i32
+ext8s_i64
+ext8u_i32
+ext8u_i64
+fbores
+fbrectangle
+fbrectangleCache
+fclose
+fddVRT
+fdeslounp
+fetch_opcode_icache
+fffXXXOOOEEE===***xxxxxxxxxxxx@@@444<<<CCCKKKRRRooo
+fffeee
+fffmmm
+fflush
+filter_linear
+findfile
+findfileMCD
+firstfile(filename,direntry)
+fixHLEState
+fix_108n184
+fix_141
+fix_184
+fix_184n261
+fix_n184
+flat3polygon
+flat3polygonCache
+flat3polygonHD
+flat3polygonHD4
+flat4polygon
+flat4polygonCache
+flat4polygonHD
+flat4polygonHD4
+flatline
+flatlineCache
+float Gaus(float pos,float scale){return exp2(scale*pos*pos);}
+float Scan(vec2 pos,float off){
+float ToLinear1(float c)
+float ToSrgb1(float c)
+float c_df(vec3 c1, vec3 c2)
+float dx = OGLInvSize.x;
+float dy = OGLInvSize.y;
+fmodTable
+force_reinit_memcard
+fprintf
+free(buf)
+free_kernel_memory(buf)
+free_readdma
+frontList
+fscanf
+fticks
+fullFB
+func0x12
+func_skip
+func_skipCache
+fwrite
+gNcdfN!dfNBdfN
+gUnzipQuiet
+g]obYj
+g_nextbyte
+gameCode
+gamepadnumber
+gdNZocN
+gdN{ocN
+geN!ldNBldN
+geNBldN
+gen_new_label
+getBuffer
+getBytes
+getCacheBuffer
+getCacheEVRAM
+getCountry
+getDots
+getESoundBufferSize
+getFlipGL
+getISoundBufferSize
+getMSF
+getNoiseSample
+getNumberOfProcessor
+getOffsetX
+get_bu_callback_port()
+get_card_find_mode()
+get_card_status(slot)
+get_cd1_name
+get_emuframe
+get_filezip_size
+get_free_EvCB_slot()
+get_free_TCB_slot()
+get_int
+get_keys
+get_last_cdrom_command
+get_lead
+get_list
+get_list_files
+get_memcard_pointer
+get_mfps
+get_mfps_raw
+get_netplayer_analog0
+get_netplayer_analog0_cached
+get_netplayer_analog1
+get_netplayer_buttons0
+get_netplayer_buttons1
+get_netplayer_input
+get_netplayer_mode
+get_next_command_pll
+get_param_value
+get_pointer_address
+get_psexe_boot_info
+get_psexe_name
+get_psexe_name_accurated
+get_psexe_name_autogen
+get_rewind_entries
+get_snapshot_size
+get_snapslot
+get_timer(t)
+get_uint16_fast
+get_uint16_reg
+get_uint32_fast
+get_uint32_reg
+get_uint32_reg_fast
+get_uint8_fast
+get_uint8_reg
+getcharnoecho
+getenv
+getexeconf
+getgtevertex
+gethostbyname
+getmemCacheSize
+getpid
+getsbpsexe
+gettimeofday
+gfx_change_gpu
+gfx_do_picture
+gfx_do_setfix
+gfx_do_setframelimit
+gfx_do_visualvibration
+gfx_draw_frame
+gfx_end
+gfx_hide_minipicture
+gfx_show_flags
+gfx_show_minipicture
+gfx_show_pic
+gggOOO@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@BBB```~~~
+glAlphaFunc
+glAttachShader
+glAttachpixelShader
+glAttachvertexShader
+glBindTexture
+glBlendFunc
+glClear
+glClearColor
+glColor4f
+glColor4ub
+glColor4x
+glColorPointer
+glCompileShader
+glCreateProgram
+glCreateShader
+glDeleteProgram
+glDeleteShader
+glDeleteTextures
+glDisable
+glDisableClientState
+glDrawArrays
+glDrawElements
+glDrawTexiOES
+glEnable
+glEnableClientState
+glEnableVertexAttribArray
+glGenTextures
+glGetAttribLocation
+glGetError
+glGetProgramInfoLog
+glGetProgramiv
+glGetShaderInfoLog
+glGetShaderiv
+glGetUniformLocation
+glLinkProgram
+glPopMatrix
+glPushMatrix
+glRotatef
+glShadeModel
+glShaderSource
+glTexCoordPointer
+glTexImage2D
+glTexParameterf
+glTexParameteri
+glTexParameteriv
+glTexSubImage2D
+glTranslatef
+glUniform1f
+glUniform1i
+glUniform2fv
+glUseProgram
+glVertexAttribPointer
+glVertexPointer
+glViewport
+gl_Position = a_position;
+glvram
+glwrapperinit
+goto_tb
+gouraud3polygon
+gouraud3polygonCache
+gouraud3polygonHD
+gouraud3polygonHD4
+gouraud4polygon
+gouraud4polygonCache
+gouraud4polygonHD
+gouraud4polygonHD4
+gouraudline
+gouraudlineCache
+gouraudtextured3polygon
+gouraudtextured3polygonCache
+gouraudtextured3polygonHD
+gouraudtextured3polygonHD4
+gouraudtextured4polygon
+gouraudtextured4polygonCache
+gouraudtextured4polygonHD
+gouraudtextured4polygonHD4
+gpu0_read
+gpu0_write
+gpu1_read
+gpu1_readWrapper
+gpu1_read_raw
+gpu1_write
+gpuAPICache_default_values
+gpuAPI_default_values
+gpuAndroidGLExt_default_values
+gpuAndroidGL_default_values
+gpuApiGLWrapper_default_values
+gpuPluginExt
+gpuVersion
+gpu_abort_dma()
+gpu_addvertex
+gpu_api
+gpu_change_pending
+gpu_com_lenght
+gpu_getoptionfixesgl
+gpu_getoptionfixesglWrapper
+gpu_getoptiongl
+gpu_getoptionglWrapper
+gpu_glBindTextureVirtual
+gpu_glBindTextureVirtualWrapper
+gpu_name_select
+gpu_resize
+gpu_resizeWrapper
+gpu_saveoptiongl
+gpu_saveoptiongl2
+gpu_saveoptiongl2Wrapper
+gpu_saveoptionglWrapper
+gpu_scanlines_lines
+gpu_scanlines_trans
+gpu_send_dma(Xdst,Ydst,Xsiz,Ysiz,src)
+gpu_setfbo
+gpu_setoptiongl
+gpu_setoptiongl2
+gpu_setoptiongl2Wrapper
+gpu_setoptionglWrapper
+gpu_setscanlines
+gpu_setscanlinesWrapper
+gpu_sync()
+gpu_update
+gpu_updategteaccuracy
+gpu_updategteaccuracyWrapper
+gpu_updateresize
+gpu_updateresizeWrapper
+gpuaddvertexCache
+gpuchangesnapslot
+gpuchangesnapslotCache
+gpucleardynarec
+gpucleardynarecCache
+gpuclose
+gpucloseCache
+gpuclosed
+gpuclosedWrapper
+gpucount
+gpucountCache
+gpucursor
+gpucursorCache
+gpudisplayflags
+gpudisplayflagsCache
+gpudma2
+gpudma2Cache
+gpudma2_force_stop
+gpudma2chain
+gpudma2read
+gpudma2update
+gpudma2updateCache
+gpudma2updateext
+gpudma2write
+gpudmachaincore_default_values
+gpuexecchainlinkext
+gpugetscreenpic
+gpugetscreenpicCache
+gpuhideminipic
+gpuhideminipicCache
+gpuinit
+gpuinitCache
+gpumakesnapshot
+gpumakesnapshotCache
+gpuopen
+gpuopenCache
+gpuratio
+gpureaddata
+gpureaddataCache
+gpureadstatus
+gpureadstatusCache
+gpureopen
+gpureopenCache
+gpurestart
+gpusetfix
+gpusetframelimit
+gpusetframelimitCache
+gpushowminipic
+gpushowminipicCache
+gpushowscreenpic
+gpushowscreenpicCache
+gpushutdown
+gpushutdownCache
+gpuupdatelace
+gpuupdatelaceCache
+gpuvisualvibration
+gpuvisualvibrationCache
+gpuwritedata
+gpuwritedataCache
+gpuwritestatus
+gpuwritestatusCache
+gteCoords
+gteTRACE
+gte_read
+gte_write
+gui_close_gpu
+gui_close_net
+gui_reinit_gpu
+gui_reinit_net
+gunIrq
+gunMouseX
+gunMouseY
+gunOsFire
+gunResX
+gunTrigger
+gzclose
+gzopen
+gzread
+gzwrite
+g~A9V2
+g~nm~rW
+h"x.h78
+hGPULib
+hGPULibWrapper
+hNETLib
+hSPULib
+hTG|R9
+hTHzR9
+hTTTTTD
+handlercop0opcode
+handleropcode
+handlerregimmopcode
+handlerspecialopcode
+has_run_frame
+hb8`C;9`
+hd8chh8
+hdinow
+hefWTU
+hefhffheehefhfg^\]
+hgxJ5rN
+hhh444
+hhhZZZ________________________________________________^^^^^^^^^^^^^^^_________________________________XXXeee
+hhhooo||||||mmmlll
+hhhuuu
+hhh{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}kkk
+hit_key
+hit_key_touch
+hleback
+hledyneventhack
+hleexec
+hleexecS
+huft_build
+huft_free
+iCache
+iFilterType
+iFilterType = %d
+iFrameTexType
+iFrameTexType = %d
+iMouseButton
+iMouseMoveX
+iMouseMoveY
+iOffScreenDrawing
+iOffScreenDrawing = %d
+iUseMask
+iUseMask = %d
+iVoice
+icnlock
+idct_buf
+idct_mmx
+ifhZUW
+iii,,,
+iiiKKK
+iiibbbfffmmmwww
+iii}}}}}}}}}}}}
+iii}}}}}}}}}}}}}}}}}}}}}lll
+img.ecm
+in_delay_slot
+in_jump_addr
+inc_frame
+inc_sector
+inc_snapshot
+incoming_connect_client_input_receiver
+incoming_connect_server
+index(src,char)
+inflate
+inflateEnd
+inflateInit2_
+inflate_
+inflate_FLUSH
+inflate_codes_
+inflate_free
+info.adjustedPtr && cur_base_info.adjustedPtr
+info.base_type != NULL && cur_base_info.base_type != NULL
+initBuffer
+initCDDA
+initEnvelope
+initFIR
+initFmod
+initGSCodes
+initInterpolate
+initNoise
+initReverb
+initReverbEngine
+initWrapper
+initXA
+init_Autofire
+init_a0_b0_c0_vectors
+init_bios
+init_ccalc
+init_cdrom
+init_console
+init_cpu
+init_debug_port
+init_dmachaincore
+init_dynarec
+init_framecounter
+init_general_param
+init_gpu_plugins
+init_gte
+init_icache
+init_internalsync
+init_internalsyncWrapper
+init_irq
+init_iso9660
+init_joypad
+init_mdec
+init_memory_handler
+init_motionevent
+init_motionevent2P
+init_motionevent2PH
+init_motionevent2PV
+init_motioneventPort
+init_motor
+init_multitap
+init_netplay
+init_parallel
+init_pc_cdrom
+init_plugins
+init_plugins_cdrom
+init_port
+init_psx_memory
+init_psxbrightness
+init_rcnt
+init_regs
+init_rewind
+init_root_iso9660
+init_sio
+init_spu
+init_spu_done
+init_spu_plugins
+init_tables
+init_timer(t,reload,flags)
+initport
+initportd
+initvirtualPadPos
+innerloopCache_flt
+innerloopCache_flt_functionsCache
+innerloopCache_flt_t
+innerloopCache_grd
+innerloopCache_grd_dit
+innerloopCache_grd_functions
+innerloopCache_grd_t
+innerloopCache_grd_t_dit
+innerloopCache_grt_16b
+innerloopCache_grt_16b_dit
+innerloopCache_grt_16b_tw
+innerloopCache_grt_16b_tw_dit
+innerloopCache_grt_16tb
+innerloopCache_grt_16tb_dit
+innerloopCache_grt_16tb_tw
+innerloopCache_grt_16tb_tw_dit
+innerloopCache_grt_4b
+innerloopCache_grt_4b_dit
+innerloopCache_grt_4b_tw
+innerloopCache_grt_4b_tw_dit
+innerloopCache_grt_4tb
+innerloopCache_grt_4tb_dit
+innerloopCache_grt_4tb_tw
+innerloopCache_grt_4tb_tw_dit
+innerloopCache_grt_8b
+innerloopCache_grt_8b_dit
+innerloopCache_grt_8b_tw
+innerloopCache_grt_8b_tw_dit
+innerloopCache_grt_8tb
+innerloopCache_grt_8tb_dit
+innerloopCache_grt_8tb_tw
+innerloopCache_grt_8tb_tw_dit
+innerloopCache_grt_functionsCache
+innerloopCache_tex_16
+innerloopCache_tex_16_tw
+innerloopCache_tex_16b
+innerloopCache_tex_16b_dit
+innerloopCache_tex_16b_tw
+innerloopCache_tex_16b_tw_dit
+innerloopCache_tex_16t
+innerloopCache_tex_16t_tw
+innerloopCache_tex_16tb
+innerloopCache_tex_16tb_dit
+innerloopCache_tex_16tb_tw
+innerloopCache_tex_16tb_tw_dit
+innerloopCache_tex_4
+innerloopCache_tex_4_tw
+innerloopCache_tex_4b
+innerloopCache_tex_4b_dit
+innerloopCache_tex_4b_tw
+innerloopCache_tex_4b_tw_dit
+innerloopCache_tex_4t
+innerloopCache_tex_4t_tw
+innerloopCache_tex_4tb
+innerloopCache_tex_4tb_dit
+innerloopCache_tex_4tb_tw
+innerloopCache_tex_4tb_tw_dit
+innerloopCache_tex_8
+innerloopCache_tex_8_tw
+innerloopCache_tex_8b
+innerloopCache_tex_8b_dit
+innerloopCache_tex_8b_tw
+innerloopCache_tex_8b_tw_dit
+innerloopCache_tex_8t
+innerloopCache_tex_8t_tw
+innerloopCache_tex_8tb
+innerloopCache_tex_8tb_dit
+innerloopCache_tex_8tb_tw
+innerloopCache_tex_8tb_tw_dit
+innerloopCache_tex_functionsCache
+innerloopHD4_flt
+innerloopHD4_flt_functions
+innerloopHD4_flt_t
+innerloopHD4_grd
+innerloopHD4_grd_dit
+innerloopHD4_grd_functions
+innerloopHD4_grd_t
+innerloopHD4_grd_t_dit
+innerloopHD4_grt_16b
+innerloopHD4_grt_16b_dit
+innerloopHD4_grt_16b_tw
+innerloopHD4_grt_16b_tw_dit
+innerloopHD4_grt_16tb
+innerloopHD4_grt_16tb_dit
+innerloopHD4_grt_16tb_tw
+innerloopHD4_grt_16tb_tw_dit
+innerloopHD4_grt_4b
+innerloopHD4_grt_4b_dit
+innerloopHD4_grt_4b_tw
+innerloopHD4_grt_4b_tw_dit
+innerloopHD4_grt_4tb
+innerloopHD4_grt_4tb_dit
+innerloopHD4_grt_4tb_tw
+innerloopHD4_grt_4tb_tw_dit
+innerloopHD4_grt_8b
+innerloopHD4_grt_8b_dit
+innerloopHD4_grt_8b_tw
+innerloopHD4_grt_8b_tw_dit
+innerloopHD4_grt_8tb
+innerloopHD4_grt_8tb_dit
+innerloopHD4_grt_8tb_tw
+innerloopHD4_grt_8tb_tw_dit
+innerloopHD4_grt_functions
+innerloopHD4_tex_16
+innerloopHD4_tex_16_tw
+innerloopHD4_tex_16b
+innerloopHD4_tex_16b_dit
+innerloopHD4_tex_16b_tw
+innerloopHD4_tex_16b_tw_dit
+innerloopHD4_tex_16t
+innerloopHD4_tex_16t_tw
+innerloopHD4_tex_16tb
+innerloopHD4_tex_16tb_dit
+innerloopHD4_tex_16tb_tw
+innerloopHD4_tex_16tb_tw_dit
+innerloopHD4_tex_4
+innerloopHD4_tex_4_tw
+innerloopHD4_tex_4b
+innerloopHD4_tex_4b_dit
+innerloopHD4_tex_4b_tw
+innerloopHD4_tex_4b_tw_dit
+innerloopHD4_tex_4t
+innerloopHD4_tex_4t_tw
+innerloopHD4_tex_4tb
+innerloopHD4_tex_4tb_dit
+innerloopHD4_tex_4tb_tw
+innerloopHD4_tex_4tb_tw_dit
+innerloopHD4_tex_8
+innerloopHD4_tex_8_tw
+innerloopHD4_tex_8b
+innerloopHD4_tex_8b_dit
+innerloopHD4_tex_8b_tw
+innerloopHD4_tex_8b_tw_dit
+innerloopHD4_tex_8t
+innerloopHD4_tex_8t_tw
+innerloopHD4_tex_8tb
+innerloopHD4_tex_8tb_dit
+innerloopHD4_tex_8tb_tw
+innerloopHD4_tex_8tb_tw_dit
+innerloopHD4_tex_functions
+innerloopHD_flt
+innerloopHD_flt_functions
+innerloopHD_flt_t
+innerloopHD_grd
+innerloopHD_grd_dit
+innerloopHD_grd_functions
+innerloopHD_grd_t
+innerloopHD_grd_t_dit
+innerloopHD_grt_16b
+innerloopHD_grt_16b_dit
+innerloopHD_grt_16b_tw
+innerloopHD_grt_16b_tw_dit
+innerloopHD_grt_16tb
+innerloopHD_grt_16tb_dit
+innerloopHD_grt_16tb_tw
+innerloopHD_grt_16tb_tw_dit
+innerloopHD_grt_4b
+innerloopHD_grt_4b_dit
+innerloopHD_grt_4b_tw
+innerloopHD_grt_4b_tw_dit
+innerloopHD_grt_4tb
+innerloopHD_grt_4tb_dit
+innerloopHD_grt_4tb_tw
+innerloopHD_grt_4tb_tw_dit
+innerloopHD_grt_8b
+innerloopHD_grt_8b_dit
+innerloopHD_grt_8b_tw
+innerloopHD_grt_8b_tw_dit
+innerloopHD_grt_8tb
+innerloopHD_grt_8tb_dit
+innerloopHD_grt_8tb_tw
+innerloopHD_grt_8tb_tw_dit
+innerloopHD_grt_functions
+innerloopHD_tex_16
+innerloopHD_tex_16_tw
+innerloopHD_tex_16b
+innerloopHD_tex_16b_dit
+innerloopHD_tex_16b_tw
+innerloopHD_tex_16b_tw_dit
+innerloopHD_tex_16t
+innerloopHD_tex_16t_tw
+innerloopHD_tex_16tb
+innerloopHD_tex_16tb_dit
+innerloopHD_tex_16tb_tw
+innerloopHD_tex_16tb_tw_dit
+innerloopHD_tex_4
+innerloopHD_tex_4_tw
+innerloopHD_tex_4b
+innerloopHD_tex_4b_dit
+innerloopHD_tex_4b_tw
+innerloopHD_tex_4b_tw_dit
+innerloopHD_tex_4t
+innerloopHD_tex_4t_tw
+innerloopHD_tex_4tb
+innerloopHD_tex_4tb_dit
+innerloopHD_tex_4tb_tw
+innerloopHD_tex_4tb_tw_dit
+innerloopHD_tex_8
+innerloopHD_tex_8_tw
+innerloopHD_tex_8b
+innerloopHD_tex_8b_dit
+innerloopHD_tex_8b_tw
+innerloopHD_tex_8b_tw_dit
+innerloopHD_tex_8t
+innerloopHD_tex_8t_tw
+innerloopHD_tex_8tb
+innerloopHD_tex_8tb_dit
+innerloopHD_tex_8tb_tw
+innerloopHD_tex_8tb_tw_dit
+innerloopHD_tex_functions
+innerloop_flt
+innerloop_flt_functions
+innerloop_flt_t
+innerloop_grd
+innerloop_grd_dit
+innerloop_grd_functions
+innerloop_grd_t
+innerloop_grd_t_dit
+innerloop_grt_16b
+innerloop_grt_16b_dit
+innerloop_grt_16b_tw
+innerloop_grt_16b_tw_dit
+innerloop_grt_16tb
+innerloop_grt_16tb_dit
+innerloop_grt_16tb_tw
+innerloop_grt_16tb_tw_dit
+innerloop_grt_4b
+innerloop_grt_4b_dit
+innerloop_grt_4b_tw
+innerloop_grt_4b_tw_dit
+innerloop_grt_4tb
+innerloop_grt_4tb_dit
+innerloop_grt_4tb_tw
+innerloop_grt_4tb_tw_dit
+innerloop_grt_8b
+innerloop_grt_8b_dit
+innerloop_grt_8b_tw
+innerloop_grt_8b_tw_dit
+innerloop_grt_8tb
+innerloop_grt_8tb_dit
+innerloop_grt_8tb_tw
+innerloop_grt_8tb_tw_dit
+innerloop_grt_functions
+innerloop_tex_16
+innerloop_tex_16_tw
+innerloop_tex_16b
+innerloop_tex_16b_dit
+innerloop_tex_16b_tw
+innerloop_tex_16b_tw_dit
+innerloop_tex_16t
+innerloop_tex_16t_tw
+innerloop_tex_16tb
+innerloop_tex_16tb_dit
+innerloop_tex_16tb_tw
+innerloop_tex_16tb_tw_dit
+innerloop_tex_4
+innerloop_tex_4_tw
+innerloop_tex_4b
+innerloop_tex_4b_dit
+innerloop_tex_4b_tw
+innerloop_tex_4b_tw_dit
+innerloop_tex_4t
+innerloop_tex_4t_tw
+innerloop_tex_4tb
+innerloop_tex_4tb_dit
+innerloop_tex_4tb_tw
+innerloop_tex_4tb_tw_dit
+innerloop_tex_8
+innerloop_tex_8_tw
+innerloop_tex_8b
+innerloop_tex_8b_dit
+innerloop_tex_8b_tw
+innerloop_tex_8b_tw_dit
+innerloop_tex_8t
+innerloop_tex_8t_tw
+innerloop_tex_8tb
+innerloop_tex_8tb_dit
+innerloop_tex_8tb_tw
+innerloop_tex_8tb_tw_dit
+innerloop_tex_functions
+insertGSElement
+instr_disassemble
+instr_index
+int_point_inside_trigon
+invalidate_icache
+inverse_c
+invmult
+invmultCache
+ioabort(txt1,txt2)
+ioabort_raw(param) ;CEX-1000: jump_to_00000000h
+ipClient
+iqtab_init
+irq_default_values
+isMultiBuffer
+isSkipCache
+is_pending_loadstate
+isnlock
+iso.ecm
+iso9660_default_values
+iso9660_systemcnf_found
+iwrite
+jCache
+java/lang/String
+jhh[WX
+jhi\XZ
+jis_table
+jjj///))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))///jjj
+jjj@@@}}}
+jjjAAA
+jjjUUU@@@@@@@@@@@@@@@hhh
+jjjXXXAAA@@@@@@CCC
+jjjyyy
+jni/tcg64/aarch64/tcg-target.c
+jni/tcg64/optimize.c
+jni/tcg64/tcg.c
+joystick_deadzone
+jpsxPAD
+k`h589
+kkk222
+kkk@@@ttt
+kkkXXX@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@FFFddd
+kkk}}}}}}}}}}}}}}}}}}}}}qqq
+kkk}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+kkmZZammo
+lSD|Q8T7&B+
+labs(val)
+lastframe
+lc_hle_enabled
+ld16s_i32
+ld16s_i64
+ld16u_i32
+ld16u_i64
+ld32s_i64
+ld32u_i64
+ld8s_i32
+ld8s_i64
+ld8u_i32
+ld8u_i64
+ld_i32
+ld_i64
+li#8*i#8
+libGLESv1_CM.so
+libGLESv2.so
+libc.so
+libdl.so
+libepsxe.so
+libjnigraphics.so
+liblog.so
+libm.so
+libps.exe
+libstdc++.so
+libz.so
+linuxgpu_default_values
+listen
+listen %d
+loadFmod
+loadShader
+load_bios
+load_cheat_dynamic_database
+load_cheat_file
+load_demo
+load_exe
+load_exe_header
+load_fast_cdrom
+load_pll
+load_psexe
+load_psexe_RAM
+load_psexe_header
+load_rewind_snapshot
+load_snapshot_raw
+load_zipped_file
+loading state - tainted
+loadppf
+loadtmp_snapshot
+loadtmp_snapshot_exec
+loadtmp_snapshot_set
+loop_client
+loop_server_input_sender
+lsearch(key,base,nel,width,callback)
+mAlphaVRLoc
+mEmuTime
+mFrameCountLoc
+mFrameDirectionLoc
+mFrameLoc
+mFrameScanLoc
+mLastTime
+mOutSizeLoc
+mPositionLoc
+mPositionScanLoc
+mStartTime
+mTexCoordLoc
+mTexCoordLoc2
+mTexCoordScanLoc
+mTextureSizeLoc
+mVideoSizeLoc
+malloc(size)
+mapname
+mask_bits
+matchesPattern
+max_volume
+mdec0_read
+mdec0_write
+mdec1_read
+mdec1_write
+mdecTRACE
+mdec_debug_gpu
+mdec_default_values
+mdec_skip
+mdec_timing
+mdec_update
+mdec_vram
+mdf.ecm
+memCache
+memCacheIn
+memCacheOut
+memDIRTYr
+memDIRTYw
+memcard1 transfered %x
+memcard2 transfered %x
+memcard_autosave0
+memcard_autosave1
+memcard_default_values
+memcard_end
+memcard_fileheader0
+memcard_fileheader1
+memcard_read
+memcard_reinit
+memcards/games/
+memcards/net/
+memcards\temp.000
+memcards\temp.001
+memchr(src,scanbyte,len)
+memcmp(src1,src2,len)
+memcompile
+memcpy
+memcpy(dst,src,len)
+memmove
+memmove(dst,src,len)
+memory_default_values
+memset
+memset(dst,fillbyte,len)
+memtransfer
+memtransferCache
+mflagold
+mheight
+mixReverbL
+mixReverbR
+mkka^^WTTVRR^\\qpp
+mmodeauto
+mmx_emms
+motor_enable
+motormap
+mouse_sensitivity
+mouseread1
+mov_i32
+mov_i64
+movcond_i32
+movcond_i64
+movi_i32
+movi_i64
+mprotect
+mprotect error
+mrewind
+mul2_i32
+mul_i32
+mul_i64
+muls2_i32
+muls2_i64
+multicd_mainid
+multitapinfo
+multitappos
+mulu2_i32
+mulu2_i64
+munmap
+mwidth
+mxu_val
+nCheatCodes
+nCheatDataConf
+nCheatDataGL2Conf
+nCheatDataGLConf
+nCheatDatabase
+nW-hnB,cn
+nand_i32
+nand_i64
+native_gl_resize %d %d
+neg_i32
+neg_i64
+neon_aflags
+neon_dit_tables
+neon_dit_tablesCache
+neon_dit_tables_ns
+neon_dit_tables_nsCache
+netAnalogType
+netAnalogX
+netAnalogXr
+netAnalogY
+netAnalogYr
+netclosed
+netpadinfo_dynamic
+netpadinfo_static
+netpadpsx1
+netpadpsx2
+netplay_pad
+netplay_running
+netplayerpad1
+netplayerpad2
+next_link
+nextblock
+nextblockfast
+nextfile(direntry)
+nextpc
+nfileszip
+nklwps
+nnnOOO
+nnneee
+no ppf file.
+nor_i32
+nor_i64
+not_i32
+not_i64
+not_implemented
+not_implementedCache
+nowfps
+nselfblock
+nxfx1~
+o$kdxB
+o(kgx!
+o)5sN!
+o)khxc
+oAxux|
+oBX n`
+oKkjx_
+oikhx!
+oikhxA
+ojjzuu{vv|ww}xx~yy
+oldMouseMoveX
+oldMouseMoveY
+oldsig
+onPause
+onPauseReq
+onResume
+onStop
+onnokkuppvqqwrrxssyttzuu{vv{vv|ww}xx~yy
+ooo000))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))...eee
+ooommm
+op_to_mov: unexpected return value of function op_bits.
+op_to_movi: unexpected return value of function op_bits.
+opcode_names
+opcode_names_cop0
+opcode_names_cop0_param
+opcode_names_param
+opcode_names_regimm
+opcode_names_regimm_param
+opcode_names_special
+opcode_names_special_param
+open_gpu
+open_netplay
+opengl2_render
+opengl2_resize
+opengl_close_thread
+opengl_init
+opengl_render
+opengl_resize
+opengl_start_thread
+opengl_start_thread_mt
+opqrstuv
+oq{pxB
+or_i32
+or_i64
+orc_i32
+orc_i64
+original_freq
+original_nbits
+or{sxc
+overscan_bottom
+overscan_top
+overscanleft
+overscanleftCache
+overscanleft_ntsc
+overscanleft_ntscCache
+overscanleft_pal
+overscanleft_palCache
+overscantopCache
+overscantop_ntsc
+overscantop_ntscCache
+overscantop_pal
+overscantop_palCache
+overscantop_pal_on_ntsc
+overscantop_pal_on_ntscCache
+pCounter
+padCache
+padCacheIn
+padCacheOut
+padData1
+padData2
+padData3
+padData4
+padData5
+padData6
+padData7
+padData8
+padModeMultitap
+padhyper
+padopen
+padread1
+padread1int
+padread2
+padread2int
+padread3
+padread4
+padread5
+padread6
+padread7
+padread8
+padreadanalog1
+padreadanalog2
+padreadanalog3
+padreadanalog4
+paint_gun_cursor
+patch_demo_cdrom
+patch_mdec
+patches/
+pause_netplay
+pendingLaces
+pendingsavestate
+pic_analog2_on
+pic_analog_off
+pic_analog_on
+pic_framelimit_off
+pic_framelimit_on
+pic_guncon
+pic_justifier
+pic_mouse
+pic_multitap
+pic_negcon
+pic_numbers
+pic_standard
+pidmask
+pixels
+play_cdda_sector
+play_sector
+play_xa_sector
+playing_cdda
+pollCache
+pollCacheIn
+pollCacheOut
+ppf file v.1.0 
+ppf file v.2.0 
+ppf file v.3.0 
+ppfapply
+ppffiles
+ppfindex
+ppfindexlist
+ppfstart
+ppfstop
+pppYYY^^^^^^^^^^^^^^^]]]]]]]]]]]]]]]\\\\\\\\\\\\\\\[[[[[[[[[[[[[[[[[[[[[\\\\\\\\\\\\]]]]]]]]]]]]^^^]]]XXXlll
+pppaaaSSS666wwwxxxxxxxxx@@@>>>JJJXXXgggvvv
+pppcccSSSXXX]]]VVVLLLtttlll
+pppfffwww}}}qqqfffuuu
+pppfffxxx
+pppyyyvvvRRRrrrxxxxxxxxxPPPhhhpppkkk
+ppsxICacheIdx
+pram2vram
+precision mediump float;
+precision mediump int;
+precmds
+preload
+prepare_save_snapshot_cdr
+prepare_save_snapshot_irq
+prepare_save_snapshot_spu
+pressedaxis
+prevseek
+primCycles
+primCyclesVHC
+primlist
+printProfiler
+print_debugmissing
+print_gte_count
+print_help
+print_help_special
+print_sio_irq
+print_sio_irq_read
+print_time
+print_type_joypad
+print_version
+printf(txt,param1,param2,etc.)
+pstrcat
+pstrcpy
+psxAddressPAD
+psxBIOS
+psxICache
+psxIRQs
+psxPADMaskAF
+psxPADenable
+psxPARALLEL
+psxRAM
+psxSCRATCHPAD
+psxgteREGS
+psxtypePAD
+pthread_cond_broadcast
+pthread_cond_init
+pthread_cond_signal
+pthread_cond_timedwait
+pthread_cond_wait
+pthread_create
+pthread_getspecific
+pthread_key_create
+pthread_key_delete
+pthread_mutex_destroy
+pthread_mutex_init
+pthread_mutex_lock
+pthread_mutex_unlock
+pthread_once
+pthread_setspecific
+ptrdyna
+pvram2ram
+q9h38!
+qN!deN
+qN97kNS
+qche8cC;9
+qemu_ld16s
+qemu_ld16u
+qemu_ld32
+qemu_ld32s
+qemu_ld32u
+qemu_ld64
+qemu_ld8s
+qemu_ld8u
+qemu_malloc
+qemu_st16
+qemu_st32
+qemu_st64
+qemu_st8
+qqq@@@
+qqq[[[AAA@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@hhh
+qqqdddttt
+qqqggguuu
+qqqxxx}}}}}}}}}}}}}}}}}}~~~
+qqq}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+qsort(base,nel,width,callback)
+quit netplay client, got command 98
+quit netplay client, sent command 98
+r"KC9!GC9@|
+r>@9i>A912
+rand()
+rateTable
+rcnt_update
+reSampling
+readOpenGLPluginConfig
+readOpenGLPluginConfig2
+readOpenGLPluginConfig2Wrapper
+readOpenGLPluginConfigWrapper
+readPropertiesProgramCustom
+readReverbReg
+read_card_sector(port,sector,dst)
+read_cdda_sector
+read_cdreg0
+read_cdreg1
+read_cdreg2
+read_cdreg3
+read_configfile
+read_configuration
+read_data_sector
+read_game_profile
+read_memcards_net
+read_param
+read_sector
+read_sector_iso9660
+read_spu
+readdmadone
+readfileMCD
+readmemBANKS
+readmode
+readsectorMCD
+realloc
+realloc(old_buf,new_siz)
+received IP: %s 
+received biosmd5 %s
+received gamecode %s cdata %08x
+received savestate command size=%d vbl=%d slot=%d
+receiving memcards ...
+receiving savestates ...
+rectangle16x16
+rectangle16x16Cache
+rectangle8x8
+rectangle8x8Cache
+recv_loop_client_input_receiver
+recv_loop_server
+recv_memcards
+recv_savestate
+recvfrom
+redbook
+reg_cop0names
+reg_gtecnames
+reg_gtednames
+reg_names
+regcycles
+rem_i32
+rem_i64
+remap_dualanalog
+remu_i32
+remu_i64
+renamefileMCD
+reportmode_delayed
+reportmode_min
+reportmode_sec
+reset_default_values
+resetgtevertex
+restart_timer(t)
+restore_command
+restore_commandCache
+restore_load_snapshot_cdr
+restore_load_snapshot_irq
+restore_load_snapshot_spu
+restore_load_snapshot_spu_inter_v4
+restore_load_snapshot_spu_reverb
+restore_load_snapshot_spu_reverb_v4
+resume_netplay
+retExe
+return 0
+return 0 ;CEX-1000: jump_to_00000000h
+return 0 ;DTL-H2000: SystemError
+return 0 ;DTL-H2000: dev_sio_in_out
+return 0 ;DTL-H2000: dev_sio_init
+return 0 ;DTL-H2000: dev_sio_ioctl
+return 0 ;DTL-H2000:dev_sio_open
+return 0 ;DTL-H: Unknown?
+return 0 ;DTL-H: Unknown?, or reportedly, CdStop (?)
+rewind_frame_curr
+rewind_frame_rate
+rewind_restore
+rindex(src,char)
+rmo}vyVSU
+rotl_i32
+rotl_i64
+rotr_i32
+rotr_i64
+rrrooo```TTTHHH===RRRxxxxxxxxx777999@@@IIISSS]]]
+rrrxxxvvvuuusss
+rrrzzzzzzhhh
+rrr~~~
+rumble_motorandroid
+rumble_motordx
+runGSCodes
+runGSSimple
+runWrapperGL
+runWrapperSoft
+run_bios
+run_cpu
+run_dynarec
+run_emulator
+run_emulator_frame
+run_emulator_frameGLext
+run_interpreter
+rwgpuloadfreeze
+rwgpuloadfreezeCache
+rwgpusavefreeze
+rwgpusavefreezeCache
+rwload_snapshot_cdr
+rwload_snapshot_gpu
+rwload_snapshot_gte
+rwload_snapshot_irq
+rwload_snapshot_mde
+rwload_snapshot_mem
+rwload_snapshot_reg
+rwload_snapshot_sio
+rwload_snapshot_spu
+rwread
+rwsave_snapshot_cdr
+rwsave_snapshot_gpu
+rwsave_snapshot_gte
+rwsave_snapshot_irq
+rwsave_snapshot_mde
+rwsave_snapshot_mem
+rwsave_snapshot_reg
+rwsave_snapshot_sio
+rwsave_snapshot_spu
+rwwrite
+sProgram
+sProgramScan
+sar_i32
+sar_i64
+save_snapshot_gpu_screenshot
+save_snapshot_raw
+save_toc_info
+saveblock
+saved_lines
+saving
+saving game in slot fixed
+savingMcd
+sbdefault
+scalexbrz16
+scalexbrz32
+scanningMode
+screenheight
+screenwidth
+sdcard_name
+sdcard_name_select
+searchfileMCD
+sector_count
+sector_size
+seektime
+seektimecycles
+selected_pad
+selfblockinit
+selfblockratio
+sendQuit
+send_gpu_linked_list(src)
+send_memcards
+send_savestate
+sendsstate
+sendto
+server quit, received cmd 0x3
+server quit, sent 0x3 message
+serverIP
+setBuffer
+setCacheAddVertex
+setCacheBuffer
+setCacheData
+setCacheData2
+setCacheData3
+setCacheData7
+setCacheDataClose
+setCacheDataInit
+setCachePad
+setCachePoll
+setInputToSendToClient
+setNoiseClock
+setOpenGLPluginDefaultConfig
+setOpenGLPluginDefaultConfig2
+setOpenGLPluginDefaultConfig2Wrapper
+setOpenGLPluginDefaultConfigWrapper
+setPadDataDownMulti
+setPadDataMulti
+setPadDataMultitapMulti
+setPadDataUpMulti
+setReceivedData
+setReverb
+setReverbControl
+set_big_motor
+set_card_auto_format(flag)
+set_card_find_mode(mode) ;0=normal, 1=find deleted files
+set_cdrom_irq
+set_cdrom_status
+set_clear_keys
+set_cpu_mode
+set_dma_irq
+set_first_sector
+set_gpu_irq_win
+set_gpu_resolution
+set_irq
+set_label
+set_mtc0
+set_mtc0 [%d] is read-only!
+set_netplayer_input
+set_open_cdrom
+set_reset_mode
+set_rewindframe
+set_sio0_irq
+set_sio0_next_data
+set_sio0_next_irq
+set_small_motor
+set_snapslot
+set_spu_irq_win
+set_uint16_fast
+set_uint16_reg
+set_uint32_fast
+set_uint32_fast_ram
+set_uint32_reg
+set_uint32_reg_fast
+set_uint8
+set_uint8_fast
+set_uint8_icache
+set_uint8_reg
+set_wait_sync_cache
+setcond2_i32
+setcond_i32
+setcond_i64
+setexeconf
+setgundata
+setloc_frm
+setloc_min
+setloc_sec
+setmousedata
+setsockopt
+setsoundlatency
+setvibrationMode
+shl16idivCache
+shl32idiv
+shl32idivCache
+shl_i32
+shl_i64
+show_key
+showfpsvalue
+showfpsvaluefull
+shr_i32
+shr_i64
+sigaction
+signal11done
+sioTRACE
+sio_cyclesDATA
+sio_cyclesIRQ
+sio_cyclesnextDATA
+sio_cyclesnextIRQ
+sio_end
+sio_nextDATAenabled
+sio_nextIRQenabled
+sio_save_memcard1
+sio_save_memcard2
+sio_set_temporal_memcards1
+sio_set_temporal_memcards2
+sio_update
+sio_updatedata
+size_dec
+skList
+skipmdeckeys
+skippedCount
+skoffbx
+skoffby
+skoffpx
+skoffpy
+slistfileszip
+snprintf
+socket
+soft_change_snapslot_gpuWrapper
+soft_do_DMA2chainWrapper
+soft_do_DMA2readWrapper
+soft_do_DMA2writeWrapper
+soft_do_addVertexWrapper
+soft_do_setGetAccuracy
+soft_flimit
+soft_gfx_draw_frameWrapper
+soft_gfx_endWrapper
+soft_gfx_fl
+soft_gfx_gogui
+soft_gfx_hideminipic
+soft_gfx_minipic
+soft_gfx_reopen
+soft_gfx_screenpic
+soft_gpu0_Wrapper
+soft_gpu0_readWrapper
+soft_gpu0_writeWrapper
+soft_gpu1_writeWrapper
+soft_init_gpuWrapper
+soft_open_gpuWrapper
+soft_swapgpu
+soft_unlockrender
+soft_zgpusavefreezePic
+soft_zload_snapshot_gpuWrapper
+sprite
+spriteCache
+spriteHD
+spriteHD4
+spuRAM
+spu_api
+spu_async
+spu_default_values
+spu_update
+spuasynccounter
+spuclosed
+srand(seed)
+sscanf
+sslotreq
+sslotvbl
+sss___CCC@@@@@@@@@@@@@@@@@@@@@
+sss```
+sssaaa
+sssggg[[[RRRxxxxxxxxxEEEVVV```kkkwwwooo
+sssgggsss
+sstates/
+sstddhvvv
+st16_i32
+st16_i64
+st32_i64
+st8_i32
+st8_i64
+st_i32
+st_i64
+start client
+start client input receiver
+start server
+start_client
+start_client_input_receiver
+start_server
+start_server_input_sender
+std::bad_alloc
+std::bad_cast
+std::bad_exception
+std::bad_typeid
+std::exception
+std_in_getchar()
+std_in_gets(dst)
+std_out_putchar(char)
+std_out_puts(src)
+sticks
+storeFmod
+strcat(dst,src)
+strchr
+strchr(src,char)
+strcmp
+strcmp(str1,str2)
+strcpy(dst,src)
+strcspn(src,list)
+stristart
+strlen
+strlen(src)
+strncasecmp
+strncat(dst,src,maxlen)
+strncmp
+strncmp(str1,str2,maxlen)
+strncpy
+strncpy(dst,src,maxlen)
+strndup
+strpbrk(src,list)
+strrchr(src,char)
+strspn(src,list)
+strstart
+strstr
+strstr(str,substr)
+strtod(src,src_end)
+strtok
+strtok(src,list)
+strtol(src,src_end,base)
+strtoul(src,src_end,base)
+struct inputdata
+sub2_i32
+sub2_i64
+sub_i32
+sub_i64
+swiname
+sync_netplay
+synch_netplay
+sys/gamepad
+sys/memcard
+syscall()
+sysconf
+system_cnf
+systemconf_found
+table_bios_a
+table_bios_b
+table_bios_c
+tc^N  
+tcg_add_target_add_op_defs
+tcg_const_i32
+tcg_const_i64
+tcg_const_local_i32
+tcg_const_local_i64
+tcg_context_init
+tcg_ctx
+tcg_dump_info
+tcg_dump_ops
+tcg_func_start
+tcg_gen_callN
+tcg_gen_code
+tcg_gen_code_search_pc
+tcg_get_arg_str_i32
+tcg_get_arg_str_i64
+tcg_global_mem_new_i32
+tcg_global_mem_new_i64
+tcg_global_reg_new_i32
+tcg_global_reg_new_i64
+tcg_helper_div_i32
+tcg_helper_div_i64
+tcg_helper_divu_i32
+tcg_helper_divu_i64
+tcg_helper_mulsh_i64
+tcg_helper_muluh_i64
+tcg_helper_rem_i32
+tcg_helper_rem_i64
+tcg_helper_remu_i32
+tcg_helper_remu_i64
+tcg_helper_sar_i64
+tcg_helper_shl_i64
+tcg_helper_shr_i64
+tcg_malloc_internal
+tcg_on_error
+tcg_op_defs
+tcg_op_defs_max
+tcg_optimize
+tcg_pool_reset
+tcg_prologue_init
+tcg_register_helper
+tcg_register_jit
+tcg_set_frame
+tcg_temp_free_i32
+tcg_temp_free_i64
+tcg_temp_new_internal_i32
+tcg_temp_new_internal_i64
+td[{nf
+temp_enableppf
+testdevice(devicename)
+texInit
+texcoordOffset
+timedwaitfinishrender
+timedwaitrender
+timers
+timersName
+timersTmp
+tlbhi/pid
+tmpBuf
+tmpBufpos
+tmpNoiseSamples
+tmpisSkip
+todigit(char)
+tolower(char)
+total_lines
+toupper
+toupper(char)
+towlower
+towupper
+traceshaderro
+transCache
+trans_act
+trans_actCache
+trans_t
+trans_t0
+trans_t0Cache
+trans_t1
+trans_t1Cache
+trans_t2
+trans_t2Cache
+trans_t3
+trans_t3Cache
+trans_tCache
+transfer_data
+ttt888888888
+tttbbb\\\aaaaaaaaabbbbbbbbbbbbhhh
+tttfffffffffffffff
+tttgggrrr
+tttiiiHHHtttxxxxxxxxxKKKYYYbbbmmmkkk
+tttxxxxxxxxx
+tty_cdevinput(circ,char)
+tty_cdevscan()
+tty_circgetc(circ) ;uses r5 as garbage txt for ioabort
+tty_circputc(char,circ)
+txsxuxux
+txtCoords
+txtCoordsOffset
+txtCoords_p2
+u   !! ~wa
+unecm_sector_mode1
+unecm_sector_mode2
+unecm_sector_mode3
+unencm_sector_sync
+uniform inputdata IN;
+uniform sampler2D Frame;
+uniform sampler2D Sample;
+uniform vec2 texcoordOffset;
+unk ppf format. (%x)
+unknown dual shock command
+unknown opcode %08X at %08X
+unlink
+unr_table
+unsetProfilerCounter
+updateAutofire
+updatePadMulti
+update_cdrom_irq_counter
+update_display_horz
+update_display_horzCache
+update_display_vert
+update_display_vertCache
+update_dualanalog_sio
+update_dualshock_sio
+update_joystick_status
+update_keys_status
+update_konamigun_sio
+update_mouse_sio
+update_namcogun_sio
+update_negcon_sio
+update_pad_sio
+update_rewind
+update_sound
+update_status_vars
+update_status_varsCache
+updatespu
+ursxqt
+use_opcode_reg_in
+useconds
+usingGSCodes
+usleep
+uuu$$$
+uuugggqqq
+uuuggguuu
+uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuttttttssssssssssssssssss
+varying vec2 v_texCoord;
+varying vec4 TexCoord[8];
+vec2 Dist(vec2 pos){pos=pos*IN.texture_size.xy;return -((pos-floor(pos))-vec2(0.5));}
+vec2 OGLInvSize = 1.0/OGLSize;
+vec2 Warp(vec2 pos){
+vec3 Fetch(vec2 pos,vec2 off){
+vec3 Horz3(vec2 pos,float off){
+vec3 Horz5(vec2 pos,float off){
+vec3 Mask(vec2 pos){
+vec3 ToLinear(vec3 c)
+vec3 ToSrgb(vec3 c)
+vec3 Tri(vec2 pos){
+vec4 df(vec4 A, vec4 B)
+vec4 diff(vec4 A, vec4 B)
+vec4 eq(vec4 A, vec4 B)
+vec4 neq(vec4 A, vec4 B)
+vec4 wd(vec4 a, vec4 b, vec4 c, vec4 d, vec4 e, vec4 f, vec4 g, vec4 h)
+vector
+vertices
+vertices_p2
+vertices_vr_left
+vertices_vr_right
+virtual bool __cxxabiv1::__vmi_class_type_info::walk_to(const __cxxabiv1::__class_type_info*, void*&, __cxxabiv1::__UpcastInfo&) const
+virtualPadBit
+virtualPadId
+virtualPadNew
+virtualPadPort
+virtualPadSimple
+virtualPadSimplePos
+void main()
+void main() {
+void {anonymous}::base_to_derived_cast(const void*, const __cxxabiv1::__class_type_info*, {anonymous}::cast_context*)
+vram2ramCache
+vram2ramHD
+vram2vram
+vram2vramCache
+vram2vramCache__
+vram2vramHD
+vrtvrtvrtxvw
+vsprintf
+vvv999
+vvv__b__cvvv
+vvvhhhuuu
+vvviiixxx
+w>@9b^@9
+waitCancel
+waitCancel2
+wait_card_status(slot)
+wait_sync_readdma
+waitingreadackdelay
+wrapperRunning
+write to -> %s 
+writeReverbReg
+write_card_sector(port,sector,src)
+write_cdreg0
+write_cdreg1
+write_cdreg2
+write_cdreg3
+write_configfiledefault
+write_configuration
+write_configuration_folders
+write_game_profile
+write_memcards_net
+write_spu
+writefileMCD
+writememBANKS
+writesectorMCD
+wvvyuu
+ww7>ww7>
+wwwiiiooo
+www~~~
+wz}uxzsvxpsvoq
+x@x(xB 
+xa_decode_sector
+xa_initfilter
+xa_rotatefilter
+xa_set_volume
+xhcR!  """
+xor_i32
+xor_i64
+xtvlhihcegcdhcegbdface`be`bd_ad_ad_ae`b
+xxx222
+xxxjjjrrr
+xxxppp}}}}}}}}}}}}}}}}}}}}}}}}}}}kkk
+xxx|||
+xzx{7rN
+x{jdga^_hefjgikiimklonopopqpptssyxx~}~
+x{ohka]_kij
+x{rln|z{
+x{}uxjeg
+x{~vyb_`
+x~@9m^@9
+y_posCache
+y`&@9a"@9  
+y`.@9a*@9  
+y`6@9a2@9  
+y`v@9ar@9
+ya&@9b"@9A 
+ya.@9b*@9A 
+ybx!x!
+ycF@9`B@9b:@9a>@9
+yd>@9a:@9c2@9b6@9!<
+yuv2rgb24
+yxxebce`b
+yyy888888888888888888888888888888ccc
+yyyUUUxxxxxxxxxSSSuuu|||yyy}}}
+yyyqqqiii\\\aaa]]]
+yyyrrr
+yyyxxx
+z!!!  
+z!x`zax@
+z+N5,Q7<jIN
+zgpuloadfreeze
+zgpuloadfreezeCache
+zgpuloadfreeze_gpu_temp
+zgpusavefreeze
+zgpusavefreezeCache
+zgpusavefreeze_gpu_temp
+zgpusavefreeze_screenshot
+zload_snapshot
+zload_snapshot_cdr
+zload_snapshot_cdr_v1
+zload_snapshot_cdr_v2
+zload_snapshot_cdr_v3
+zload_snapshot_cdr_v4
+zload_snapshot_gpu
+zload_snapshot_gte
+zload_snapshot_irq
+zload_snapshot_ispu_v4
+zload_snapshot_mde
+zload_snapshot_mde_v0
+zload_snapshot_mem
+zload_snapshot_reg
+zload_snapshot_sio
+zload_snapshot_sio_v1
+zload_snapshot_spu
+zsave_snapshot
+zsave_snapshot_cdr
+zsave_snapshot_gpu
+zsave_snapshot_gpuWrapper
+zsave_snapshot_gte
+zsave_snapshot_irq
+zsave_snapshot_mde
+zsave_snapshot_mde_v0
+zsave_snapshot_mem
+zsave_snapshot_reg
+zsave_snapshot_sio
+zsave_snapshot_spu
+zvwrmowtu
+zxox)}
+zyye``pjjqkkqllrmmsnntoouppvqqwrrxssfdd
+zzz^^^
+zzzssscccnnn
+zzzxxx
+zzzzzz
+zzz~~~~~~}}}}}}
+zz~yy}xx|ww{vvjff
+zz~yy}xx|ww{vvzuuzuuyttxsswrrvqqmii
+{N)5lN!
+{`x97sN 
+{janO<nSC
+{xyyruyruyrujgh
+{{{___DDD@@@lll
+{{{llllll
+{{{xxxjjj]]]???uuuxxxxxxxxxEEEJJJUUUbbboooiii
+|>D"D"D"D"D"D"D>D
+|DK_|Dk!
+|||qqq
+|||rrr
+|||zzzxxxvvvtttsss
+|||{{{yyyxxxvvvuuurrrtttvvvxxxzzz|||~~~
+}N1feN
+}NEkdx:
+}NGkgx
+}Ndkjx;
+}{{hee_\\iggutt
+}{{okkyttxsswrrvqqupptoosnnrmmqllqkkc^^
+}}}PPPOOOOOOOOOOOOOOOOOOOOOFFF222***+++++++++++++++++++++(((###""""""&&&***+++++++++***&&&!!!""""""'''***+++++++++***%%%!!!"""###(((++++++++++++)))$$$!!!"""$$$)))++++++++++++(((###""""""%%%***+++++++++***'''"""""""""&&&***+++++++++***&&&!!!"""###'''++++++++++++++++++++++++222EEEOOOOOOOOOOOOOOOOOOOOOPPP}}}
+}}}]]]vvv
+}}}uuu
+}}}{{{yyywwwuuusss
+}}}{{{yyywwwuuusssqqqooommmkkkiiinnn|||zzz
+}}}{{{yyywwwuuusssqqqooommmkkkiii~~~xxx
+}}}{{{yyywwwvvv
+}}}}}}}}}}}}}}}}}}}}}}}}}}}yyymmm
+}}}~~~
+~~~^^^
+~~~^^^@@@!!!
+~~~___bbbvvv
+~~~eeeLLL;;;
+~~~iijiij~~~
+~~~jjjsssooo
+~~~qqq
+~~~tttjjjSSSxxxxxxxxxLLLeeemmmwwwwww
+~~~zzzppp
+~~~zzzwvvrqqrqqrpqnmnljklkkkiihffc_ad_a~vy
+~~~|||zzzxxx
+~~~|||zzzxxxvvvtttrrrppp
+~~~|||zzzxxxvvvtttrrrpppnnn
+~~~|||zzzxxxvvvtttrrrpppnnnllljjj
+~~~|||zzzxxxvvvtttrrrpppnnn|||
+~~~||||||
+~~~}}}|||zzzyyyxxxvvvtttsssqqqpppnnnmmmkkkjjjiiigggddd
+~~~}}}}}}}}}sss
+~~~}}}}}}}}}}}}}}}}}}nnn
+~~~~~~
+~~~~~~|||{{{zzzxxxwwwvvvvvvxxxzzz{{{|||~~~

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ePSXe Web — emulador de PlayStation 1 no navegador, modo escuro, com suporte a controles, save states, cheats e muito mais.">
+<meta name="color-scheme" content="dark">
+<title>ePSXe Web — Emulador de PlayStation no navegador</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%238b5cf6'/%3E%3Ccircle cx='32' cy='32' r='9' fill='%2305060a'/%3E%3C/svg%3E">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" class="logo" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><circle cx="32" cy="32" r="29" fill="url(#g)"/><circle cx="32" cy="32" r="22" fill="none" stroke="#05060a" stroke-opacity=".35" stroke-width="2"/><circle cx="32" cy="32" r="8" fill="#0a0b12"/></svg>
+      <div><b>ePSXe</b><span>Web</span></div>
+    </div>
+    <nav id="nav">
+      <button class="nav-btn active" data-view="library"><i>🎮</i><span>Biblioteca</span></button>
+      <button class="nav-btn" data-view="bios"><i>🧩</i><span>BIOS</span></button>
+      <button class="nav-btn" data-view="prefs"><i>⚙️</i><span>Preferências</span></button>
+      <button class="nav-btn" data-view="controls"><i>🕹️</i><span>Controles</span></button>
+      <button class="nav-btn" data-view="saves"><i>💾</i><span>Saves</span></button>
+      <button class="nav-btn" data-view="cheats"><i>✨</i><span>Cheats</span></button>
+      <button class="nav-btn" data-view="help"><i>📖</i><span>Ajuda</span></button>
+    </nav>
+    <div class="side-foot">
+      <div id="padStatus" class="chip">🎮 Nenhum controle</div>
+      <div id="storageInfo" class="muted small"></div>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header id="topbar">
+      <div class="search"><input id="search" type="search" placeholder="Buscar jogos…" aria-label="Buscar jogos"></div>
+      <div id="biosBadge" class="chip warn" title="Status da BIOS">BIOS: verificando…</div>
+      <button id="btnOpenFolder" class="btn" title="Abrir pasta de jogos salva no disco">📁 Pasta no Disco</button>
+      <button id="btnRefresh" class="btn" title="Atualizar biblioteca e capas">🔄 Atualizar</button>
+      <button id="btnAdd" class="btn primary">＋ Adicionar jogo</button>
+    </header>
+
+    <section id="view-library" class="view active">
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Adicionar jogos">
+        <div class="dz-icon">💿</div>
+        <div class="dz-text"><b>Arraste seus jogos aqui</b> ou clique para escolher<br>
+          <span class="muted">.cue + .bin · .iso · .img · .chd · .pbp · .ecm · .zip/.7z — você pode selecionar vários arquivos de uma vez (cue + todos os bins)</span></div>
+        <div class="dz-actions">
+          <button class="btn primary" id="dzPick">Escolher arquivos</button>
+          <button class="btn" id="dzFolder">Escolher pasta</button>
+        </div>
+      </div>
+      <div class="lib-tools">
+        <select id="filterRegion" aria-label="Região"><option value="">Todas as regiões</option><option>NTSC-U</option><option>NTSC-J</option><option>PAL</option></select>
+        <select id="sortBy" aria-label="Ordenar"><option value="recent">Jogados recentemente</option><option value="title">Título A–Z</option><option value="added">Adicionados recentemente</option><option value="time">Tempo de jogo</option></select>
+        <span id="libCount" class="muted"></span>
+      </div>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <section id="view-bios" class="view"></section>
+    <section id="view-prefs" class="view"></section>
+    <section id="view-controls" class="view"></section>
+    <section id="view-saves" class="view"></section>
+    <section id="view-cheats" class="view"></section>
+    <section id="view-help" class="view"></section>
+  </main>
+</div>
+
+<!-- player -->
+<div id="player" hidden>
+  <iframe id="frame" title="Emulador" allow="gamepad; autoplay; fullscreen; cross-origin-isolated"></iframe>
+  <button id="hudBtn" class="hud-btn" title="Menu (Esc / botão Guide)">☰</button>
+  <div id="loadingVeil" class="veil"><div class="spinner"></div><div id="loadingText">Iniciando…</div></div>
+  <div id="pause" class="pause" hidden></div>
+</div>
+
+<div id="modalRoot"></div>
+<div id="toasts"></div>
+<input id="fileInput" type="file" multiple hidden>
+<input id="folderInput" type="file" webkitdirectory multiple hidden>
+<input id="biosInput" type="file" multiple hidden accept=".bin,.zip,.rom">
+<input id="stateInput" type="file" hidden>
+<input id="cheatInput" type="file" hidden accept=".txt,.cht">
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

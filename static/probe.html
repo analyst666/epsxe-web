@@ -1,0 +1,41 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>probe</title></head>
+<body style="background:#111;color:#ddd;font:12px monospace">
+<pre id="out">iniciando...</pre>
+<iframe id="f" style="width:640px;height:480px;border:1px solid #444"></iframe>
+<script>
+const params = new URLSearchParams(location.search);
+const core = params.get("core") || "pcsx_rearmed";
+const out = document.getElementById("out");
+const log = (m) => (out.textContent += "\n" + m);
+// disco falso de 2 MB (so para o core inicializar e registrar suas opcoes)
+const bin = new Blob([new Uint8Array(2048 * 1024)], { type: "application/octet-stream" });
+window.__epsxeLaunch = {
+  gameUrl: URL.createObjectURL(bin), gameName: "probe" + core, gameId: Math.floor(Math.random() * 1e9),
+  defaultOptions: { retroarch_core: core }, controls: {0:{},1:{},2:{},3:{}},
+  threads: false, legacy: false, lang: "en-US",
+};
+window.addEventListener("message", (e) => log("msg: " + JSON.stringify(e.data)));
+document.getElementById("f").src = "player.html";
+let tries = 0;
+const t = setInterval(() => {
+  tries++;
+  const w = document.getElementById("f").contentWindow;
+  try {
+    const em = w.EJS_emulator;
+    const gm = em && em.gameManager;
+    if (gm && gm.functions && gm.functions.getCoreOptions) {
+      const o = gm.getCoreOptions();
+      if (o) {
+        clearInterval(t);
+        log("URL=" + location.search + " REQUESTED=" + core + " ACTUAL_CORE=" + em.getCore() + " defaultOptions=" + JSON.stringify(em.config.defaultOptions) + " gl2=" + !!document.createElement('canvas').getContext('webgl2'));
+        log("COREOPTS_BEGIN\n" + o.split("\n").map((l) => l.split("; ")[0] + " :: " + (l.split("; ")[1] || "").split("|").slice(0, 8).join("|")).join("\n") + "\nCOREOPTS_END");
+        document.title = "done";
+      }
+    }
+    if (tries % 5 === 0) log("t=" + tries + " started=" + (em && em.started) + " text=" + (em && em.textElem && em.textElem.innerText));
+  } catch (e) { log("err " + e.message); }
+  if (tries > 120) { clearInterval(t); log("timeout"); document.title = "done"; }
+}, 1000);
+</script>
+</body></html>

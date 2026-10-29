@@ -1,0 +1,1519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta name="generator" content="HTML::TextToHTML v2.51"/>
+</head>
+<body>
+<p>
+<strong>==READ THIS==</strong>
+<br/>calb, Galtor and _Demo_ hold no warranties of any kind for this product.
+You're using ePSXe at your own risk. The authors can't be held liable
+or responsible for any damage which results from using the emulator,
+it's plugin or anything described in this documentation in any way.<br/>
+<strong>==READ THIS==</strong>
+
+</p>
+<h1><a name="section_1">Index</a></h1>
+<pre>
+0. Introduction.
+1. What's New?
+2. What do you need to run ePSXe?
+   2.1. Requirements.
+   2.2. How to setup.
+3. Usage.
+   3.1. Which files are necessary to run ePSXe?
+   3.2. Controlling the emulator.
+   3.3. GUI options
+        3.3.1. Run Game
+        3.3.2. Run Bios
+        3.3.3. Multiplayer
+        3.3.4. Preferences
+        3.3.5. Help
+   3.4. On Game options.
+        3.4.1. More option
+               3.4.1.1 Change Disc
+               3.4.1.2 Reset Game
+               3.4.1.3 Video Settings
+               3.4.1.4 Audio Settings
+               3.4.1.5 Input Settings
+               3.4.1.6 Cheats Settings
+               3.4.1.7 Game Profile
+        3.4.2. LoadState
+        3.4.3. Savestate
+        3.4.4. CheatCodes.
+        3.4.5. Toggleframelimit.
+        3.4.6. Split Mode options.
+   3.5. Configure the emulator.
+        3.5.1. Configuring the Bios
+        3.5.2. Configuring the Cpu
+        3.5.3. Configuring the Screen
+        3.5.4. Configuring the Video
+        3.5.5. Configuring the Sound
+        3.5.6. Configuring the Input
+        3.5.7. Configuring the Memcards
+        3.5.8. Configuring the UI.
+        3.5.9. Configuring the misc.
+   3.6. Memory card support.
+   3.7. Savestates.
+   3.8. SBI Files.
+   3.9. Cheat codes.
+   3.10. OpenGL Plugin.
+   3.11. Supported and non-supported iso formats.
+   3.12. License issues.
+   3.13. Shortcuts.
+   3.14. Gamefaqs during gameplay.
+   3.15. Multiplayer.
+   3.16. Emulation core stopped.
+   3.17. Configure gamepad.
+   3.18. OGL1 HD plugin obsolete.
+4. Implemented features
+5. Compatibility in ePSXe
+6. Where can I get help with the emulator?
+</pre>
+<p></p>
+<h1><a name="section_2">Appendix</a></h1>
+<pre>
+A. Frequently Asked Questions
+B. Changelog
+C. Thanks
+D. Legal Stuff
+</pre>
+<hr/>
+0.  Introduction
+<hr/>
+
+<p>ePSXe for Android is a port of ePSXe for Android smartphones.
+</p>
+<hr/>
+1.  What's New?
+<hr/>
+<p>ePSXe v2.0.12/2.0.14, released on XX.12.2019
+</p>
+<ul>
+    <li>Added 64 bits port</li>
+    <li>Updated the SDK API to 28</li>
+    <li>Added onPause support (enable on preferences>UI preferences)</li>
+    <li>Fixed mapping player 2 gamepad on the fly</li>
+    <li>Fixed a regresion bug in cdrom code: Ape Escape, Yu-gi-oh! Monsters ...</li>
+    <li>Added customFPS to android TV</li>
+    <li>Improved touchscreen press button detection</li>
+    <li>Fixed extra buttons on touchscreen profiles 2-4</li>
+    <li>Compatibility fixes: V-rally 2 JAP, Samurai Shodown III</li>
+    <li>More misc fixes</li>
+</ul>
+
+<hr/>
+2.  What do you need to run ePSXe?
+<hr/>
+
+<p>2.1  Requirements.
+</p>
+
+<p>Minimum system requirements:<br/>
+  Android 2.3 Gingerbread<br/>
+  ARMv7 or X86<br/>
+  1000Mhz<br/>
+  256 MB of RAM<br/>
+  Multi touch screen support or hw keys or external gamepad
+</p>
+<p>Recommended system configuration:<br/>
+  Android 2.3 Gingerbread or 4.0/4.1/4.2<br>
+  ARMv7 with Neon or X86!!<br/>
+  +1200Mhz dual core<br/>
+  Fast GPU card with good OpenGL support<br/>
+  512 MB of RAM<br/>
+  Fast and big sdcard<br/>
+  Multi touch screen support or hw keys or external gamepad
+</p>
+
+<p>2.2.  How to setup.
+</p>
+
+<ol>
+<li><a href="http://epsxe.com/android">How to run</a></li>
+</ol>
+<p>
+If you have problems using the emulator, please contact us through email at epsxeandroid@gmail.com. Please do not use the Google Play comments to request help, because the posts are anonymous, and we can not help you.
+</p>
+<p>
+Disclaimer: Sony Playstation is a registered trademark of Sony. You may only be in possession of the copyrighted BIOS or PSX games if you are legally entitled to do so. Neither the ePSXe Team software nor its authors are affiliated with Sony, other companies or any webpage other than epsxe.com.
+</p>
+<hr/>
+3. Usage
+<hr/>
+
+<p>3.1  Which files are necessary to run ePSXe?
+</p>
+<ul>
+  <li>ePSXe android Application
+  </li><li>a psx bios (scph1001.bin and scph7502.bin have been tested and proved to work)
+  </li><li>psx games (provided by the user)
+</li></ul>
+<p>3.2 Controlling the emulator
+</p>
+<p>  ePSXe for Android supports multi-touch devices, hardware keyboard and gamepads. It supports 2 players. It is in digital mode by default (you can choose analog in preferences setion).
+</p>
+<p>3.3. GUI options.
+</p>
+<p>On startup, you can see ePSXe's menus which include the following
+options:
+</p>
+<p>3.3.1. Run Game
+</p>
+<p> Run a game in ISO format.
+</p>
+<p>3.3.2. Run Bios
+</p>
+<p> Run the PSX Bios. You can use the memcard editor included in it.
+</p>
+<p>3.3.3. Multiplayer
+</p>
+<p> Multiplayer on local net. You can select Player1 (Server) or Player 2 (Client). (see 3.15. Multiplayer)
+</p>
+<p>3.3.4. Preferences.
+</p>
+<p> (see 3.5. Configure the Emulator Preferences)
+</p>
+<p>3.3.5. Help.
+</p>
+<p>  (*) User Guide: This page.
+</p>
+<p>  (*) Email to support team. Send an email to the support team.
+</p>
+<p>  (*) Email your preferences. Send an email to the support team with your preferences attached.
+</p>
+<p>  (*) About : Credits.
+</p>
+
+<p>3.4. On game options.
+</p>
+<p>During gameplay, you can access to new options with the menu button:
+</p>
+<p>3.4.1. More options
+<p>3.4.1.1. Changedisc
+</p>
+<p> Some games could require to changedisc on gameplay. Use this option to change
+the previous/next disc.
+</p>
+<p>3.4.1.2. Reset Game
+</p>
+<p> Reset the game 
+</p>
+<p>3.4.1.3-5. Video/Audio/Input Settings
+</p>
+<p> Change some settings during the game (the values changed from here are not saved)
+</p>
+<p>3.4.1.6. Cheats Settings
+</p>
+<p> Enable/Disable cheat, add/edit cheats and load cheat from file.
+</p>
+<p>3.4.1.7. Game Profile
+</p>
+<p> Used to save the current settings in the current game. So the next time the game will use the same settings.
+</p>
+</p>
+<p> Save the state to the slot selected
+</p>
+<p>3.4.2. Loadstate
+</p>
+<p> Load the state of the slot selected
+</p>
+<p>3.4.3. Savestate
+</p>
+<p> Save the state to the slot selected
+</p>
+<p>3.4.4. Cheatcodes
+</p>
+<p> In this option, you can enable/disable cheat codes for the game which you
+are playing. See 3.9 below.
+</p>
+<p> If you do not have cheat codes for this game, you will see a download button to
+get cheatcodes file from our server.
+</p>
+<p>3.4.5. Toggleframelimit
+</p>
+<p> You can enable/disable the framelimit, so you can pass some part of the game
+faster.
+</p>
+<p>3.4.6. Toogle GLConfig
+</p>
+<p> In this option, you can enable/disable the opengl settings tools to change
+options on the fly. See 3.10 below.
+</p>
+<p>3.4.6. Split Mode Options
+</p>
+<p> You must choose 2 players in input preferences, and then there are 3 split modes
+available:
+<ul>
+<li>SplitVert: Used in games which do not have split screen (Tekken3, Soul Blade ...)</li>
+<li>SplitHorz1: Used in games which have split horizontal screen (Gran Turismo 2...)</li>
+<li>SplitHorz2: The same as SplitHorz1, but with the pads swapped</li>
+</ul>
+</p>
+<p>3.5. Emulator Preferences.
+</p>
+<p>Basically you need to configure the bios, input, cpu and
+sound options.
+</p>
+<p>3.5.1. Configuring the bios.
+</p>
+<p>Bios file. In the combo file selector, you can see the files
+which are on sdcard, select the BIOS you want to use. During testing we found 
+that the scph1001.bin and scph7502.bin BIOS are compatible, but the scph1000.bin
+won't work. Please remember you may only be in possession of the copyrighted BIOS 
+when you're legally entitled.
+</p>
+<p>Simulated/HLE Bios: From 1.9.21 ePSXe include a HLE bios, if you enable this option you 
+do not need to use a bios to play (Compatibility is limited).
+</p>
+<p>Show PSX logo. Show the PSX log during the start. </p>
+<p>3.5.2. Configuring the cpu.
+</p>
+<p>Cpu frame skip. It will speed up the emulator, but the video frame rate will 
+be lower. It uses a experimental mode, which has been tested only in some games. You
+can choose "disabled", "enabled", or "enabled only in high resolution games".
+</p>
+<p>Show FPS. If you want to see the number of frame per second on gameplay, enable 
+this option.
+</p>
+<p>Set Custom FPS. If you want to select the frames per second. You will get sound glitches.
+</p>
+<p>MME Enable. Enable/Disable/Force multimedia extension. With MME enabled it should be
+faster, but could be less accurate in some cases. Don't force in devices without neon
+support, or it will crash!</p>
+<p>Gte Precission. 32/64 Bits. It will be very accurate in 64bits and faster in 32 bits</p>
+<p>3.5.3. Configuring the screen.
+</p>
+<p>Screen orientation. You can choose landscape, portrait, or reverse landscape
+ screen orientation.
+</p>
+<p>Screen ratio. You can choose stretch, 4:3 ratio or widescreen (Widescreen is a internal
+hack and it could be wrong in some games).
+</p>
+<p>Screen color depth. You can choose 16 or 32 bits. With 32 bits you will get better
+mdec colors.
+</p>
+<p>Top/bottoms black bands. You can remove the top/bottom black bands in the games,
+getting more bigger image, but it can break some games (like Alundra 2).
+</p>
+<p>VR Modes. Used to play the emulator with a cardboard. Do not enable these modes when not
+using a cardboard or the screen will be drawn 2 times.
+</p>
+<p>3.5.4. Configuring the video.
+</p>
+<p>Video Renderer. You can select Hardware, Hardware + shaders, Software renderer,
+OpenGL Plugin, Pete OGL2 or Fast OGL2. In general you should choose the Hardware renderer (faster and 
+smoother graphics). Use the software renderer only in old devices (for example 
+with GPU Adreno 200).  From the version 1.8.0, you can use a external OpenGL Plugin, 
+which gets HI-RES graphics, but in general worse performance and glitches 
+(see GPU Plugin below 3.10). From the version 2.0.11, you can select two new internal renderers
+Pete OGL2 ported from the Windows version (you will need a fast phone), or a new Fast OGL2 renderer 
+(less compatible than the Pete renderer, but faster)
+</p>
+<p>Internal Resolution. You can choose x1/x2. x1 is accurate, x2 will increase resolution
+x2, it is smother, but it requires a very powerful CPU and it can create artifacts mainly
+in 2D games.
+</p>
+<p>Video Filtering. You can enable/disable the filtering in the hw/plugin opengl renderer.
+</p>
+<p>Filter for 2D games. You can enable filters for 2D games (2xsai and xbrz), but it is
+not compatible with increasing internal resolution x2/x4 and it is just for 2D games.
+</p>
+<p>HW/Soft Threading Mode. There are 2 modes, no-threading the most accurated, and
+2-thread faster in dual/quad core low end devices.
+</p>
+<p>Overscan top/Bottom. It emulates the overscan in old TVs. You can select the number
+of lines.
+</p>
+<p>Brightness Profile. The brightness can be increased using this resolution, interesting
+in dark games.
+</p>
+<p>GPU Shader. From the version 2.0 shaders are supported. You can select the shader in this
+section. Warning: it requires a very fast phone.
+</p>
+<p>GPU Plugin. If you want to use external OpenGL Plugin, you have to download the
+plugin from Google play (https://play.google.com/store/apps/details?id=com.epsxe.opengl)
+choose it with this option. If you do not have this file, it falls down 
+to the Hardware renderer. More info below.
+</p>
+<p>Plugin Reduce Internal Resolution. You can reduce the internal resolution from the
+GPU plugin. (Interesting in devices as Ouya).
+</p>
+<p>Plugin Texture Mode. It will use a different texture size, required to speed up
+the opengl plugin in Adreno 3XX cards.
+</p>
+<p>Plugin Threading Mode. You can choose "none", 2-threads, 2-threads+effects,
+2-threads+most effects. If you have a fast phone with 2 or 4 cores, you can enable
+the 2-threads mode to speed up or add extra effects as final fantasy series swirls.
+</p>
+<p>OpenGL2 Resolution. Select low/medium/high/very high resolution. It will go from x1 to
+x8 resolution.
+</p>
+<p>OpenGL2 Buffering. In the fast OpenGL2 plugin, you can select single or double buffering.
+</p>
+<p>Common options:</p>
+<p>Plugin Subpixel precision. Less shaking and better polygon precision, but a fast
+cpu is required.
+</p>
+<p>PSX dithering. Enable/Disable the PSX dithering pattern.
+</p>
+<p>Scanlines. Enable/Disable the scanlines and select thickness and transparency level.
+</p>
+<p>DMA Chaincore. Enable/disable DMA chain core. In order to debug graphics problems.
+</p>
+<p>3.5.5. Configuring the sound.
+</p>
+<p>Sound quality. In ePSXe, you can enable or disable the audio output. Disabling 
+the audio will speed up emulation but some games could stop working. High quality
+have more sounds effects (interpolation and reverb), but more cpu is required.
+</p>
+<p>Sound latency. You can use the normal latency mode, available from the first
+version, the low latency mode (experimental - frequency is adjusted to 
+emulation speed, but you need 100% fps to get good sound), or the new low latency
+mode 2, which doesn't adjust the frequency.
+</p>
+<p>3.5.6. Configuring the input
+</p>
+<p>Numbers of players. ePSXe supports 1/2 Players mode, 1 and fun 2 players mode for tablets (using split screen mode), and 4 players support (in games supported multitap).
+</p>
+
+<p>Player 1-4 settings</p>
+
+<p> Additional settings for each player including the pad type, draw mode vibration
+settings and hardware button mapping.
+</p>
+<p>PSX Pad Type. Choose the kind of emulated PAD (Digital or Dual Shock).
+</p>
+<p>Android GamePad Type. Define the kind of gamepad you are configuring: none, Touchscreen, Xbox, Playstation 3, Logitech, Nvidia, Ipega ...
+</p>
+<p>Select gamepad. It scans the system for gamepads, and you have to choose the yours. If you have a xperia play to have to choose xperiaplay here. 
+</p>
+<p>Enable vibration. If vibration is supported in your android, it will enable vibration in the gamepad or touchscreen.
+</p>
+<p>Controller map buttons: allows you to assign a hardware button to each of the virtual 
+controller buttons. This can also be used with gamepads.
+<p/>
+<p> Controller map axis: allow you to assign axis from native joysticks on Android 3.1+.
+Gamepad Test Axis: option to see the axis values and help you to config.
+</p>
+<p>Accelerometer: usage the accelerometer to emulate dpad/right analog.
+<p/>
+
+<p> TouchScreen Settings </p>
+
+<p>Dynamic DPAD/LStick. Enable/Disable dynamic DPAD. It supports move the characters using a dynamic pad with swipes on the left part of the screen.
+</p>
+<p>Dynamic Action Buttons. Enable/Disable dynamic Action Buttons. The action buttons (X,O,Square and Triangle) are replaced by swipes on the right part of the screen.
+</p>
+<p>Pad Skin Lanscape/Portrait. ePSXe includes 3 kind of pads on landscape or no on-screen pad for
+use with hardware buttons. Choose None if you do not want to see the gamepad on screen
+(for example if you are using a external gamepad).
+</p>
+<p>Hide/Show pad skin. Enable/Disable pad skin - to play with a external gamepad. </p>
+<p>Transparency on skins. You can enable how much the transparency is done to the pad skin.</p>
+<p>Gamepad Skint Editor Landscape/Portrait. Edit your touchscreen PAD (move/resize and enable/disable buttons). (Use SWAP MODE to edit the Analog pad - add/remove analog axis)
+</p>
+<p>Vibration on touchscreen buttons. Choose this option to get a vibration when you press a virtual key. </p>
+<p>Custom Pad Skin. You can create and use your own pad skin. Choose your png file with this option</p>
+
+<p> Input methods </p>
+<p> Input methods allow you to configure and change android input methods to enable 
+and/or config external pads or hardware buttons to play.</p>
+
+<p> Extra buttons </p>
+<p> Config options hw buttons: allow you to config some emulator options like the save/load
+states, and framelimit to hardware buttons</p>
+<p> Config virtual options buttons: you can add until 6 extra buttons with savestate/loadstate functions, framelimit, combo action buttons and sticky buttons</p>
+
+<p>3.5.7. Memcards
+</p>
+
+<p>Memcard1 File Mode. Choose mode: 2 memcards shared by all of games or 2 memcards by game.</p>
+<p>Memcard1 File. Choose file to be used in the first memcard.</p>
+<p>Memcard2 File. Choose file to be used in the second memcard.</p>
+<p>Enable/Disable memcards. Enable/Disable memcards - required on Lifeforce game.</p>
+<p>Memcards/Savestates to Dropbox. Open a gamelist to upload/download files to dropbox</p>
+<p>Memcards/Savestates to Google Drive. Open a gamelist to upload/download files to Google Drive</p>
+
+<p>3.5.8. UI preferences
+</p>
+
+<p>Game browser mode. Select gamelist/game details or browser files. Use it when crashing on scanning for games</p>
+<p>UI Language. Select english or default UI language. </p>
+<p>Menu Mode. Select the type of menu engine (dialog or menu) </p>
+<p>Resume game prompt dialog. Enable/disable question about restore savegame after going back.
+</p>
+<p>Confirm exit dialog. Enable/disable confirm dialog on exit.
+</p>
+
+<p>3.5.9. Misc preferences
+</p>
+
+<p>Autosave on exit. Enable to autosave on exit, and show a load dialog at re-start the game.
+</p>
+<p>CPU Interpreter. Enable/disable CPU interpreter. A lot of slower but very accurate.
+</p>
+
+<p>3.6. Memory cards support.
+</p>
+<p>ePSXe also comes with memory card support. The virtual cards are saved
+as 2 files in your \memcards directory. The first one is named epsxe000.mcr 
+and the second one epsxe001.mcr. Each file has a size of 128 KB (which is
+PSX standard), and the format is simply a dump of real memory cards.
+</p>
+<p>ePSXe doesn't come with a memory card editor, or card selector for Android,
+but you can easily change the memcards manually by moving files in your sdcard.
+</p>
+<p>ePSXe also has support for different memory card
+file supports, like Dexdrive (.gme), PSEmu Pro (.mc) and several others.
+</p>
+<p>3.7. Savestates.
+</p>
+<p>ePSXe supports savestates. They are files that
+contain the state of the emulator when the key was hit, so you
+can restore the emulation later in that same exact point.
+</p>
+<p>Menu-Savestate = Save the state to the slot selected
+(MAX = 5 slots)<br/>
+Menu-Loadstate = Load the state of the slot selected
+</p>
+<p>ePSXe 1.2.0, 1.4.0 supports savestates version 0.<br/>
+ePSXe 1.5.0      supports savestates version 0 and 1.<br/>
+ePSXe 1.6.0      supports savestates version 0, 1 and 2.<br/>
+ePSXe 1.7.0      supports savestates version 0, 1, 2 and 3.<br/>
+ePSXe &gt;=1.8.0      supports savestates version 0, 1, 2 and 3.
+</p>
+<p> Of course you can use savestates from PC on Android version, and vice versa. </p>
+<p>3.8. SBI files.
+</p>
+<p>
+Now you can use SBI files for subchannel reading (required in some PAL games).<br/>
+1) Get the SBI for your game in:
+http://psxdatacenter.com/sbifiles.html or http://redump.org<br/>
+2) Copy your subchannel file in the same folder as your iso, with the same name,
+and using the ".sbi" extension. Some examples:<br/>
+1) "ff9.cue" then "ff9.sbi"<br/>
+2) "spyro3.bin" then "spyro3.sbi",<br/>
+3) "ff8.bin.ecm" then "ff8.bin.sbi"
+</p>
+<p>3.9. Cheat Codes.
+</p>
+<p>ePSXe supports GameShark cheat codes. You can download the cheat codes from
+our server with the Download button on cheatcode option during gameplay or
+create your own file. </p>
+<p>In the second case, you can load cheat codes in the 
+emulator creating a file called "sdcard/epsxe/cheats/SXXX_XXX.XX.txt
+(where SXXXX_XXX.XX is the PS-EXE name of the game, which you can see in
+exit option, or in the cheat code option during gameplay) in your sdcard.
+For example in Final Fantay 8 US-NTSC the file name is:<br/>
+<br/>
+"epsxe/cheats/SLUS_008.92.txt".<br/>
+<br/>
+ePSXe supports 256 codes per file.  The file format is:<br/>
+<br/>
+#description of cheat code 1<br/>
+XXXXXXXX YYYY<br/>
+ZZZZZZZZ AAAA<br/>
+#descripion of cheat code 2<br/>
+NNNNNNNN MMMM<br/>
+<br/>
+For example for Final Fantasy 8 US-NTSC, it could be:<br/>
+<br/>
+#Zell level 20<br/>
+800778a4 4a38<br/>
+<br/>
+Currently, only 80XXXXXX, 30XXXXXX, 50XXXXXX, 1F800XXX, D0XXXXXX, D1XXXXXX,
+D2XXXXXX, D3XXXXXX, E0XXXXXX, E1XXXXXX, E2XXXXXX, E3XXXXXX gameshark codes 
+are supported, the rest will be ignored.<br/>
+You can find GameShark codes in a lot of webpages in internet, like: <br/>
+http://psxdatacenter.com<br/>
+http://www.gamegenie.com/cheats/gameshark/ps1/index.html<br/>
+After that, re-load your game, and you will be able to enable/disable the 
+gameshark codes from the menu "cheat codes" on gameplay (disabled by default).
+</p>
+<p>3.10. OpenGL Plugin support.
+</p>
+<p>Starting in version 1.8.0 ePSXe supports HD graphics using the OpenGL
+plugin Peopsxgl. Because this plugin is GPL licensed, it is not distributed
+with the emulator APK, and you have to download it yourself in
+(other opengl plugin versions are not compatible with ePSXe):<br/>
+https://play.google.com/store/apps/details?id=com.epsxe.opengl<br/>
+<p>Copy it in your sdcard, and choose it in preferences+GPUPlugin, 
+and choose preferences+VideoRender+OpenGLPlugin.</p>
+<p>OpenGL Plugin works in a very different way to soft plugin. It usually
+gets better graphics than soft plugin (in 3D games), but it is less compatible 
+(missing screens, or artifact), and a lot of times you have to configure it
+for every game (it includes a lot of options). An option to configure on the
+fly has been included "Toogle GLConfig", it include the next options (info
+included from the original plugin readme):
+<ul>
+<li>FS: Enable/Disable frameskip</li>
+<li>OD: Enable/Disable Off screen drawing. OD is used to detect drawings which are outside the front/backbuffer, doing such stuff in software (or by tweaking polygon coords).</li>
+<li>FI: Enable/Disable filtering. Give it a try... the real PSX doesn't support BF, so there will be some glitches if you turn BF on. Several games will look nicer... there are two main filtering modes... the Extended mode is slightly slower, but even better with most games. </li>
+<li>AM: Enable/Disable Alpha Multipass. Draws opaque texture pixels the way it should be. Of course it could be a bit slower (and if your OpenGL driver draws black rectangles around objects, turn this option off).</li>
+<li>AB: Enable/Disable Advanced Blending. Depending on your drivers OpenGL implementation using 'Advanced blending' will be nice or slow </li>
+<li>FT: Enable/Disable Framebuffer texture. To get whirling screen effects and psx motion blurring.</li>
+<li>MB: Enable/Disable Mask Bit (it usually requires restart). A really rarely used ability of the real PSX is the usage of mask bits to avoid drawing into some parts of the screen. Well, to increase compatibility you can turn the mask bit emulation on, but as far as I know only Silent Hill is really needing it. If you activate it, there are also some chances that 3D shutter glasses will work...  Another hint: because most games do not need the mask detection, you can turn it off to get more available texture vram.</li>
+<li>SAVE: Save to a file in sdcard/epsxe/config/GAME-CODE.txt the options selected.</li>
+<li>EXIT: Hide the toolbar.</li>
+</ul>
+<p>Besides of the previous config options, you can edit the config file, and enable 
+gamefixes. To know more about it, save the file to disk, and edit this file to read
+info about how to config it</p>
+<p>If you are a developer and and you want to do changes in the plugin the
+plugin source code is available in http://epsxe.com/libopenglpluginsrc.zip</p>
+<br/>
+<p>3.11. Supported and non-supported iso formats.
+</p>
+<p>ePSXe supports the next iso formats:</p>
+<li>Bin/Cue</li>
+<li>Multi-Bin/Cue</li>
+<li>Img/Ccd</li>
+<li>Iso/2336 Iso/2352</li>
+<li>Mdf/Mds 1.0</li>
+<li>Pbp and Pbp multi-disc (non-encrypted)</li>
+<li>Nrg</li>
+<li>Cdi</li>
+<li>Ecm</li>
+<br/>
+<p>ePSXe non-supported rom formats:</p>
+<li>Compressed formats 7z/zip/rar/Z (Use an uncompressing tool)</li>
+<li>Bin+Ape/Cue multi-file (Use pakkiso on PC, and virtualdaemon+isobuster to dump to bin/cue format)</li>
+<br/>
+<p>BE CAREFUL: Some Android uncompressing tools are doing bad the job, and splits the 
+files, or even rename a .bin.ecm file to .bin file. In these cases you will usually 
+get a black screen when running on the emulator (26/27Mb is NOT a right size for a PSX game).
+<br/>
+<p>3.12. License Issues.
+</p>
+<p>ePSXe uses the Google Play license system. ePSXe validates the license the
+first time when you run it. If you read the next message on screen:<br/>
+<br/>
+"License not validated yet. Read the documentation"<br/>
+<br/>
+Follow the next steps:<br/>
+<li>You need internet access the first time when you run it.</li>
+<li>Check the date/time of your smartphone and fix if it is not right.</li>
+<li>Sometimes it could take some hours to get validated, wait 24 hours</li>
+<br/>
+If the problems continue, please send us a email to epsxeandroid@gmail.com,
+and we will help you to solve it. (we are so sorry for the problems) <br/>.</p>
+
+<p>3.13. Shortcuts.
+</p>
+<p>From the version 1.8.8 you can add a direct shortcut to the games from the desktop screen.
+To make the shortcut, do a long click about a game in the browser list games. You can choose
+to use a big icon or a small icon.</p><br/>
+
+<p>3.14. Gamefaqs.
+</p>
+<p>ePSXe supports gamefaqs while playing. How to setup: during gameplay on exit dialog 
+ you will see the name of the ps game "SXXX_NN.NNN". Copy the faq txt file to 
+sdcard/epsxe/gamefaqs/ using "that name".txt. Example:<br/>
+Chrono Cross: SLUS_010.41 then SLUS_010.41.txt.<br>
+After that you will see a new entry in back/menu button on gameplay.
+</p>
+
+<p>3.15. Multiplayer.
+</p>
+<p>ePSXe supports multiplayer on local net.  The requirements:<br/>
+1) the same game in both devices (in device 2, the game has that be visible in gamelist)<br/>
+2) the same bios version  in both devices.<br/>
+3) both devices connected to the same wifi-router, or paired using wifi-direct.<br/>
+Steps to use:<br/>
+1) In device1, select multiplayer-Localnet player1 (Server), select the game, and it will show the IP for the second player<br/>
+2) In device2, select multiplayer-Localnet player2 (Client), insert the IP got from the player1.<br/>
+</p>
+
+<p>3.16. Emulation core stopped.
+</p>
+<p>ePSXe core stopped due to an emulation error. The possible causes are:<br/>
+1) using cheat codes: some cheat codes could not work and breaks the emulation (please try again without cheat codes).<br/>
+2) using bios HLE mode: it should run a large number of games, but could fail in others (please try a official bios).<br/>
+3) using savestates: the original PSX did not have savestates, some games will require using memcards in some parts of the game.<br/>
+4) ps1 game corrupted or wrong: some game dumps are buggy, place a new dump of the game.<br/>
+5) emulation bugs: compatibility is very high, but in some cases a game could fail, please email to epsxeandroid@gmail.com<br/>
+</p>
+
+<p>3.17. Configure gamepad.
+</p>
+<p>
+1. Auto-setup the gamepad<br/>
+ePSXe is auto-detecting a lot of gamepad models. If your gamepad is a very common gamepad, you can use the auto-setup from the emulator. In the first place, you have to connect the gamepad to your smartphone. You can use a OTG adaptor or using bluetooth if it is supported by your phone (example for a <a href="https://www.teamknowhow.com/discover/discover/how-to-connect-a-ps4-controller-to-android">PS4 gamepad</a>). After that your should be able to manage your smartphone desktop with the gamepad. The next step is run the emulator, choose a game, run the game, and press a button in your gamepad during gameplay. If it was auto-detected, it will show a dialog asking you to use the gamepad to play. You should be able to use the gamepad now (if the buttons are not rightly mapped, go to the next section).
+</p>
+
+
+<p>3.18. OGL1 HD plugin obsolete.
+</p>
+<p>
+From 08/01/2019 Google is requiring a 64bits version for the libraries. The OGL1 plugin is a 32bits plugin, so it is not compatible with ePSXe for Android 64 bits versions (2.12+). Anyway the OGL1 pugin is obsolete, if you want HD support, please change your video renderer to Fast OGL2 or Pete OGL2.
+</p>
+
+<p>
+2. Config your gamepad yourself</br>
+These are the standard steps to config a gamepad in ePSXe, but it will JUST work if your Android smartphone supports your gamepad (it means that the gamepad was previously working on other apps in the phone). ePSXe uses the standard gamepad android API.</br>
+0) If you connect the joystick with a OTB USB and you have android 3.1+ continue in step 1. If it is by bluetooth, see the documentation in your gamepad or search in google about how to connect your gamepad - (example for a <a href="https://www.teamknowhow.com/discover/discover/how-to-connect-a-ps4-controller-to-android">PS4 gamepad</a>) (in old devices sixaxis controller app or similar name on google play could be needed or if it id xbox gamepad, use ms wireless receiver). After connecting go to step 1.</br>
+1) Test whether the pad is working on Android. With your gamepad paired and switched on, run ePSXe, go to "Preferences>Player1>Player1 map axis>Gamepad Test Axis", and moving the sticks, you should see values on screen. (android 3.1+ required).</br>
+2) With your gamepad paired and switched on, run ePSXe, choose your gamepad in "Preferences>Player1>Select Gamepad" (moga is JUST for Moga devices). After that go "Preferences->Player1->Player 1 Map Buttons" and map your buttons and go to "Preferences->Player1->Player 1 map axis" and config the axis detected in the step 1.</br>
+3) Go to "Preferences->Player1->Pad Type PSX" and select "Dual shock"</br>
+4) Run a game. Be careful some games are not dualshock compatibles in the original Playstation (check the PSX datacenter to check if the game is compatible), in those cases "Preferences>Player1>Pad type PSX" = Digital (Only) could be needed</br>
+5) if it is running please in ePSXe title screen press back button, and choose "report gamepads" and we will add autoconfig in future versions. Thanks</br>
+</p>
+<hr/>
+4.  Implemented features
+<hr/>
+
+<ul>
+  <li>The complete r3000 instruction set
+  </li><li>Imcomplete COP0 coprocessor emulation 
+  </li><li>GTE coprocessor emulation 
+  </li><li>Sio emulation 
+  </li><li>Memory card support
+  </li><li>ISO support
+  </li><li>Software video GPU
+  </li><li>Internal SPU core
+  </li><li>Mdec decoder
+  </li><li>CDDA sound support
+  </li><li>XA sound support
+  </li><li>GUI
+</li></ul>
+<hr/>
+5.  Compatibility in ePSXe
+<hr/>
+
+<p>Compatibility in ePSXe has been mostly tested with PAL games. Current compatibility percentage is superior to 95%.
+</p>
+<p>Some games known to work are:
+</p>
+<ul>
+  <li>Colin McRae Rally 1 and 2
+  </li><li>Crash Bandicoot 1, 2 and 3
+  </li><li>Driver 1 and 2
+  </li><li>Fifa 2005.
+  </li><li>Final Fantasy VII, VIII and IX
+  </li><li>Need For Speed I, III, IV, V
+  </li><li>Ridge Racer
+  </li><li>Ridge Racer type 4
+  </li><li>Soulblade
+  </li><li>Syphon Filter 1, 2
+  </li><li>Tekken 1, 2 and 3
+  </li><li>Vagrant Story
+  </li><li>and many more ...
+</li></ul>
+<p>Once you start a game in ePSXe various things can occur:
+</p>
+<ul>
+  <li>The game works correctly.
+       Solution: "Be happy !" :) Send us a screenshot when you're
+       through the game.
+  </li><li>Control response is not good on touch screen in Jelly Bean.
+       Solution : disable "magnification gestures".
+  </li><li>The game works but you get graphics problems.
+       Solution : Try the ePSXE PC version ePSXe.
+  </li><li>The game works but you get 3d graphics or light problems.
+       Solution:  ePSXe has a more or less complete GTE emulation, but
+       several GTE opcodes are still very buggy :-(. Wait for the  next
+       version. You can also try another plugin to make sure it's really
+       a GTE problem (Pete's soft GPU plugin is very very compatible !)
+  </li><li>The GAME still won't work.
+       Solution:  If, after all, the game STILL won't work, than it's most
+       probably simply not compatible with ePSXe right now. You should wait
+       for the next version of the emulator. 
+</li></ul>
+<p>Sound.
+</p>
+<p>   ePSXe comes only with internal Core sound version 1.8.0.
+   This includes ADPCM, CDDA and XA sound.  Common problems
+   with the sound:
+</p>
+<ul>
+  <li>Sound playback is jerky or repeat.
+       Solution: You need 50/60 fps in order to get accurate sound.
+</li></ul>
+<hr/>
+6. Where can I get help with the emulator?
+<hr/>
+<p>There are a number of ways to receive help. The first thing you should do is
+read the documentation, since the majority of questions are already
+answered in it.</p>
+<p>Your next choice is emailing us to 
+<a href="mailto:epsxeandroid@gmail.com">epsxeandroid@gmail.com></a>.</p>
+<p>View our webpage for android.
+<a href="http://epsxe.com/android/">epsxe for android</a>.</p>
+</p>
+<p>Send us a twitter message to @epsxeteam.</p>
+<p>You can use the official ePSXe forums in 
+<a href="https://www.ngemu.com/forums/epsxe-android-discussion.145/">ngemu forums</a></p>
+<hr/>
+A.  Frequently Asked Questions
+<hr/>
+
+<ul>
+  <li>(Your favorite game here) doesn't work with ePSXe?  Why not ?
+<p>  We're sorry.  For now, try another emulator or a real playstation :).
+
+</li><li>I got black screen in the games.
+<p>  If you are using the hardware renderer, the number of incompatible roms is really
+really low, surely it is problem with the rom (read 3.11 section), and get the PSX ID
+code (SLES/SLPS/SLUS) on exit dialog, and check if it is right searching on Google.
+</p>
+  </li><li>When will the next version of ePSXe be released?
+<p>  We do not know and won't tell you. Check @epsxeteam on twitter.
+</p>
+</li><li>There is repeat or jerky sound.
+<p>  ePSXe uses only sync spu emulation. So you need 50/60 frames per second to get
+right sound.
+</p>
+</li><li>How can I hide the on screen buttons?.
+<p>  Preferences-&gt;Pad1-&gt;Pad Draw Mode-&gt;None
+ePSXe uses only sync spu emulation. So you need 50/60 frames per second to get
+right sound.
+</p>
+</li><li>Some games doesn't work or have graphics error using OpenGL Plugin.
+<p>  OpenGL plugin is limited in smartphone GPUs (some games or graphics effects simply
+doesn't work or will be very slow), you can fix some graphics problems using the 
+OpenGL toolbar (read section 3.10).
+</p>
+  </li><li>Where can I get the latest version of ePSXe?
+<p>  <a href="https://play.google.com/store/apps/details?id=com.epsxe.ePSXe">Google Play</a></p>
+</li></ul>
+
+<hr/>
+B. Changelog
+<hr/>
+
+<p>ePSXe v2.0.11, released on XX.06.2019
+</p>
+<ul>
+    <li>Preliminary ported the Pete OGL2 renderer (Thank you master Pete) - A fast phone is required</li>
+    <li>Implemented a new and fast OpenGL2 renderer (less compatible than Pete's one, but faster)</li>
+    <li>Implemented dead zone configuration support in the gamepads and accelerometer</li>
+    <li>Resorted the preferences</li>
+    <li>Fixed the custom gamepad skins</li>
+    <li>Fixed some crashes when re-execute the app</li>
+    <li>More misc fixes</li>
+</ul>
+
+<p>ePSXe v2.0.10, released on 25.02.2019
+</p>
+<ul>
+    <li>Fixed issues with autosave option</li>
+    <li>Fixed exit issues on some device models</li>
+    <li>More misc fixes</li>
+</ul>
+
+<p>ePSXe v2.0.9, released on 08.02.2019
+</p>
+<ul>
+    <li>Update Android SDK support to Oreo</li>
+    <li>Support to movement in Resident Evil Survivor Namco Gun mode</li>
+    <li>Added Google Drive support</li>
+    <li>Fixed fullscreen mode in 18:9 devices</li>
+    <li>Added OTG Mouse support</li>
+    <li>Fixed sound volume sweep (DW7 and DQ4)</li>
+    <li>Fixed shortcuts on Android 8+</li>
+    <li>Added barrel distorsion effect to VR mode</li>
+    <li>Fixed touchscreen editor in low resolution phones</li>
+    <li>Reworked the autosave option</li>
+    <li>Fixed touchscreen skin when using low res modes in opengl</li>
+    <li>Improved gamepad skin fit when changing the screen resolution</li>
+    <li>Fixed touchscreen skin in portrait mode</li>
+    <li>Support to disable the prompt dialog on resume</li>
+    <li>Support to disable confirm dialog on exit</li>
+    <li>Added buttons to volume up/down</li>
+    <li>Added a turbo button support (combo with other button)</li>
+    <li>Added fast-forward button support</li>
+    <li>Improved netplay feature (less desyncs)</li>
+    <li>Fixed some crashes on gamelist scanning (buggy big CUE files)</li>
+    <li>More misc fixes</li>
+</ul>
+
+<p>ePSXe v2.0.8, released on 16.06.2017
+</p>
+<ul>
+    <li>Dropbox API migrated from v1 to v2</li>
+    <li>The optional epsxe plugins are now available as APK from Google Play (opengl/sevenzip)</li>
+    <li>Fixed some crashes on gamelist scanning</li>
+    <li>More misc fixes</li>
+</ul>
+
+<p>ePSXe v2.0.7, released on 09.27.2016
+</p>
+<ul>
+  <li>Changes required to complain with Google policies</li>
+</ul>
+
+<p>ePSXe v2.0.6, released on 06.25.2016
+</p>
+<ul>
+  <li>Updated the local netplay feature. Now it should be compatible with the rest of ePSXe ports from the version 2.0.5 (Windows, Linux, Linux x64 and MacOSX)</li>
+  <li>Added a lot of new color skins (thank to Javier ~ JZX1673)</li>
+  <li>Fixed a crash when using the autosave option</li>
+  <li>Fixed the input profiles when using the gpu renderer=hardware+shaders</li>
+  <li>Fixed enable brightness profiles during gameplay</li>
+  <li>Added an option to disable the touchscreen press button effect</li>
+  <li>Updated the opengl plugin to v16 (minnor fixes)</li>
+  <li>Added a grid to the touchscreen gamepad editor</li>
+  <li>Added language Hungarian (Eliterarking).</li>
+</ul>
+
+<p>ePSXe v2.0.3/2.0.5, released on 05.27.2016
+</p>
+<ul>
+  <li>Improved local netplay feature (fixing some desync problems). Besides the loadstate should not desync the emulation and this feature will be compatible with the rest of ePSXe ports from the version 2.0.3 (Windows, Linux, Mac).</li>
+  <li>Unified the X86 and ARM dynarec. Now both versions are compatible using the local netplay feature.</li>
+  <li>Included an animation effect in the touchcreen buttons when a button is pressed.</li>
+  <li>Added a new option preferences+blit skip to enable blit skip how it was the default previous to the version 2.0.2</li>
+  <li>Improved CDROM timing accuracy, bugs and change disc problems. Improved the timing when seeking and reading cdrom sectors, fixed Tales of Destiny 2 changedisc and fixed Twins Story and Harukanaru Toki no Naka de - Banjou Yuugi.</li>
+  <li>Fixed a slowdown bug in Koudelka</li>
+  <li>Fixed cheat codes support on interpreter mode</li>
+  <li>Added languages Brazilian (Gabriel) and Indonesian (Insani).</li>
+</ul>
+
+<p>ePSXe v2.0.2, released on 03.21.2016
+</p>
+<ul>
+  <li>Improved GPU timing (while it is implemented in all gpu modes, it is more accurate in Hw renderer+1-thread mode). Fixes Derby Stallion, Derby Stallion 99, Namco Vol.4, NBA Live 99, Sangokushi Eiketsuden, Tunguska ... It will be auto-enabled in games known to need this feature, but you can enable it in all games in the preferences - with performance penalty.</li>
+  <li>Added an option to PSX CPU overclock - you can use this option to increase internal framerate in some games but it requires a very fast device</li>
+  <li>Improved a problem with auto-frameskipping when enabling shaders or x2 renderer options</li>
+  <li>Fixed covers on nvidia shield tablet</li>
+  <li>Fixed horizontal screen resolution and better centering: Hogs or wars, Star Ocean 2 ...</li>
+  <li>Fixed CPU interpreter mode on Android and fixed a bug delay branch</li>
+</ul>
+
+<p>ePSXe v2.0.0/2.0.1, released on 02.21.2016
+</p>
+<ul>
+  <li>Added simple shaders support. In this version you can select the shader to use, it can be NONE, FXAA, CRT-Hyllian, xBR-LV2-3D, CRT-lottes or other custom shader (Thanks to Hyllian and Lottes). It is possible from the shader selection screen to download a pack of shaders or you can add your own shaders</li>
+  <li>Added support for 2D-Filters: 2xSAI and xBRZx2/4 (thanks to Zenju). When enabling xBRZ filter, x2/x4 resolution will be disabled, because the filter does not work with internal scaling</li>
+  <li>Added support for Sub-pixel preccision to hardware renderers</li>
+  <li>Fixed garbage on borders in some games in hardware renderers</li>
+  <li>Fixed vibration on player 1</li>
+  <li>Fixed the game The Hive</li>
+  <li>Fixed PBP support on Nexus Player in android 6.0</li>
+  <li>Fixed some crashes while scanning games</li>
+  <li>Added more gamepads profiles: Mad Catz, Xiomi</li>
+  <li>Fixed ECM indexing block size when using MDF files</li>
+  <li>Added support for PPFv3 and support to autoload several PPFs by game</li>
+</ul>
+
+<p>ePSXe v1.9.40, released on 12.10.2015
+</p>
+<ul>
+  <li>Experimental support: local netplay (using wifi or wifi-direct). Requirements: 1) the same game in both devices (in device 2, the game has that be visible in gamelist) 2) the same bios version in both devices. 3) both devices connected to the same wifi-router, or paired using wifi-direct. Steps to use: 1) In device1, select multiplayer+Localnet player1 (Server), select the game, and it will show the IP for the second player 2) In device2, select multiplayer+Localnet player2 (Client), insert the IP got from the player1. Note: Loadstate is supported, but not recommended/stable!!</li>
+  <li>Updated opengl plugin to v15, updated the gpustatus interlaced code to fix some problems</li>
+  <li>Fixed MDECs in GPU x4 resolution option.</li>
+  <li>Fixed autofire in threading modes</li>
+  <li>Added a new option to remove the gamepad/joystick filter while searching for new gamepads</li>
+  <li>When mapping buttons, now it is possible to unmap pressing long in a button in the buttonlist (required for Android tv)</li>
+  <li>Fixed a bug in Medievil II background music</li>
+  <li>Fixed Tenchu memcards on bios HLE mode</li>
+</ul>
+
+<p>ePSXe v1.9.39, released on 11.24.2015
+</p>
+<ul>
+  <li>Improved OpenGL Plugin performance on some complex scenes. V14 relays on ePSXe core functions so it wont work on prior versions 1.9.39</li>
+  <li>Added support for config profiles by game (during gameplay menu+more options+game profile+save game profile</li>
+  <li>Added GPU x4 resolution option (sadly currently no phone is fast enough to run this mode with good performance).</li>
+  <li>Improved some widgets on preferences screen (scanlines, overscan ..)</li>
+  <li>Changed on game menu to dialog mode on Android 5.0+ (Fixes Galaxy Tab s2 menu)</li>
+  <li>Fixed some framerate issues in 60FPS games while using sound latency low/very low mode</li>
+  <li>Improved GPU dithering on X86 version</li>
+</ul>
+
+<p>ePSXe v1.9.38, released on 11.05.2015
+</p>
+<ul>
+  <li>Added a GPU x2 resolution option to improve 3D graphics. A very fast CPU/Phone is required in order to get good framerates. Warning: It can create graphics artifacts mainly in 2D games.<li>
+  <li>Improved GPU Accuracy and fixed some missing logo screens (Tomb Raider)</li>
+  <li>Updated opengl plugin to v12. Fixed a bug broken the games after mdec from v11</li>
+  <li>Added support to re-scan for games in Google TV devices</li>
+  <li>Fixed some HLE bios bugs: World Soccer Jikkyou Winning Eleven 3, Azure Dreams, Jet Moto, Echo Night, Resident Evil 2, Driver, Wild Arms, Jackie Chan Stuntmaster (US)</li>
+</ul>
+
+<p>ePSXe v1.9.37, released on 10.14.2015
+</p>
+<ul>
+  <li>Changed the menu-options during gameplay for a dialog in Android 5.1+ (It was broken by lastest Samsung rom update - you can select the old menu style from preferences)</li>
+  <li>Fixed the game scanner on Android 6</li>
+  <li>Improved the action buttons deteccion when press in action button area (Choose the nearest if you fail)</li>
+  <li>Fixed regresion: F1 Championship Season 2000</li>
+  <li>Fixed compatibility with the game Little Princess - Maru Oukoko No Ningyou Hime 2</li>
+  <li>Fixed some texture align problems: bof3, power rangers, colin mc rae, timecrisis, rayman</li>
+  <li>Fixed some GPU bugs: test drive 5, ff4</li>
+</ul>
+
+<p>ePSXe v1.9.36, released on 10.01.2015
+</p>
+<ul>
+  <li>Added support to dynamic DPAD/LStick set preferences+touch gamepad+dynamic dpad=enable (Thanks to Zaf)</li>
+  <li>Added support to dynamic actions buttons set preferences+touch gamepad+dynamic action buttons=enable</li>
+  <li>Added 3 new brightness profiles to HW/FXAA/SW Video renderer (useful on dark games)</li>
+  <li>Added support for overscan top/bottom (use to remove garbage on top/bottom of screen)</li>
+  <li>Fixed the "infamous" freeze bug in Deus battle on Xenogears (Disc2)</li>
+  <li>Fixed graphics garbage in Vigilante 8</li>
+  <li>Improved HLE bios support: Jade Cocoon, MGS PAL and Toca World Touring</li>
+  <li>Fixed Super Pang Collecting regression</li>
+  <li>Fixed a bug in MDEC in Kamen Rider Ryuki</li>
+</ul>
+
+<p>ePSXe v1.9.35, released on 09.16.2015
+</p>
+<ul>
+  <li>Added support to customize the Portrait Skin (supporting dual shock mode)</li>
+  <li>Improved the error handling while scanning the device for games</li>
+  <li>Fixed a freeze bug in the hw/sw threading mode</li>
+  <li>Added support to map the menu button as a extra button</li>
+  <li>Saved/Restored the current reading gamefaq position after closing the game</li>
+  <li>In moga pocket gamepad, mapped L2/R2 buttons to right analog stick on digital mode</li>
+  <li>Improved gamepad support/profiles (Dual Shock 4, Red Samurai and others)</li>
+  <li>Added a workaround for the Galaxy Note 5 and S6 Edge+ menu problem</li>
+  <li>Improved HLE bios support: Simcity 2000 and Dokapon</li>
+  <li>Fixed Advanced Blending on the opengl plugin (v11) (performance is slow with this option enabled)</li>
+</ul>
+
+<p>ePSXe v1.9.34, released on 08.13.2015
+</p>
+<ul>
+  <li>Added VR 3 video modes for Cardboard preferences+VR Modes (it is possible combo with preferences+player1+accelerometer=AXIS_X_AXIS_Y to play games as Spyro the Dragon)</li>
+  <li>Added Justifier/Hyperblaster gun support using touchscreen (preferences+player1+psx pad type=justifier - Lethal Enforcers I and II, Area 51, Die Hard Trilogy, Crypt Killer, Project Horned - Owl)</li>
+  <li>Improved PAL/NTSC Timming (fixes Bust a Groove 1 and 2 - use very low/lowest sound latency modes)</li>
+  <li>Added autofire support (preferences+player1+autofire/autofire button)</li>
+  <li>Added support to config 4 touchscreen profiles</li>
+  <li>Added support to save/auto-restore touchscreen config by game (psx pad type/mode/profile/autofire)</li>
+  <li>Improved compatiblity in gpu software threading mode</li>
+  <li>Updated Japanesse and Russian translations (Nekokabu and Алексей)</li>
+  <li>Fixed a bug in GPU (Chrono Cross fort Dragonia polygon)</li>
+  <li>Fixed regresion on GPU (Ridge Racer)</li>
+</ul>
+
+<p>ePSXe v1.9.33, released on 07.27.2015
+</p>
+<ul>
+  <li>Added scanlines support (transparency+thickless can be configured)</li>
+  <li>Added support to reduce rendering resolution in openGL plugin</li>
+  <li>Added support to change a lot of video/audio/input options during gameplay</li>
+  <li>Added an option to reset the game during gameplay</li>
+  <li>Added support to edit the cheat codes and load cheat codes from a file</li>
+  <li>Fixed a bug loading MDS/MDF files with sector size 2352+subchannel</li>
+  <li>Improved the welcome configuration information (currently just English/Spanish)</li>
+  <li>Fixed a bug in some gameshark codes (conditional) and added 0x10/11,0x20/21,0xc2 types</li>
+  <li>Fixed a bug with the music in the game Future Cop 01</li>
+</ul>
+
+<p>ePSXe v1.9.31/32, released on 07.01.2015
+</p>
+<ul>
+  <li>Added support to upload/download savestates/memcards to dropbox</li>
+  <li>Added support to uncompress 7z/zip files</li>
+  <li>Fixed a freeze bug in the hw/sw threading mode</li>
+  <li>Fixed a dynarec regression in the game Crash bash</li>
+  <li>Fixed a hle compatiblity regression in Silent Hill</li>
+  <li>Now it is possible select the mode OD=4 in the opengl plugin</li>
+</ul>
+
+<p>ePSXe v1.9.29/30, released on 06.22.2015
+</p>
+<ul>
+  <li>Preliminary Android TV support</li>
+  <li>Fixed HD Plugin on X86 devices (please re-download v8 version)</li>
+  <li>Updated opengl plugin to version 8 (fixed crash in low ram devices)</li>
+  <li>Fixed some HLE bios bugs: Ms. Pac-Man - Maze Madness, Marvel vs Capcom, Frogger 2, KKND Krossfire</li>
+  <li>Fixed a texture align problem: Alien Trilogy</li>
+</ul>
+
+<p>ePSXe v1.9.28, released on 06.01.2015
+</p>
+<ul>
+  <li>Added a new gpu threading mode software/hardware renderer preferences+hw/sw threading mode (improved performance in dual/quad core devices) </li>
+  <li>Fixed some GPU regressions: Medievil, NHL Blitz, Metal Slug X Improved CPU/GTE/GPU accuracy</li>
+  <li>Updated opengl plugin to version 8 (fixed crash in low ram devices)</li>
+  <li>Fixed some HLE bios bugs: Metal gear solid, Diablo, Ridge Racer Type 4</li>
+  <li>Fixed a bug mapping dpap-buttons in gamepads</li>
+  <li>Fixed download button on preferences+gpu plugin, point to v8 version</li>
+  <li>Now it is possible to disable player gamepads (Hogs of War)</li>
+</ul>
+
+<p>ePSXe v1.9.27, released on 05.25.2015
+</p>
+<ul>
+  <li>Improved CPU/GTE/GPU accuracy</li>
+  <li>Added a widescreen mode (preferences+screen ratio=widescren)</li>
+  <li>Fixed some games: soul blade (edge mode), Jumping Flash 2, Atari Collection vol 2 - Marble Madness, Formula One 2000 (menu music), Cinema Eikaiwa - Boys Life, Sidewinder 2 (intro), diablo 2 (garbage), Metal Slug X Vehicle (level 2), Alien Resurecction, Glocal Excite, Legend of Legaia (mirror scene), Captain Commando (bosses), Resident Evil 2 (no dual shock version)</li>
+  <li>Fixed some game regressions: Duke Nukem Land of babes, Rugrats Studio/Reptar, Mary Kate, C-12 Resistence, Roland Garros 2001...</li>
+  <li>Fixed some HLE bios bugs: BOF3, Persona, Final Fantasy Tactics, Civilization II, Digimon World 2003...  </li>
+  <li>Improved multitap support (more games supported)</li>
+  <li>Updated opengl plugin to version 7 (more vertex precision)</li>
+  <li>Added new options to preferences - CPU interpreter (more accurated but very slow) and DMA chain core</li>
+  <li>Added an option to see the gamepad axis in preferences+playerX+player X map axis+gamepad test axis</li>
+  <li>Added options to report preferences/gamepad info/folders info by email to the developers in the UI menu</li>
+  <li>Added support to run PS-EXE files in Android (use files browser mode)</li>
+</ul>
+
+<p>ePSXe v1.9.26, released on 01.26.2015
+</p>
+<ul>
+  <li>Fixed a bug in the game scanner</li>
+  <li>Fixed Driver 1, Driver 2 and Saga Frontier 2 in bios HLE mode</li>
+</ul>
+
+<p>ePSXe v1.9.25, released on 01.23.2015
+</p>
+<ul>
+  <li>Several fixes to memcards in bios HLE mode: Suikoden 2, ff9, Harvest Moon ...</li>
+  <li>Change memcards by game mode, to use just the same memcards for different discs in the same game</li>
+  <li>Added a new gamelist mode (grid covers) preference+game browsermode+game list</li>
+  <li>Added an experimental option to use the accelerometer</li>
+  <li>Fixed gargabe around to the menu in Android 5.0</li>
+  <li>Added support to music in PBP compressed isos with raw track info</li>
+  <li>Fixed mini-screenshot in HLE+plugin opengl mode</li>
+  <li>GPU: Blaster Master - Blasting Again</li>
+  <li>OpenGL Plugin: Updated to V6 (fixed top/bottom bars color)</li>
+  <li>Fixed Russian translation</li>
+</ul>
+
+<p>ePSXe v1.9.24, released on 10.29.2014
+</p>
+<ul>
+  <li>Fixed X86 native arch in some devices with Android 4.4 (thanks to James Leaver)</li>
+  <li>Fixes to gamepad skins (thank to Javier ~ JZX1673)</li>
+</ul>
+
+<p>ePSXe v1.9.22/23, released on 10.25.2014
+</p>
+<ul>
+  <li>Fixed a bug saving memcards in HLE mode</li>
+  <li>When using HLE mode, force to individual memcards by game (it doesn't delete your memcards, it creates new memcards</li>
+</ul>
+
+<p>ePSXe v1.9.21, released on 10.24.2014
+</p>
+<ul>
+  <li>Added experimental HLE Bios emulation. Important: Savestates are NOT compatile with savestates done with an official ps1 bios (namespace is different). It is recommend to increase accuracy and compatibility to use an official ps1 bios.</li>
+  <li>Again it is possible to see which game you select in gamelist when you are not using touchscreen</li>
+  <li>Added a new vibration mode to tables with integrated gamepad buttons</li>
+  <li>Added a new option to get memcards by game instead of common memcards</li>
+  <li>Fixed SBI files load when it is "patches" folder (as PC versions)</li> 
+  <li>Fixed Vanark freeze on gameplay</li> 
+  <li>Fixed Tomba 2 background music on gameplay</li> 
+</ul>
+
+<p>ePSXe v1.9.20, released on 07.25.2014
+</p>
+<ul>
+  <li>Added threading support to OpenGL plugin mode. 3 modes added: 2-threads, 2-threads + effects, 2-threads + extra effects. If you have a fast device, you will get extra effects using the 2 modes adding effects (example: swirls in ff series).</li>
+  <li>Changed some options by default in OpenGL plugin</li>
+  <li>Fixed a bug in Moga Native support with axis range</li>
+  <li>Added extra/combo buttons support to portrait mode</li>
+  <li>Updated the pad skins thanks to Javier ~ X1673</li>
+  <li>Better detection incomplete/corrupted PS1 Bios</li>
+  <li>Detection of games requiring SBI files in gamelist</li>
+  <li>Fixes some crashes on exit</li>
+  <li>Added a mode to play using other smartphone (in local network) as gamepad for player2</li>
+</ul>
+
+<p>ePSXe v1.9.19, released on 06.18.2014
+</p>
+<ul>
+  <li>Updated HD/OpenGL plugin - fixed Powervr 5XX cards and minnor fixes </li>
+  <li>Added dithering support to hardware/neon gpu plugin (added a mode to enable it even in games not supporting it)</li>
+  <li>Added extra/combo buttons support to portrait mode</li>
+  <li>Added support to show a gamefaq during gameplay (copy to sdcard/epsxe/faqs/PSX-CODE and open from gameplay options)</li>
+  <li>Added Portuguese translation (Marco Freire)</li>
+  <li>Fixes to soft gpu accurate mode</li>
+  <li>Added options to choose the default language or english on preferences</li>
+  <li>Added vibration support to Xperia Play</li>
+  <li>Fixed some crashes reading the preferences</li>
+  <li>Fixed a crash when scanning games (cdda cue file)</li>
+  <li>Fixed Bugs Bunny and Taz - Time Busters, The Grinch,  and Shin Megami Tensei - If</li> 
+</ul>
+
+<p>ePSXe v1.9.18, released on 05.23.2014
+</p>
+<ul>
+  <li>Updated HD/OpenGL plugin - better Adreno 320+ support </li>
+  <li>Added support for dithering in OpenGL plugin (enable from preferences)</li>
+  <li>Added a new option to enable the new virtual texture manager in opengl plugin (NOT enable in Mali-400 phones)</li>
+  <li>Added a new video renderer with FXAA filter (preferences-video renderer=fxaa)</li>
+  <li>Added a flag in preferences to enable accurate soft/hardware/fxaa video renderer (megaman series)</li>
+  <li>Added DualShock vibration support (enable on preferences)</li>
+  <li>Added support to map hat controls to dpad</li>
+  <li>Mapped left stick to dpad when the game is in digital mode</li>
+  <li>Fixed a crash when scanning games (cdda cue file)</li>
+  <li>Fixed a bug detecting games when scanning games (legend of mana FR translation)</li>
+  <li>Fixed Digimon 3 freeze during battles</li>
+  <li>Fixed open menu options with back key in Android 3.2</li>
+</ul>
+
+<p>ePSXe v1.9.16-17, released on 01.28.2014
+</p>
+<ul>
+  <li>Fixed bugs from 1.9.15</li>
+</ul>
+
+<p>ePSXe v1.9.15, released on 01.28.2014
+</p>
+<ul>
+  <li>Updated to Android 4.0 UI</li>
+  <li>Updated logo: Robert Typek</li>
+  <li>Added language Korean (Duo Jeong).</li>
+  <li>Added fullscreen immersion support in Android 4.4</li>
+  <li>Added 32bit blit support</li>
+  <li>Include support in the blit for Sony Tablet P</li>
+  <li>Fixed some glitches in blit in gpu hardware renderer</li>
+  <li>Added support to a new very low latency sound mode</li>
+  <li>Support automap for more gamepads: wikipad, ps4, Samsung EI-GP20, jxd s7800b</li>
+  <li>Added support to map the triggers L2/R2 on map buttons screen</li>
+  <li>Fixed l1-l1/r2-r1 in portrait mode</li>
+  <li>Added support to map the triggers L2/R2</li>
+  <li>Added gamepad autodetection when pressing a button during gameplay</li>
+  <li>Added support set the gamepad skin transparency</li>
+  <li>Included support for bluetooth keyboards</li>
+  <li>Added support for SBI files in MDS/MDF format</li>
+  <li>Added support to rename the shortcuts</li>
+  <li>Fixed PPF support on Android</li>
+  <li>Include support to delete savestates (press long on savestate)</li>
+  <li>Added a new ECM indexer with progress bar</li>
+  <li>Included option to download the HD opengl plugin</li>
+  <li>GPU: Fixed Mad Stalker - Full Metal Force Intro</li>
+  <li>Fixed Kidou Senshi Gundam - Gihren no Yabou CD2</li>
+</ul>
+
+<p>ePSXe v1.9.14, released on 12.05.2013
+</p>
+<ul>
+  <li>Added languages Japanese (Nekokabu), Chinese (Chow Chi Hoi), Russian (Ultra Taber), German (Thomas), Italian (Luca), Finnish (Jesse)</li>
+</ul>
+
+<p>ePSXe v1.9.12, released on 11.10.2013
+</p>
+<ul>
+  <li>Fixed a bug releasing key button</li>
+  <li>Fixed a regression on subchannel code</li>
+  <li>Improved automapping on Moga PRO Hid mode</li>
+</ul>
+
+<p>ePSXe v1.9.11, released on 11.08.2013
+</p>
+<ul>
+  <li>Fixed a regression on Xperia Play Circle Button, and improved Xperia Play detection</li>
+  <li>Fixed a bug using SBI files. Final Fantasy 8 PAL/ITA, Medievil 1 PAL/SPA</li>
+  <li>Re-enabled trick to run Chinese Final Fantasy 8 Translation</li>
+  <li>Fixed a core bug: Nba in the Zone 2000</li>
+</ul>
+
+<p>ePSXe v1.9.6/1.9.10, released on 28.10.2013
+</p>
+<ul>
+  <li>Added auto-mapping support with some gamepads (Sixaxis, Xbox, Logitech, Ouya, Nvidia, Nyko)</li>
+  <li>Fixed some graphic glitches on opengl plugin for Adreno 320/330 Gpus</li>
+  <li>Added support to choose during mapping the back/menu buttons on PS3/Xbox/Logitech gamepads</li>
+  <li>Added support to map a button to menu option. (back=menu by default on Nvidia Shield) </li>
+  <li>Fixed a possible race condition saving memcards</li>
+  <li>Mapped the touchpad buttons to L2/R2 in Xperia Play when playing on Digital mode</li>
+  <li>Added cache to gamelist doing it faster to show the gamelist</li>
+  <li>Fixed reversed extra functions save/loadstates</li>
+  <li>Included support to change the folder while doing a changedisc</li>
+  <li>Fixed shortcuts on xperia play</li>
+  <li>Included support to autodetect games not supporting dualshock and disabling it</li>
+  <li>Fixes some core/video bugs (NBA Live 99, Kamen Rider V3, Omizu no Hanamichi, Yuukyuu no Eden - The Eternal Eden, Blasto, Standby Say You, Twins Story, Star Wars Rebelt Assault 2, Arcade Pack Party -Rampage-, NHL Faceoff 2001, Yeh Yeh Tennis, Worms Armaggedon, Worms Pinball, Crash Bash ...)</li>
+</ul>
+
+<p>ePSXe v1.9.5, released on 28.07.2013
+</p>
+<ul>
+  <li>Added a workaround to get sound on Android 4.3</li>
+  <li>Added support for Namco Gun using touchscreen</li>
+  <li>Fixed some problems on some joysticks with l2/r2 buttons</li>
+  <li>Added more extra combo and sticky virtual buttons</li>
+</ul>
+
+<p>ePSXe v1.9.4./1.9.3, released on 28.06.2013
+</p>
+<ul>
+  <li>Added Moga Gamepads native support. Sync your gamepad with moga pivot. In preferences+player1+pad id=moganative. Choose preferences+player1+psx pad type=dualshock if you want analog. No mapping or root needed.</li>
+  <li>Fixed Analog range. Ape Escape.</li>
+  <li>Fixed Analog sticks on players 2-4.</li>
+  <li>Added Xbox Wireless gamepad support (Thanks Gabriel)</li> 
+  <li>Fixed Sakura 3 Eternal Heart Game</li>
+</ul>
+
+<p>ePSXe v1.9.2, released on 08.06.2013
+</p>
+<ul>
+  <li>Removed bluetooth permission required, fixes devices without bluetooth</li>
+</ul>
+
+<p>ePSXe v1.9.1, released on 08.06.2013
+</p>
+<ul>
+  <li>Removed READ_LOGS option from release, used only on testing versions</li>
+</ul>
+
+<p>ePSXe v1.9.0, released on 31.05.2013
+</p>
+<ul>
+  <li>Added support for BluezIME gamepads, using the BluezIME Service. Now it supports analog (tested with Ipega Controller, but others gamepads using BluezIME+Hid could work). This version supports only 1 pad using this method (more improvements on future versions) (Android 3.0 - 4.1)(4.2+ Not supported).</li>
+  <li>Added support for Trigger L2/R2 buttons, and improved the native joysticks profiles. Better game pad support for Xbox, Logitech F310/F510, Sixaxis, Nvidia Shield</li>
+  <li>Fixed a bug on gamepad analog managing, which mixed the d-pad and left stick values on Dual Shock Mode</li>
+  <li>Resorted the input preferences. Now the TouchScreen Gamepad is on the top level, controllers renamed to Player1-4, and in each Player you have to choose: psx gamepad type, android gamepad type and gamepad ID</li>
+  <li>TouchScreen pad may be set to player-1 or player-2 (Metal Geat Solid Boss)</li>
+  <li>TouchScreen added support to add until 6 extra buttons which you can map "load/save state", framelimit, combo action buttons or sticky action buttons</li>
+  <li>Added a more visible option to Hide/Show touchscreen gamepad</li>
+  <li>Added support to add custom touchscreen gamepad skins</li>
+  <li>Added support to choose your memcard files on preferences, and enable/disable memcards</li>
+  <li>Improved the games sdcard scanner, now it scans the external sdcards, and show the file browser when it doesn't find any game</li>
+  <li>Fixed glconfig toolbar when choosing external gamepad</li>
+  <li>Opengl plugin, added support for the 5 types of filters</li>
+  <li>Added a options to show the PSX logo during the boot time</li>
+  <li>Fixes some core bugs (Spyro2,Spryo3 PAL, Crash Bash - Menu, Kids Station - Motto, Kiganjo and others)</li>
+</ul>
+
+<p>ePSXe v1.8.9, released on 30.03.2013
+</p>
+<ul>
+  <li>Added experimental multitap support (4 players). Depending on the game you need to enable multitap port 1 or 2. Dont enable if you aren't going to play multitap</li>
+  <li>Added xperia play touchpad support (enable on preferences-pad1-map axis)</li>
+  <li>Optimizated opengl plugin for 2d games (Chrono cross/Valkyrie Profile)</li>
+  <li>Fixes some core bugs (sf2 alpha, nba live 98)</li>
+</ul>
+
+<p>ePSXe v1.8.8, released on 16.02.2013
+</p>
+<ul>
+  <li>Added support for 2 joysticks</li>
+  <li>Added the possibility to make shortcuts - long click about a game in browser game list</li>
+  <li>Added a option to map some emulator functions to hardware buttons (like the save/load states)</li>
+  <li>Fixed glconfig toolbar on portrait opengl plugin renderer</li>
+</ul>
+
+<p>ePSXe v1.8.7, released on 11.02.2013
+</p>
+<ul>
+  <li>Added extra sanity checks to gamelist browser (if it is crashing yet, please report to epsxeandroid@gmailcom)</li>
+  <li>Added the disc number to game names in the gamelist browser</li>
+  <li>Fixed opengl plugin on portrait mode</li>
+</ul>
+
+<p>ePSXe v1.8.6, released on 08.02.2013
+</p>
+<ul>
+  <li>Fixed cue multi file iso format support</li>
+  <li>Added a new path to scan for iso on "Reload" button</li>
+</ul>
+
+<p>ePSXe v1.8.5, released on 07.02.2013
+</p>
+<ul>
+  <li>Added a new game browser mode, which scans the sdcard for games and show the list of games with cover and game information (old file browser mode can be re-enabled on preferences)</li>
+  <li>Added auto-discover bios on sdcard feature</li>
+  <li>Added cue multi file iso format support</li>
+  <li>Added preliminary ECM iso format support</li>
+</ul>
+
+<p>ePSXe v1.8.4, released on 05.01.2013
+</p>
+<ul>
+  <li>Fixed download cheat codes files button on Android 4+</li>
+  <li>Added experimental native support for Joysticks on Android 3.1+, including analog sticks</li>
+  <li>Added native support for Intel Atom X86 devices (Motorola Razr i) (If you want to use the opengl plugin, it is avaiable for x86 )</li>
+  <li>Added native support for Intel X86 devices (Motorola Razr i)</li>
+  <li>Added an option to enable/disable auto savestates on exit</li>
+  <li>Added an option to force MME enable if neon is not detected</li>
+  <li>Fixed a SPU bug (music in Pacman World after pause)</li>
+</ul>
+
+<p>ePSXe v1.8.3, released on 20.12.2012
+</p>
+<ul>
+  <li>Fixed touchscreen pad on portrait mode</li>
+  <li>Added a new pad skin on portrait mode</li>
+  <li>Added a option to download cheat codes files from epsxe.com</li>
+  <li>Added support for D0-D3 and E0-E3 Gameshark codes</li>
+  <li>Fixed some bugs in PadEditor when editing analog pad</li>
+  <li>Fixed a GPU bug (Final Fantasy 6 battles background glitches)</li>
+</ul>
+
+<p>ePSXe v1.8.2, released on 17.12.2012
+</p>
+<ul>
+  <li>Added landscape reverse mode support</li>
+  <li>Added a new experimental low latency audio option</li>
+  <li>Fixed some crashes when exiting with home button</li>
+  <li>Fixed loadstate when you did a state with home button in a multi-disc rom</li>
+  <li>Fixed center analog axis on start</li>
+  <li>Fixed 2 players split mode controls</li>
+</ul>
+
+<p>ePSXe v1.8.1, released on 14.12.2012
+</p>
+<ul>
+  <li>Added analog support to touchscreen pad. Preferences+Pad1+PadMode (PadEditor+Swap Mode) (read 3.5.6)</li>
+  <li>Improved touchscreen controls</li>
+  <li>Fixed some GPU bugs (Duke Nukem: Total Meltown, Guardian Recall, and some border glitches)</li>
+  <li>Fixed some SPU bugs (Goujin Senki, Kururin Pa!)</li>
+  <li>Improved SPU emulation (Better reverb and interpolation, only in high quality sound option on)</li>
+  <li>Fixed some CDROM decoder bugs (Rayman, Tempest X3, Duke Nukem: Land of babes, Firo and Klawd, Stahlfeder)</li>
+</ul>
+
+<p>ePSXe v1.8.0, released on 09.11.2012
+</p>
+<ul>
+  <li>Added Peopsxgl OpenGL plugin support, download the plugin, copy it in your sdcard, and choose it in preferences+GPUPlugin, and choose preferences+VideoRender+OpenGLPlugin.</li>
+  <li>Added multi-disc PBP support.</li>
+  <li>Fixed some GPU bugs (Doom, Final Doom, Star Wars Dark Forces, Soul Blade water level).</li>
+  <li>Fixed some SPU bugs (Eithea, Tales of Destiny, Jammer Lammy (High Quality option required))</li>
+  <li>Fixed some CDROM decoder bugs (Shaman King - level 3)</li>
+  <li>Added a option to remove the top/bottom black bands on screen</li>
+  <li>Ported more fixes from 1.8.0 for PC (audio repplay fix and others)</li>
+</ul>
+
+<p>ePSXe v1.7.11, released on 16.10.2012
+</p>
+<ul>
+  <li>Added a touchscreen virtual pad1 editor. Now you can move/resize/hide the buttons. (only in hardware renderer)</li>
+  <li>Added Gameshark cheat codes suppport, check the docs to enable it in your games.</li>
+  <li>Added a new pad skin. (only in hardware renderer)</li>
+  <li>Fixed some GPU bugs (Alundra 2, Legend of Dragoon US, Pro Pinball TimeShock).</li>
+  <li>Fixed some MDEC bugs (Yarudora Series Vol.1 - Double Cast, Heart of Darkness).</li>
+  <li>Fixed some SPU bugs (FF7-FFT-Xenogears effects, Vib Ribbon, Spyro2 US, Thousand Arms).</li>
+</ul>
+
+<p>ePSXe v1.7.10, released on 03.10.2012
+</p>
+<ul>
+  <li>Added a new hardware renderer. It is faster and smoother than software one. If you have
+speed problems, you can enable the old software renderer again in preferences</li>
+  <li>Fixed some GPU bugs (Bof3, Medievil, Detana Twinbee Yahho)</li>
+</ul>
+
+<p>ePSXe v1.7.9, released on 25.09.2012
+</p>
+<ul>
+  <li>Fixed some Dynarec bugs (Brave Fence Musashi, Legend of Dragon, Lucky Luke, C-12 Final Resistence)</li>
+  <li>Fixed some GPU bugs (X-Files, Vandal Heart crashes, Saga Frontier)</li>
+  <li>Fixes in audio tracks in PBP format (Tomb Raider 1 and 2)</li>
+  <li>Now on preferences you can see the choosen option</li>
+</ul>
+
+<p>ePSXe v1.7.8, released on 14.09.2012
+</p>
+<ul>
+  <li>Added new options, screen ratio 4:3, software filtering, PSX dithering enable/disable, Sound Latency Modes</li>
+  <li>Fixed some GPU bugs (DW7 crashes, - FF7, Driver, RRT4, PE, Ff9 artifacts - FF7 scroll -
+Tony Hawks, Die Hard Trilogy missing textures</li>
+  <li>Improved audio tracks in PBP format</li>
+  <li>Compatibility fixes ported from PC 1.7.0/1.8.0: Formula One Arcade/99, Shaman King, Eldergate ..</li>
+  <li>Fixed some spu bugs, Re-Loaded, Legend of Dragon.</li>
+</ul>
+
+<p>ePSXe v1.7.7, released on 07.09.2012
+</p>
+<ul>
+  <li>Fixed support for Tegra2 devices, tested in S. Galaxy Tab, Sony Tablet S and Acer Iconia A500. (thanks C. Allen, K. Pompper, K. WAN, M. Hunger, J. L. Fuentes).</li>
+  <li>Fixed some GPU bugs (Valkyrie Profile, Metal Gear Solid, Looney Tunes Racing),(thanks P. Vang, T. Larkin)</li>
+  <li>Improved the frameskip functions (Dragon Ball F. Bout), and new option enable frameskip only in high-resolution.</li>
+  <li>Fixed some crashes in blit code. (Driver/2 are now working on Nexus S devices). (thanks T. Larkin)</li>
+</ul>
+
+<p>ePSXe v1.7.6, released on 02.09.2012
+</p>
+<ul>
+  <li>Hardware buttons (Xperia Play, keyboards, and external pads - wii, ps3, xbox).</li>
+  <li>Compatibility fixes.</li>
+</ul>
+
+<p>ePSXe v1.7.5, released on 29.08.2012
+</p>
+<ul>
+  <li>First version for Android.</li>
+  <li>Updates over ePSXe v1.7.0 for PC: PBP Iso support, and SBI subchannel support.</li>
+  <li>2 players split mode option for Tablets</li>
+  <li>New gpu core featuring neon support</li>
+  <li>Misc fixes in the core emulation</li>
+</ul>
+
+<hr/>
+C. Thanks
+<hr/>
+
+<pre>
+ Doomed        - A nice docs and love to emulation ;-)
+ Pts           - Testing and moral support
+ Vood          - Xplorer supporter
+ Fennec        - A nice xplorer debugger
+ Kazzuya       - For xa support and nice plugins
+ Pete          - Some wonderfull plugins and emails
+ Roor          - A bunch of good ideas
+ Expert        - Some nice chats and info
+ duddie/tratax - PSemu Pro crew
+ JNS           - Gui help and multiple tests.
+ Bobbi         - Fixes to docs, beta testing and gui.
+ Gladiator     - For his great work testing the emulator.
+ GreenImp      - Testing multiples games.
+ CDBuRnOuT     - Testing features.
+ Wormie        - Testing.
+ i4get         - Testing.
+ Lewpy         - Help with some gpu issues.
+ Null2         - Help with spu adsr.
+ Alex7/Burutter- Help adding dualshock support.
+ sxamiga       - Help testing the emulator
+ psychojak     - Help with Parasite Eve 2
+ iori          - Help with timing.
+ shalma        - Help with issues.
+ andy          - Testing multiples games.
+ fpse team     - Ideas and help with MDEC, SIO, and Peopsxgl contribution.
+ 1964 team     - Gui ideas
+ 7zip team     - By the 7z/zip codecs.
+ Zenju         - xBRZ code.
+ Domus         - Testing and italian translation
+ the_randomizer- Testing
+ Lottes        - Shaders
+ Hyllian       - Shaders
+ Edbla         - GPU improving
+ Nekukabu      - Japanese Translation
+ Martin Korth  - PSX documentation
+ Xebra author  - PSX documentation
+ KrossX        - Input plugins
+ Tapcio        - GPU improving
+ Robert Typek  - ePSXe Art.
+ Mednafen author's - Great source of info
+</pre>
+<p> Jean-loup Gailly/Mark Adler - zlib library
+ Squall-Leonheart - Help testing games.
+</p>
+<p>
+ Segu, Nik the and rest of the PSEmu Pro plugins programmers.
+</p>
+<p> More thanks to: zsknight, Zilmar, Jabo, Willy, Goi, Jose and David Muriel.
+</p>
+<hr/>
+D. Legal Stuff
+<hr/>
+
+<p>ePSXe Copyright 2000/2019 ePSXe team.<br/>
+Sony Playstation is a registered trademark of Sony.<br/>
+All mentioned games are registered trademarks of their authors or marks.
+You may only be in possession of the copyrighted BIOS if you're legally
+entitled to do so.Neither the ePSXe Team software nor its authors are
+affiliated with Sony. ePSXe for Android is only distributed in the Android
+Market.
+</p>
+<p>When you use this software you do that at your own risk. The authors are
+not responsible for any loss or damage resulting from the misuse
+of this software. If you do not agree with these terms delete this
+software immediately!
+</p>
+<hr/>
+epsxeandroid <a href="mailto:epsxeandroid@gmail.com">epsxeandroid@gmail.com</a><br/>
+twitter @epsxeteam
+<hr/>
+<a href="http://www.epsxe.com">http://www.epsxe.com</a>
+<hr/>
+
+
+</body>
+</html>

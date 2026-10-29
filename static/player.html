@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>ePSXe Web — Player</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>
+  html, body { margin:0; height:100%; background:#030409; overflow:hidden; }
+  #stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  #frame { position:relative; width:100%; height:100%; max-width:100%; max-height:100%; }
+  #game { width:100%; height:100%; }
+  #scan { position:absolute; inset:0; pointer-events:none; z-index:5; display:none; }
+  #fps  { position:absolute; left:10px; top:8px; z-index:9; font:600 13px/1 ui-monospace,Consolas,monospace;
+          color:#b6ffcf; text-shadow:0 1px 3px #000; display:none; pointer-events:none; }
+  .ejs_canvas { object-fit: fill !important; }
+</style>
+</head>
+<body>
+<div id="stage"><div id="frame"><div id="game"></div><div id="scan"></div><div id="fps"></div></div></div>
+<script>
+(function () {
+  const L = window.parent.__epsxeLaunch;
+  if (!L) { document.body.textContent = "Sem configuração de lançamento."; return; }
+
+  // ---- layout (proporção / bandas / brilho / scanlines) ----
+  const frame = document.getElementById("frame");
+  if (L.aspect === "4:3" || L.aspect === "16:9") {
+    const r = L.aspect === "4:3" ? 4 / 3 : 16 / 9;
+    frame.style.aspectRatio = String(r);
+    frame.style.height = "auto";
+    frame.style.width = "min(100vw, calc(100vh * " + r + "))";
+  }
+  if (L.brightness && L.brightness !== 1) frame.style.filter = "brightness(" + L.brightness + ")";
+  if (L.scanlines > 0) {
+    const s = document.getElementById("scan");
+    s.style.display = "block";
+    s.style.background = "repeating-linear-gradient(to bottom, rgba(0,0,0," + L.scanlines + ") 0, rgba(0,0,0," + L.scanlines + ") 1px, transparent 1px, transparent 3px)";
+    s.style.backgroundSize = "100% " + (L.scanThickness || 3) + "px";
+  }
+  if (L.showFps) {
+    const el = document.getElementById("fps"); el.style.display = "block";
+    let n = 0, t0 = performance.now();
+    (function tick(t) { n++; if (t - t0 >= 1000) { el.textContent = Math.round(n * 1000 / (t - t0)) + " FPS"; n = 0; t0 = t; } requestAnimationFrame(tick); })(t0);
+  }
+
+  // ---- configuração do EmulatorJS ----
+  window.EJS_player = "#game";
+  window.EJS_core = "psx";
+  window.EJS_pathtodata = "engine/";
+  window.EJS_gameUrl = L.gameUrl;
+  window.EJS_gameName = L.gameName;
+  window.EJS_gameID = L.gameId;
+  if (L.biosUrl) window.EJS_biosUrl = L.biosUrl;
+  window.EJS_color = "#8b5cf6";
+  window.EJS_startOnLoaded = true;
+  window.EJS_defaultOptions = L.defaultOptions;
+  window.EJS_defaultControls = L.controls;
+  window.EJS_threads = !!L.threads;
+  window.EJS_forceLegacyCores = !!L.legacy;
+  window.EJS_CacheLimit = 1;           // nao duplica a imagem do jogo no cache do EJS
+  window.EJS_disableDatabases = true;
+  window.EJS_language = L.lang || "pt-BR";
+  window.EJS_volume = L.volume ?? 0.8;
+  window.EJS_cheats = L.cheats || [];
+  window.EJS_noAutoFocus = false;
+  window.EJS_backgroundColor = "#030409";
+  if (L.stateUrl) window.EJS_loadStateURL = L.stateUrl;
+  window.EJS_Buttons = L.buttons || {};
+  window.EJS_VirtualGamepadSettings = L.virtualPad || undefined;
+  window.EJS_ready = () => window.parent.postMessage({ type: "ejs-ready" }, "*");
+  window.EJS_onGameStart = () => window.parent.postMessage({ type: "ejs-start" }, "*");
+  window.addEventListener("error", (e) => window.parent.postMessage({ type: "ejs-error", message: String(e.message) }, "*"));
+})();
+</script>
+<script src="engine/loader.js"></script>
+</body>
+</html>

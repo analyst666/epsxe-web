@@ -1,0 +1,182 @@
+<PreferenceScreen>
+  <PreferenceScreen xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:icon="@7F040008" ns0:title="@7F0A002D" ns0:key="biospreferences" ns0:summary="@7F0A00FB">
+    <Preference ns0:title="@7F0A002C" ns0:key="biosPref" ns0:summary="/sdcard/scph1001.bin"/>
+    <ListPreference ns0:entries="@7F010008" ns0:title="@7F0A002A" ns0:key="biosHlePref" ns0:summary="@7F0A002B" ns0:defaultValue="2" ns0:entryValues="@7F010009"/>
+    <CheckBoxPreference ns0:title="@7F0A01D8" ns0:key="miscbootmodePref" ns0:summary="@7F0A01D9"/>
+  </PreferenceScreen>
+  <PreferenceScreen xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:icon="@7F040043" ns0:title="@7F0A0079" ns0:key="cpupreferences" ns0:summary="@7F0A00FB">
+    <ListPreference ns0:entries="@7F01000C" ns0:title="@7F0A0073" ns0:key="cpuFrameSkipPref" ns0:summary="@7F0A0074" ns0:defaultValue="0" ns0:entryValues="@7F01000D"/>
+    <CheckBoxPreference ns0:title="@7F0A0071" ns0:key="cpuShowFPSPref" ns0:summary="@7F0A0072"/>
+    <com.epsxe.views.utils.TickSeekBarPreference ns0:max="120" ns0:title="@7F0A006F" ns0:key="cpuCustomFpsPref" ns0:summary="@7F0A0070" ns0:defaultValue="0" min="20" step="10" ticklabel="Default"/>
+    <ListPreference ns0:entries="@7F010012" ns0:title="@7F0A0077" ns0:key="cpuoverclockPref" ns0:summary="@7F0A0078" ns0:defaultValue="10" ns0:entryValues="@7F010013"/>
+  </PreferenceScreen>
+  <PreferenceScreen xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:icon="@7F040071" ns0:title="@7F0A0202" ns0:key="screenpreferences" ns0:summary="@7F0A00FB">
+    <ListPreference ns0:entries="@7F010078" ns0:title="@7F0A0203" ns0:key="screenRatioPref" ns0:summary="@7F0A0204" ns0:defaultValue="1" ns0:entryValues="@7F010079"/>
+    <ListPreference ns0:entries="@7F010074" ns0:title="@7F0A01FE" ns0:key="screenDepthPref" ns0:summary="@7F0A01FF" ns0:defaultValue="32" ns0:entryValues="@7F010075"/>
+    <ListPreference ns0:entries="@7F010072" ns0:title="@7F0A01FC" ns0:key="screenBlackbandsPref" ns0:summary="@7F0A01FD" ns0:defaultValue="0" ns0:entryValues="@7F010073"/>
+    <com.epsxe.views.utils.DoubleSeekBarPreference ns0:max="10" ns0:text="@7F0A00F7" ns0:title="@7F0A00ED" ns0:key="gpuScanlinesThickPref" ns0:summary="@7F0A00EE" ns0:defaultValue="0" ns0:dialogMessage="@7F0A00EF" defaultValue2="0" dialogMessage2="@7F0A00F1" key2="gpuScanlinesTransPref" max2="99" min="1" min2="0" step="1" step2="1" suffix2="%" ticklabel="Disable"/>
+  </PreferenceScreen>
+  <PreferenceScreen xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:icon="@7F040080" ns0:title="@7F0A022A" ns0:key="videopreferences" ns0:summary="@7F0A00FB">
+    <PreferenceCategory ns0:title="@7F0A022A">
+      <ListPreference ns0:entries="@7F01008C" ns0:title="@7F0A022E" ns0:key="videoRendererPref" ns0:summary="@7F0A022F" ns0:defaultValue="1" ns0:entryValues="@7F01008D"/>
+    </PreferenceCategory>
+    <PreferenceCategory ns0:title="@7F0A022D" ns0:key="videopreferencesSoft">
+      <ListPreference ns0:entries="@7F010030" ns0:title="@7F0A00DC" ns0:key="gpuIresolutioPref" ns0:summary="@7F0A00DD" ns0:defaultValue="1" ns0:entryValues="@7F010031"/>
+      <ListPreference ns0:entries="@7F010086" ns0:title="@7F0A0228" ns0:key="videoFilterhwPref" ns0:summary="@7F0A0229" ns0:defaultValue="1" ns0:entryValues="@7F010087"/>
+      <ListPreference ns0:entries="@7F010016" ns0:title="@7F0A00CC" ns0:key="gpu2DFilterPref" ns0:summary="@7F0A00CC" ns0:defaultValue="0" ns0:entryValues="@7F010017"/>
+      <ListPreference ns0:entries="@7F01002C" ns0:title="@7F0A00F5" ns0:key="gpuSoftMtPref" ns0:summary="@7F0A00F6" ns0:defaultValue="0" ns0:entryValues="@7F01002D"/>
+      <com.epsxe.views.utils.DoubleSeekBarPreference ns0:max="14" ns0:text="@7F0A00F7" ns0:title="@7F0A00E3" ns0:key="gpuOverscantopPref" ns0:summary="@7F0A00E6" ns0:defaultValue="2" ns0:dialogMessage="@7F0A00E8" defaultValue2="0" dialogMessage2="@7F0A00E5" key2="gpuOverscanbottomPref" max2="14"/>
+      <ListPreference ns0:entries="@7F01001A" ns0:title="@7F0A00D2" ns0:key="gpuBrightnessprofilePref" ns0:summary="@7F0A00D3" ns0:defaultValue="0" ns0:entryValues="@7F01001B"/>
+      <ListPreference ns0:entries="@7F01002E" ns0:title="@7F0A00D0" ns0:key="gpublitskipPref" ns0:summary="@7F0A00D1" ns0:defaultValue="0" ns0:entryValues="@7F01002F"/>
+      <Preference ns0:title="@7F0A00F3" ns0:key="gpushaderPref" ns0:summary="FXAA"/>
+    </PreferenceCategory>
+    <PreferenceCategory ns0:title="@7F0A022C" ns0:key="videopreferencesGL">
+      <Preference ns0:title="@7F0A00E0" ns0:key="gpuPref" ns0:summary="/sdcard/libopenglplugin.so"/>
+      <ListPreference ns0:entries="@7F010034" ns0:title="@7F0A00EB" ns0:key="gpuReduceResPref" ns0:summary="@7F0A00EC" ns0:defaultValue="0" ns0:entryValues="@7F010035"/>
+      <ListPreference ns0:entries="@7F010026" ns0:title="@7F0A00E1" ns0:key="gpuNamePref" ns0:summary="@7F0A00E2" ns0:defaultValue="2" ns0:entryValues="@7F010027"/>
+      <ListPreference ns0:entries="@7F010024" ns0:title="@7F0A00DE" ns0:key="gpuMtPref" ns0:summary="@7F0A00DF" ns0:defaultValue="1" ns0:entryValues="@7F010025"/>
+      <ListPreference ns0:entries="@7F010022" ns0:title="@7F0A00DA" ns0:key="gpuGl2xResPref" ns0:summary="@7F0A00DB" ns0:defaultValue="1" ns0:entryValues="@7F010023"/>
+      <ListPreference ns0:entries="@7F01001E" ns0:title="@7F0A00D6" ns0:key="gpuGl2FboPref" ns0:summary="@7F0A00D7" ns0:defaultValue="1" ns0:entryValues="@7F01001F"/>
+    </PreferenceCategory>
+    <PreferenceCategory ns0:title="@7F0A022B">
+      <ListPreference ns0:entries="@7F010032" ns0:title="@7F0A00E9" ns0:key="gpuPerspectiveCorrectionPref" ns0:summary="@7F0A00EA" ns0:defaultValue="0" ns0:entryValues="@7F010033"/>
+      <ListPreference ns0:entries="@7F010082" ns0:title="@7F0A0224" ns0:key="videoDitherFinalPref" ns0:summary="@7F0A0225" ns0:defaultValue="1" ns0:entryValues="@7F010083"/>
+      <ListPreference ns0:entries="@7F01001C" ns0:title="@7F0A00D4" ns0:key="gpuDmachaincorePref" ns0:summary="@7F0A00D5" ns0:defaultValue="1" ns0:entryValues="@7F01001D"/>
+    </PreferenceCategory>
+  </PreferenceScreen>
+  <PreferenceScreen xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:icon="@7F040076" ns0:title="@7F0A020E" ns0:key="soundpreferences" ns0:summary="@7F0A00FB">
+    <ListPreference ns0:entries="@7F01007E" ns0:title="@7F0A020F" ns0:key="soundQAPref" ns0:summary="@7F0A020F" ns0:defaultValue="1" ns0:entryValues="@7F01007F"/>
+    <ListPreference ns0:entries="@7F01007C" ns0:title="@7F0A020C" ns0:key="soundLatencyPref" ns0:summary="@7F0A020D" ns0:defaultValue="0" ns0:entryValues="@7F01007D"/>
+  </PreferenceScreen>
+  <PreferenceScreen xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:icon="@7F04005B" ns0:title="@7F0A0157" ns0:key="inputpreferences" ns0:summary="@7F0A00FB">
+    <ListPreference ns0:entries="@7F01005A" ns0:title="@7F0A0155" ns0:key="inputPlayerModePref" ns0:summary="@7F0A0156" ns0:defaultValue="1" ns0:entryValues="@7F01005B"/>
+    <PreferenceScreen ns0:title="@7F0A005F" ns0:key="controller1">
+      <ListPreference ns0:entries="@7F010052" ns0:title="@7F0A014D" ns0:key="inputPadModePref" ns0:summary="@7F0A014E" ns0:defaultValue="1" ns0:entryValues="@7F010053"/>
+      <PreferenceScreen ns0:title="@7F0A0011" ns0:key="analog1padidPref" ns0:summary="@7F0A0012"/>
+      <ListPreference ns0:entries="@7F01005E" ns0:title="@7F0A015A" ns0:key="inputVibrationPSX1Pref" ns0:summary="@7F0A015B" ns0:defaultValue="0" ns0:entryValues="@7F01005F"/>
+      <PreferenceCategory ns0:title="@7F0A0081">
+        <PreferenceScreen ns0:title="@7F0A0061" ns0:key="button_controller1_map_key" ns0:summary="@7F0A0062"/>
+        <PreferenceScreen ns0:title="@7F0A0001" ns0:key="analog1_map" ns0:summary="@7F0A0005">
+          <ListPreference ns0:entries="@7F010006" ns0:title="@7F0A0017" ns0:key="analog1rangePref" ns0:summary="@7F0A0018" ns0:defaultValue="0" ns0:entryValues="@7F010007"/>
+          <PreferenceScreen ns0:title="@7F0A007A" ns0:key="deadzone1">
+            <com.epsxe.views.utils.TickSeekBarPreference ns0:max="50" ns0:title="@7F0A000A" ns0:key="analog1leftdzPref" ns0:summary="@7F0A000B" ns0:defaultValue="0" min="0" step="1" ticklabel="Default"/>
+            <com.epsxe.views.utils.TickSeekBarPreference ns0:max="50" ns0:title="@7F0A0019" ns0:key="analog1rightdzPref" ns0:summary="@7F0A001A" ns0:defaultValue="0" min="0" step="1" ticklabel="Default"/>
+          </PreferenceScreen>
+          <Preference ns0:title="@7F0A012E" ns0:key="inputgamepadtest1_key" ns0:summary="@7F0A012F"/>
+          <PreferenceCategory ns0:title="@7F0A0010">
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A000C" ns0:key="analog1leftxPref" ns0:summary="@7F0A000D" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A000E" ns0:key="analog1leftyPref" ns0:summary="@7F0A000F" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A001B" ns0:key="analog1rightxPref" ns0:summary="@7F0A001C" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A001D" ns0:key="analog1rightyPref" ns0:summary="@7F0A001E" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A0008" ns0:key="analog1l2Pref" ns0:summary="@7F0A0009" ns0:defaultValue="48" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A0015" ns0:key="analog1r2Pref" ns0:summary="@7F0A0016" ns0:defaultValue="48" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010002" ns0:title="@7F0A0006" ns0:key="analog1hatPref" ns0:summary="@7F0A0007" ns0:defaultValue="0" ns0:entryValues="@7F010003"/>
+          </PreferenceCategory>
+        </PreferenceScreen>
+        <ListPreference ns0:entries="@7F010040" ns0:title="@7F0A0100" ns0:key="inputAutofirefreq11Pref" ns0:summary="@7F0A0101" ns0:defaultValue="0" ns0:entryValues="@7F010041"/>
+        <ListPreference ns0:entries="@7F01003E" ns0:title="@7F0A00FE" ns0:key="inputAutofirebutton11Pref" ns0:summary="@7F0A00FF" ns0:defaultValue="0" ns0:entryValues="@7F01003F"/>
+      </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen ns0:title="@7F0A0063" ns0:key="controller2">
+      <ListPreference ns0:entries="@7F010052" ns0:title="@7F0A014D" ns0:key="inputPad2ModePref" ns0:summary="@7F0A014E" ns0:defaultValue="1" ns0:entryValues="@7F010053"/>
+      <PreferenceScreen ns0:title="@7F0A0011" ns0:key="analog2padidPref" ns0:summary="@7F0A0012"/>
+      <ListPreference ns0:entries="@7F01005E" ns0:title="@7F0A015A" ns0:key="inputVibrationPSX2Pref" ns0:summary="@7F0A015B" ns0:defaultValue="0" ns0:entryValues="@7F01005F"/>
+      <PreferenceCategory ns0:title="Joystick/Hardware Buttons">
+        <PreferenceScreen ns0:title="@7F0A0065" ns0:key="button_controller2_map_key" ns0:summary="@7F0A0066"/>
+        <PreferenceScreen ns0:title="@7F0A0002" ns0:key="analog2_map" ns0:summary="@7F0A0005">
+          <ListPreference ns0:entries="@7F010006" ns0:title="@7F0A0017" ns0:key="analog2rangePref" ns0:summary="@7F0A0018" ns0:defaultValue="0" ns0:entryValues="@7F010007"/>
+          <PreferenceScreen ns0:title="@7F0A007A" ns0:key="deadzone2">
+            <com.epsxe.views.utils.TickSeekBarPreference ns0:max="50" ns0:title="@7F0A000A" ns0:key="analog2leftdzPref" ns0:summary="@7F0A000B" ns0:defaultValue="0" min="0" step="1" ticklabel="Default"/>
+            <com.epsxe.views.utils.TickSeekBarPreference ns0:max="50" ns0:title="@7F0A0019" ns0:key="analog2rightdzPref" ns0:summary="@7F0A001A" ns0:defaultValue="0" min="0" step="1" ticklabel="Default"/>
+          </PreferenceScreen>
+          <Preference ns0:title="@7F0A012E" ns0:key="inputgamepadtest2_key" ns0:summary="@7F0A012F"/>
+          <PreferenceCategory ns0:title="@7F0A0010">
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A000C" ns0:key="analog2leftxPref" ns0:summary="@7F0A000D" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A000E" ns0:key="analog2leftyPref" ns0:summary="@7F0A000F" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A001B" ns0:key="analog2rightxPref" ns0:summary="@7F0A001C" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A001D" ns0:key="analog2rightyPref" ns0:summary="@7F0A001E" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A0008" ns0:key="analog2l2Pref" ns0:summary="@7F0A0009" ns0:defaultValue="48" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A0015" ns0:key="analog2r2Pref" ns0:summary="@7F0A0016" ns0:defaultValue="48" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010002" ns0:title="@7F0A0006" ns0:key="analog2hatPref" ns0:summary="@7F0A0007" ns0:defaultValue="0" ns0:entryValues="@7F010003"/>
+          </PreferenceCategory>
+        </PreferenceScreen>
+      </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen ns0:title="@7F0A0067" ns0:key="controller3">
+      <ListPreference ns0:entries="@7F010052" ns0:title="@7F0A014D" ns0:key="inputPad3ModePref" ns0:summary="@7F0A014E" ns0:defaultValue="1" ns0:entryValues="@7F010053"/>
+      <PreferenceScreen ns0:title="@7F0A0011" ns0:key="analog3padidPref" ns0:summary="@7F0A0012"/>
+      <PreferenceCategory ns0:title="Joystick/Hardware Buttons">
+        <PreferenceScreen ns0:title="@7F0A0069" ns0:key="button_controller3_map_key" ns0:summary="@7F0A006A"/>
+        <PreferenceScreen ns0:title="@7F0A0003" ns0:key="analog3_map" ns0:summary="@7F0A0005">
+          <ListPreference ns0:entries="@7F010006" ns0:title="@7F0A0017" ns0:key="analog3rangePref" ns0:summary="@7F0A0018" ns0:defaultValue="0" ns0:entryValues="@7F010007"/>
+          <PreferenceScreen ns0:title="@7F0A007A" ns0:key="deadzone3">
+            <com.epsxe.views.utils.TickSeekBarPreference ns0:max="50" ns0:title="@7F0A000A" ns0:key="analog3leftdzPref" ns0:summary="@7F0A000B" ns0:defaultValue="0" min="0" step="1" ticklabel="Default"/>
+            <com.epsxe.views.utils.TickSeekBarPreference ns0:max="50" ns0:title="@7F0A0019" ns0:key="analog3rightdzPref" ns0:summary="@7F0A001A" ns0:defaultValue="0" min="0" step="1" ticklabel="Default"/>
+          </PreferenceScreen>
+          <Preference ns0:title="@7F0A012E" ns0:key="inputgamepadtest3_key" ns0:summary="@7F0A012F"/>
+          <PreferenceCategory ns0:title="@7F0A0010">
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A000C" ns0:key="analog3leftxPref" ns0:summary="@7F0A000D" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A000E" ns0:key="analog3leftyPref" ns0:summary="@7F0A000F" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A001B" ns0:key="analog3rightxPref" ns0:summary="@7F0A001C" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A001D" ns0:key="analog3rightyPref" ns0:summary="@7F0A001E" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A0008" ns0:key="analog3l2Pref" ns0:summary="@7F0A0009" ns0:defaultValue="48" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A0015" ns0:key="analog3r2Pref" ns0:summary="@7F0A0016" ns0:defaultValue="48" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010002" ns0:title="@7F0A0006" ns0:key="analog3hatPref" ns0:summary="@7F0A0007" ns0:defaultValue="0" ns0:entryValues="@7F010003"/>
+          </PreferenceCategory>
+        </PreferenceScreen>
+      </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen ns0:title="@7F0A006B" ns0:key="controller4">
+      <ListPreference ns0:entries="@7F010052" ns0:title="@7F0A014D" ns0:key="inputPad4ModePref" ns0:summary="@7F0A014E" ns0:defaultValue="1" ns0:entryValues="@7F010053"/>
+      <PreferenceScreen ns0:title="@7F0A0011" ns0:key="analog4padidPref" ns0:summary="@7F0A0012"/>
+      <PreferenceCategory ns0:title="Joystick/Hardware Buttons">
+        <PreferenceScreen ns0:title="@7F0A006D" ns0:key="button_controller4_map_key" ns0:summary="@7F0A006E"/>
+        <PreferenceScreen ns0:title="@7F0A0004" ns0:key="analog4_map" ns0:summary="@7F0A0005">
+          <ListPreference ns0:entries="@7F010006" ns0:title="@7F0A0017" ns0:key="analog4rangePref" ns0:summary="@7F0A0018" ns0:defaultValue="0" ns0:entryValues="@7F010007"/>
+          <PreferenceScreen ns0:title="@7F0A007A" ns0:key="deadzone4">
+            <com.epsxe.views.utils.TickSeekBarPreference ns0:max="50" ns0:title="@7F0A000A" ns0:key="analog4leftdzPref" ns0:summary="@7F0A000B" ns0:defaultValue="0" min="0" step="1" ticklabel="Default"/>
+            <com.epsxe.views.utils.TickSeekBarPreference ns0:max="50" ns0:title="@7F0A0019" ns0:key="analog4rightdzPref" ns0:summary="@7F0A001A" ns0:defaultValue="0" min="0" step="1" ticklabel="Default"/>
+          </PreferenceScreen>
+          <Preference ns0:title="@7F0A012E" ns0:key="inputgamepadtest4_key" ns0:summary="@7F0A012F"/>
+          <PreferenceCategory ns0:title="@7F0A0010">
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A000C" ns0:key="analog4leftxPref" ns0:summary="@7F0A000D" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A000E" ns0:key="analog4leftyPref" ns0:summary="@7F0A000F" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A001B" ns0:key="analog4rightxPref" ns0:summary="@7F0A001C" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A001D" ns0:key="analog4rightyPref" ns0:summary="@7F0A001E" ns0:defaultValue="-1" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A0008" ns0:key="analog4l2Pref" ns0:summary="@7F0A0009" ns0:defaultValue="48" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010000" ns0:title="@7F0A0015" ns0:key="analog4r2Pref" ns0:summary="@7F0A0016" ns0:defaultValue="48" ns0:entryValues="@7F010001"/>
+            <ListPreference ns0:entries="@7F010002" ns0:title="@7F0A0006" ns0:key="analog4hatPref" ns0:summary="@7F0A0007" ns0:defaultValue="0" ns0:entryValues="@7F010003"/>
+          </PreferenceCategory>
+        </PreferenceScreen>
+      </PreferenceCategory>
+    </PreferenceScreen>
+    <com.epsxe.views.utils.TickSeekBarPreference ns0:max="200" ns0:title="@7F0A0145" ns0:key="inputMouseSenPref" ns0:summary="@7F0A0146" ns0:defaultValue="140" min="20" step="20" ticklabel="Default"/>
+    <PreferenceScreen ns0:title="@7F0A0087" ns0:key="externalGamepad" ns0:summary="@7F0A0088">
+      <ListPreference ns0:entries="@7F010044" ns0:title="@7F0A0106" ns0:key="inputDetectGamepadPref" ns0:summary="@7F0A0107" ns0:defaultValue="1" ns0:entryValues="@7F010045"/>
+      <ListPreference ns0:entries="@7F010060" ns0:title="@7F0A0139" ns0:key="inputFilterPref" ns0:summary="@7F0A013A" ns0:defaultValue="1" ns0:entryValues="@7F010061"/>
+      <ListPreference ns0:entries="@7F01004E" ns0:title="@7F0A0132" ns0:key="inputKeyboardPref" ns0:summary="@7F0A0133" ns0:defaultValue="0" ns0:entryValues="@7F01004F"/>
+      <PreferenceScreen ns0:title="@7F0A0118" ns0:key="button_extra_map_key" ns0:summary="@7F0A0119"/>
+    </PreferenceScreen>
+  </PreferenceScreen>
+  <PreferenceScreen xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:icon="@7F04005E" ns0:title="@7F0A0196" ns0:key="memcardpreferences" ns0:summary="@7F0A00FB">
+    <ListPreference ns0:entries="@7F010062" ns0:title="@7F0A018C" ns0:key="mcrFileMode" ns0:summary="@7F0A018D" ns0:defaultValue="0" ns0:entryValues="@7F010063"/>
+    <Preference ns0:title="@7F0A0188" ns0:key="mcr1Pref" ns0:summary="default"/>
+    <Preference ns0:title="@7F0A0189" ns0:key="mcr2Pref" ns0:summary="default"/>
+    <ListPreference ns0:entries="@7F010064" ns0:title="@7F0A0194" ns0:key="mcrStatus" ns0:summary="@7F0A0195" ns0:defaultValue="0" ns0:entryValues="@7F010065"/>
+    <Preference ns0:title="@7F0A018A" ns0:key="mcrDropbox" ns0:summary="@7F0A018B"/>
+    <Preference ns0:title="@7F0A0190" ns0:key="mcrssDropbox" ns0:summary="@7F0A0191"/>
+    <Preference ns0:title="@7F0A018E" ns0:key="mcrGdrive" ns0:summary="@7F0A018F"/>
+    <Preference ns0:title="@7F0A0192" ns0:key="mcrssGdrive" ns0:summary="@7F0A0193"/>
+  </PreferenceScreen>
+  <PreferenceScreen xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:icon="@7F04007F" ns0:title="@7F0A0219" ns0:key="uipreferences" ns0:summary="@7F0A00FB">
+    <ListPreference ns0:entries="@7F010068" ns0:title="@7F0A01DA" ns0:key="miscBrowsermodePref" ns0:summary="@7F0A01DB" ns0:defaultValue="1" ns0:entryValues="@7F010069"/>
+    <ListPreference ns0:entries="@7F01006C" ns0:title="@7F0A01DD" ns0:key="miscuilanguagePref" ns0:summary="@7F0A01DE" ns0:defaultValue="0" ns0:entryValues="@7F01006D"/>
+    <CheckBoxPreference ns0:title="@7F0A021A" ns0:key="uiresumedialogPref" ns0:summary="@7F0A021B" ns0:defaultValue="true"/>
+    <CheckBoxPreference ns0:title="@7F0A021C" ns0:key="uishowmsgPref" ns0:summary="@7F0A021D" ns0:defaultValue="true"/>
+    <CheckBoxPreference ns0:title="@7F0A0215" ns0:key="uiconfirmexitdialogPref" ns0:summary="@7F0A0216" ns0:defaultValue="true"/>
+    <CheckBoxPreference ns0:title="@7F0A021E" ns0:key="uishowratedialogPref" ns0:summary="@7F0A021F" ns0:defaultValue="true"/>
+  </PreferenceScreen>
+  <PreferenceScreen xmlns:ns0="http://schemas.android.com/apk/res/android" ns0:icon="@7F040061" ns0:title="@7F0A01DC" ns0:key="miscpreferences" ns0:summary="@7F0A00FB">
+    <ListPreference ns0:entries="@7F010014" ns0:title="@7F0A007B" ns0:key="debugInterpreterPref" ns0:summary="@7F0A007C" ns0:defaultValue="1" ns0:entryValues="@7F010015"/>
+  </PreferenceScreen>
+</PreferenceScreen>
