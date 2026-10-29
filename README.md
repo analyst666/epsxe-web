@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # ePSXe Web — PlayStation 1 no Navegador
 
 Versão Web moderna e completa baseada na engenharia reversa do **ePSXe for Android 2.0.14**.
@@ -19,4 +19,4 @@ Versão Web moderna e completa baseada na engenharia reversa do **ePSXe for Andr
 =======
 # epsxe-web
 Emulador de PS1 (EPSXE) para navegador.
->>>>>>> f50586248982fdab73adda38830e87c5c46b9647
+
