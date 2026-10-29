@@ -120,7 +120,8 @@ Nada é obrigatório. Estas são as opções mais úteis:
 bash
 python3 server.py 9000
 
-[!WARNING] Ao mudar a porta, o navegador trata como outro site e você precisa reconfigurar BIOS, preferências e controles.
+
+Ao mudar a porta, o navegador trata como outro site e você precisa reconfigurar BIOS, preferências e controles.
 Dica para mudar a porta: Execute python3 server.py 9000. Lembre-se que o navegador trata portas diferentes como sites distintos (você precisará reconfigurar a BIOS e os controles).
 
 ## 🎮 Como Jogar
