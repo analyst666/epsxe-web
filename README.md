@@ -115,11 +115,12 @@ python3 server.py
 
 2 · Configurar
 Nada é obrigatório. Estas são as opções mais úteis:
-[!NOTE] Os arquivos iniciar.bat e iniciar.ps1 são só para Windows. No Linux, inicie o servidor diretamente.
-<details> <summary><b>Mudar a porta</b> (padrão: 8765)</summary>
-bash
-python3 server.py 9000
+Os arquivos iniciar.bat e iniciar.ps1 são só para Windows. No Linux, inicie o servidor diretamente.
 
+<b>Mudar a porta</b> (padrão: 8765)</summary>
+```bash
+python3 server.py
+```
 
 Ao mudar a porta, o navegador trata como outro site e você precisa reconfigurar BIOS, preferências e controles.
 Dica para mudar a porta: Execute python3 server.py 9000. Lembre-se que o navegador trata portas diferentes como sites distintos (você precisará reconfigurar a BIOS e os controles).
