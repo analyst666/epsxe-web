@@ -68,10 +68,17 @@ O servidor escuta apenas em 127.0.0.1. BIOS, preferências, mapeamento de contro
 * **Navegador:** Chrome ou Edge recentes.
 
 🚀 Início rápido
+
 Sistema	Como iniciar	Depois
+
 🪟 Windows	Dois cliques em iniciar.bat	O navegador abre em http://127.0.0.1:8765/
+
+
 🐧 Linux	python3 server.py na pasta do projeto	Abra http://127.0.0.1:8765/ se o navegador não abrir sozinho
+
+
 🍎 macOS	python3 server.py na pasta do projeto	Abra http://127.0.0.1:8765/ se o navegador não abrir sozinho
+
 
 Com a página aberta, arraste um jogo para a janela e clique nele para jogar.
 
